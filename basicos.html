@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Fundamentos Javascript</h1>
+    <script>
+    
+    var hola = "Hola Mundo";
+    let hello = "HEllo World"
+    // console.log(hola)
+    // console.log(hello)
+    // console.log(window)
+
+    // console.log(window.hola)
+    // console.log(window.hello)
+    //  Ambito de bloque
+    let musica = "rock"
+   console.log("variable musica antes del bloque", musica)
+   {
+    // Es diferente porque estas en otro bloque ya que es lo que pasa con el scope
+    let musica = "pop"
+    console.log("variable musica dentro del bloque", musica)
+   }
+   
+    console.log("variable musica despues del bloque", musica)
+
+    const PI = 3.1416
+    console.log(PI)
+    // Cuando vamos a usar const cuando sepamos que tengamos variable que no van a cambiar su valor durante el flujo de nuestra aplicacion, con const no puedes tener una variable vacio con let o var si se puede
+    let a
+    a= "kenai"
+    console.log(a)
+    const objeto = {
+        nombre: "jon",
+        edad:35
+    }
+
+    const colores = ["blanco","negro","azul"]
+    console.log (objeto)
+    console.log(colores)
+
+    objeto.correo = "jonmircha@gmail.com"
+    // para los array o arreglo hay que empujar
+    colores.push("anaranjado")
+    console.log (objeto)
+    console.log(colores)
+    // const no cambia dependiendo el tipo de valor si son compuesto tipo array(arreglos) o objetos y esto es porque siendo siendo un objeto tiene mas propiedades simplemente y respecto a los array que le añadamos mas elementos pero sigue siendo el mismo arreglo
+    // Cadena de TExto aka strings
+    let nombre = "jon"
+    let apellido = "MirCha"
+    let saludo = new String("Hola Mundo")
+    let lorem = "    Lorem ipsum dolor sit, amet consectetur adipisicing ametelit. Id ipsam ullam velit, dicta nihil error quam architecto delectus provident sint, amet aliquid nemo maxime, at est esse facilis debitis in?   "
+    console.log (
+        nombre.length,
+        apellido.length,
+        saludo.length,
+        // va con parentesis porque es un metodo sin parametro!
+        nombre.toUpperCase(),
+        apellido.toLocaleLowerCase(),
+        lorem.includes("amet"),
+        lorem.includes("jon"),
+        lorem.trim(),
+        lorem.split(","),
+        )
+    </script>
+</body>
+
+</html>
