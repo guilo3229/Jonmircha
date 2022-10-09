@@ -9,31 +9,26 @@
 <body>
     <h1>Fundamentos Javascript</h1>
 
-    <ul>
-        <li>Primavera</li>
-        <li>Verano</li>
-        <li>invierno</li>
-    </ul>
-    <script>
-    
-    let nombre = "Jon"
-    let apellido ="MirCha"
-    // Concatenacion
-    let saludo ="hola mi nombre es " + nombre + "" + apellido+ "."
-   console.log(saludo)
-//    Interpiacion de variables
-// template string
-let saludo2 = `Hola mi nombre es ${nombre} ${apellido}`
-console.log(saludo2)
-let ul = "<ul><li>Primavera</li><li>Verano</li><li>invierno</li></ul>"
 
-console.log(ul)
-let ul2 = ` <ul>
-        <li>Primavera</li>
-        <li>Verano</li>
-        <li>invierno</li>
-    </ul>`
-    console.log(ul2)
+    <script>
+    let a = 2
+    let b = new Number(1)
+    let c = 7.19
+    let d = "5.6"
+
+    console.log(typeof c , typeof d)
+    console.log(a,b)
+    // to fixed para decir el numero de decimales
+    console.log(c.toFixed(1))
+    console.log(c.toFixed(5))
+    // parseInt te da la parte entera de un numero o convierte un string "" en numero
+    console.log(parseInt(c))
+    // tanto entera como decimal
+    console.log(parseFloat(c))
+    console.log(a+b)
+    // uno es number y el otro es string y hace el proceso de concatenacion lo que hace es que convierte el numero a cadenta y lo junta, par atrasformar a number con el parseINT() aunque este solo sumo la parte entera y parseFloat hace lo imismo trasformando y detecta los decimales
+    console.log(c+parseInt(d))
+    console.log(c+parseFloat(d))
     </script>
     
 </body>
