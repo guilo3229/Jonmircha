@@ -11,36 +11,19 @@
 
 
     <script>
-// Una funcion es un bloque de codigo, autocontenido, que se puede definir una vez y ejecutar en cualquier momento. Opcionalmente, una funcion puede aceptar parametros y devolver un valor.
 
-// Las funciones en Java Script son objetos, un tipo especial de objetos-
-
-// Se dice que las funciones son ciudadanos de primera clase porque pueden asignarse a un valor, y pueden pasarse como argumentos y usarse como un valor de retorno
-
-
-// funcion declarada
-function estoEsUnaFuncion(){
-    console.log("uno")
-    console.log("Dos")
-    console.log("Tres")
+// funciones declaradas VS funciones expresadas
+funcionDeclarada()
+function funcionDeclarada(){
+    console.log("esto es una funcion declarada,puede invocarse en cualquier parte de nuestro código incluso antes de que la funcion sea declarada")
 }
 
-function unaFuncionQueDevuelveValor(){
-    console.log("uno")
-    return 19
-    console.log("Dos")
-    console.log("Tres")
-    return "LA funcion ha retornado una CAdena de text"
+funcionDeclarada()
+// función anónima() arraow function tambien) no tienen nombre y se la asignamos a una constante
+const funcionExpresada = function ( ){
+console.log( "Esto es una funcion expresada, es decir, una funcion que se le ha asignado como valor a una variable, si invocamos esta funcion antes de su definicion JS nos dira...Uncaught ReferenceError: Cannot access 'funcionExpresada' before initialization")
 }
-// let valorDeFuncion = unaFuncionQueDevuelveValor()
-// console.log(valorDeFuncion)
-// Invocacion de funciones
-// hace falta los parentesis que significa que una funcion se va a ejecutar!!(significado de programacion)
-function saludar( nombre = "desconoido",edad = 0){
-    console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`)
-}
-saludar("kEnAi",7)
-saludar()
+funcionExpresada()
     </script>
     
 </body>
