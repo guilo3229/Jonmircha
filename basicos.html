@@ -11,17 +11,17 @@
 
 
     <script>
-    let verdadero=true
-    let falso = false
-    let v = Boolean(true)
-    let f = Boolean(false)
-    console.log(verdadero,falso,v,f)
-    console.log(typeof verdadero, typeof falso)
-
-    console.log(Boolean(0))
-    console.log(Boolean(-2))
-    console.log(Boolean(""))
-    console.log(Boolean(""))
+        // undefined y NAn valor audente, pero la gran diferencia undefined es una variable que no ha sido inicializada variables sin asignar valor por ejemplo(no definida)
+        let indefinida
+        // no se le asigno valor ni al principio ni despues
+        console.log(indefinida)
+        // null significa que la variable esta vacia , que normalmente es un valor intencionalmente dado por un programador ambos significa que esta vacia, null intencionado por el programador
+        let nulo = null
+        console.log(null)
+        // NaN significa nNot a Number cuando hagamos operacionesy los datos no son un numero
+        let noEsUnNumero = "hola" *3.7
+        // aparece por ejemplo aqui cuando multiplicamos un stroing con un number
+        console.log(noEsUnNumero)
     </script>
     
 </body>
