@@ -11,19 +11,27 @@
 
 
     <script>
-
-// funciones declaradas VS funciones expresadas
-funcionDeclarada()
-function funcionDeclarada(){
-    console.log("esto es una funcion declarada,puede invocarse en cualquier parte de nuestro código incluso antes de que la funcion sea declarada")
-}
-
-funcionDeclarada()
-// función anónima() arraow function tambien) no tienen nombre y se la asignamos a una constante
-const funcionExpresada = function ( ){
-console.log( "Esto es una funcion expresada, es decir, una funcion que se le ha asignado como valor a una variable, si invocamos esta funcion antes de su definicion JS nos dira...Uncaught ReferenceError: Cannot access 'funcionExpresada' before initialization")
-}
-funcionExpresada()
+    const a =[]
+    console.log(a)
+    // una rreglo es una colleccion  de elemntos que peuden ser booleanos objetos string etc
+    const b =[1,true,"hola", ["A","B","C",[1,2,3]]]
+    console.log(b)
+    console.log(b.length)
+    console.log(b[3][3][0 ])
+    const c = Array.of("X","Y","Z",9,8,7)
+    console.log(c)
+    const d = Array(100).fill(false)
+    console.log(d)
+    const colores =["rojo","verde","azul"]
+    console.log(colores)
+    colores.push("negro")
+    console.log(colores)
+    // el Pop elimina el ultimo objeto o dato que hay en un array
+    colores.pop()
+    console.log(colores)
+    colores.forEach(function(el, index){
+        console.log(`<li id = ${index} >${el} "${index}"</li>`)
+    })
     </script>
     
 </body>
