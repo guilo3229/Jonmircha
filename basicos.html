@@ -11,17 +11,36 @@
 
 
     <script>
-        // undefined y NAn valor audente, pero la gran diferencia undefined es una variable que no ha sido inicializada variables sin asignar valor por ejemplo(no definida)
-        let indefinida
-        // no se le asigno valor ni al principio ni despues
-        console.log(indefinida)
-        // null significa que la variable esta vacia , que normalmente es un valor intencionalmente dado por un programador ambos significa que esta vacia, null intencionado por el programador
-        let nulo = null
-        console.log(null)
-        // NaN significa nNot a Number cuando hagamos operacionesy los datos no son un numero
-        let noEsUnNumero = "hola" *3.7
-        // aparece por ejemplo aqui cuando multiplicamos un stroing con un number
-        console.log(noEsUnNumero)
+// Una funcion es un bloque de codigo, autocontenido, que se puede definir una vez y ejecutar en cualquier momento. Opcionalmente, una funcion puede aceptar parametros y devolver un valor.
+
+// Las funciones en Java Script son objetos, un tipo especial de objetos-
+
+// Se dice que las funciones son ciudadanos de primera clase porque pueden asignarse a un valor, y pueden pasarse como argumentos y usarse como un valor de retorno
+
+
+// funcion declarada
+function estoEsUnaFuncion(){
+    console.log("uno")
+    console.log("Dos")
+    console.log("Tres")
+}
+
+function unaFuncionQueDevuelveValor(){
+    console.log("uno")
+    return 19
+    console.log("Dos")
+    console.log("Tres")
+    return "LA funcion ha retornado una CAdena de text"
+}
+// let valorDeFuncion = unaFuncionQueDevuelveValor()
+// console.log(valorDeFuncion)
+// Invocacion de funciones
+// hace falta los parentesis que significa que una funcion se va a ejecutar!!(significado de programacion)
+function saludar( nombre = "desconoido",edad = 0){
+    console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`)
+}
+saludar("kEnAi",7)
+saludar()
     </script>
     
 </body>
