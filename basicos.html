@@ -11,27 +11,42 @@
 
 
     <script>
-    const a =[]
-    console.log(a)
-    // una rreglo es una colleccion  de elemntos que peuden ser booleanos objetos string etc
-    const b =[1,true,"hola", ["A","B","C",[1,2,3]]]
-    console.log(b)
-    console.log(b.length)
-    console.log(b[3][3][0 ])
-    const c = Array.of("X","Y","Z",9,8,7)
-    console.log(c)
-    const d = Array(100).fill(false)
-    console.log(d)
-    const colores =["rojo","verde","azul"]
-    console.log(colores)
-    colores.push("negro")
-    console.log(colores)
-    // el Pop elimina el ultimo objeto o dato que hay en un array
-    colores.pop()
-    console.log(colores)
-    colores.forEach(function(el, index){
-        console.log(`<li id = ${index} >${el} "${index}"</li>`)
-    })
+        let a = new String("hola")
+        console.log(a)
+        // un objeto es una coleccion de llaves y valores
+const b = {
+
+
+}
+// Dentro de un objeto a las variables se les va a llmar atributos o propiedades y a las funciones se les llama metodos
+const jon = {
+    // llave : valor
+    nombre: "jon",
+    apellido: "Micha",
+    Edad: 35,
+    pasatiempos:["correr","hacer ejercicio","Dar clases"],
+    soltero: false,
+    contacto:{
+        email: "junmicha@gmail.com",
+        twitter: "@Jonmircha",
+        movil: "123124124"
+    },
+    saludar: function() {
+        console.log("hola :)")
+    },
+    decirMiNombre: function(){
+        console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.Edad} años y me puedes seguir como ${this.contacto.twitter}`)
+    }
+}
+// console.log(b)ludar es un metodo o funcion
+// atributos es igual a la key avecesludar es un metodo o funcion
+jon.decirMiNombre()
+// me permite listar todas las llaves donde me sta listado las llaves
+console.log(Object.keys(jon))
+// Me permite listar todos los valores quue viene de cada propiedad
+console.log(Object.values(jon))
+console.log(jon.hasOwnProperty("nombre"))
+console.log(jon.hasOwnProperty("nacimiento"))
     </script>
     
 </body>
