@@ -11,42 +11,58 @@
 
 
     <script>
-        let a = new String("hola")
-        console.log(a)
-        // un objeto es una coleccion de llaves y valores
-const b = {
+// Operadores
+// Aritmeticos + - * /% ()
 
+let a = 5+(5-10)*3
+// % nos devulve el resto de la division entre esos 2 valores
+let modulo = 5%2
+console.log(a)
+console.log(modulo)
 
-}
-// Dentro de un objeto a las variables se les va a llmar atributos o propiedades y a las funciones se les llama metodos
-const jon = {
-    // llave : valor
-    nombre: "jon",
-    apellido: "Micha",
-    Edad: 35,
-    pasatiempos:["correr","hacer ejercicio","Dar clases"],
-    soltero: false,
-    contacto:{
-        email: "junmicha@gmail.com",
-        twitter: "@Jonmircha",
-        movil: "123124124"
-    },
-    saludar: function() {
-        console.log("hola :)")
-    },
-    decirMiNombre: function(){
-        console.log(`Hola me llamo ${this.nombre} ${this.apellido} y tengo ${this.Edad} años y me puedes seguir como ${this.contacto.twitter}`)
-    }
-}
-// console.log(b)ludar es un metodo o funcion
-// atributos es igual a la key avecesludar es un metodo o funcion
-jon.decirMiNombre()
-// me permite listar todas las llaves donde me sta listado las llaves
-console.log(Object.keys(jon))
-// Me permite listar todos los valores quue viene de cada propiedad
-console.log(Object.values(jon))
-console.log(jon.hasOwnProperty("nombre"))
-console.log(jon.hasOwnProperty("nacimiento"))
+// relacionales:  >, <, >=, <=, ==, ===, !=, !== 
+// El primero me devuelve false porque no se cumple y el segundo true porque se cumple 
+console.log(8>9)
+console.log(9>8)
+console.log(8>=9)
+console.log(9>=8)
+console.log(7<7)
+console.log(7<=7)
+
+// = 1 igual es asignacion de variable
+// == 2 iguales es comparacion de valores() !!
+// === 3 iguales es comparacion de tipo de dato(si es boolean y el toro tiene que ser boolean por ejemplo sino false) y de valor, hayq ue usar el triple igual para no liarla y no tener solo la seguridad del valor
+console.log(7==7)
+console.log("7" == 7)
+console.log(0 == false)
+
+console.log(7===7)
+console.log("7" === 7)
+console.log(0 === false)
+
+// Incremento Decremento
+
+let i = 2
+// console.log(i++)
+console.log(++i)
+// i = i+2
+// de esta manera es lo mismo que poenr i = i+3 o i-3 //*= /= 
+// i *= 3
+// operador unitario
+i ++
+i -- 
+++ i
+-- i 
+console.log(i)
+
+// logicos
+// !-Not:Niega, lo que es verdadera lo vuelve falso y viceversa
+// || - Or: Cuando tengo 2 o mas condiciones , con que una se cumpla, es decir sea verdadera .
+// && - Cuando tengo 2 o mas condiciones, todas tienen que cumplirse, es decir ser verdaderas, para que AND se valide
+console.log(!true)
+console.log(!false)
+console.log((9===9) || ("9"=== 9))
+console.log((9===9) && ("9"=== "9"))
     </script>
     
 </body>
