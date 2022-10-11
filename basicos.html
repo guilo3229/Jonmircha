@@ -11,26 +11,24 @@
 
 
     <script>
-const numeros = [1,2,3,4,5,6,7,8,9,0]
-// la palabra break y continues no sirven para forEach
-for(let i = 0;i< numeros.length; i++){
-    if(i === 5){
-        // break se sale de la estructura
-        break
-    }
-console.log(numeros[i])
+const numeros = [1,2,3]
+// sin destructuracion
+let uno = numeros[0], dos =numeros[1], tres = numeros[2]
 
+console.log(uno,dos,tres)
+
+// Con destructuracion
+const[one,two,three] = numeros
+console.log(one,two,three)
+
+const persona ={
+    nombre:"jon",
+    apellido : "mirCha",
+    edad: 35
 }
-
-
-for(let i = 0;i< numeros.length; i++){
-    if(i === 5){
-        // El continue omite la iteracion en ese ciclo simplemente es decir cuando i sea igual a 5  el clicl siguiente y guarda el valor en este caso
-        continue
-    }
-console.log(numeros[i])
-
-}
+// Para que la destructuracion funcione en los objetos se tiene que llamar igual a la propiedad del objeto que queremos aislar en una sola variable, el orden no pasaria nada porque busca dentro del objeto una propeidad que se llame igual porlo tanto el orden no importa
+let{nombre,edad,apellido} = persona
+console.log(nombre,edad,apellido)
 </script>
     
 
