@@ -11,29 +11,25 @@
 
 
     <script>
-let nombre = "Kenai",edad =7
-
-const perro ={
-    nombre: nombre,
-    edad:edad,
-    ladrar(){
-        console.log("guauuu guauuu")
-    }
+        // rest ... capacidad de tener parametros infinitos
+function sumar(a,b, ...c){
+    let resultado = a +b
+    c.forEach(function(n){
+        resultado += n
+    })
+ return resultado
 }
+console.log(sumar(1,2))
+console.log(sumar(1,2,3,4,5,6))
 
-console.log(perro)
-perro.ladrar()
-// si tenemos  2 constantes definidas a la hora de poner las propiedades peudes poner directamente sin los 2 puntos dentro del objeto
-const dog = {
-   nombre,
-   edad,
-    raza: "callejero",
-    // se puede hace un metodo de esta menera tambiem
-    ladrar(){
-        console.log("guauuu guauuu guuauu")
-    }
-}
-console.log(dog)
+// spread operator u oprador de propagacion, se usa para meter todo en una array misma de dos dierentes y que salgan como uno nuevo sin que se diferencien
+
+const arr1 =[1,2,3,4,5],
+arr2= [6,7,8,9,0]
+console.log(arr1,arr2)
+
+const arr3 = [...arr1,...arr2]
+console.log(arr3)
 </script>
     
 
