@@ -11,24 +11,29 @@
 
 
     <script>
-const numeros = [1,2,3]
-// sin destructuracion
-let uno = numeros[0], dos =numeros[1], tres = numeros[2]
+let nombre = "Kenai",edad =7
 
-console.log(uno,dos,tres)
-
-// Con destructuracion
-const[one,two,three] = numeros
-console.log(one,two,three)
-
-const persona ={
-    nombre:"jon",
-    apellido : "mirCha",
-    edad: 35
+const perro ={
+    nombre: nombre,
+    edad:edad,
+    ladrar(){
+        console.log("guauuu guauuu")
+    }
 }
-// Para que la destructuracion funcione en los objetos se tiene que llamar igual a la propiedad del objeto que queremos aislar en una sola variable, el orden no pasaria nada porque busca dentro del objeto una propeidad que se llame igual porlo tanto el orden no importa
-let{nombre,edad,apellido} = persona
-console.log(nombre,edad,apellido)
+
+console.log(perro)
+perro.ladrar()
+// si tenemos  2 constantes definidas a la hora de poner las propiedades peudes poner directamente sin los 2 puntos dentro del objeto
+const dog = {
+   nombre,
+   edad,
+    raza: "callejero",
+    // se puede hace un metodo de esta menera tambiem
+    ladrar(){
+        console.log("guauuu guauuu guuauu")
+    }
+}
+console.log(dog)
 </script>
     
 
