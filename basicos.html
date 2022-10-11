@@ -11,51 +11,50 @@
 
 
     <script>
-let edad = 18
-// Operador ternario(tres partes--> (condicion?verdadero:falsa)) solo una lina de codigo si se cumple se da una y sino la otra:
-console.log("operador ternario")
-let eresMayor = (edad>=18)
-?"eres mayor de edad"
-:"eres menor de edad"
+    //     let contador = 0
 
-console.log(eresMayor)
+    // while(contador < 10){
+    //     console.log("while " +contador)
+    //     contador++
+    // }
 
-// switch-case nos sirve para evaluar cuando tengamos diferentes valores par auna misma variable
+    // do{
+    //     console.log("do while " + contador)
+    //     contador++
+    // }while(contador<10)
 
-// domingo -0
-// lunes-1
-// Martes-2
-// Miercoles-3
-// Jueves-4
-// viernes-5
-// sabado-6
-let dia = 3
-switch (dia) {
-    case 0:
-        console.log("Domingo")
-        break;
-    case 1:
-        console.log("Lunes")
-        break;
-    case 2:
-        console.log("Martes")
-        break;
-    case 3:
-        console.log("Miercoles")
-        break;
-    case 4:
-        console.log("Jueves")
-        break;
-    case 5:
-        console.log("Viernes")
-        break;
-    case 6:
-        console.log("Sabado")
-        break;
+    // for (inizialiacacion de variable; condicion;decremento o incremento){
+    //     sentencias que ejecuta el for
+    //     sentencias que ejecuta el for
+    //     sentencias que ejecuta el for
+    // }
 
-    default:
-        console.log("El dia no existe")
-        break;
+    for (let i = 0; i < 10; i++) {
+        console.log("for" + i)
+        
+    }
+    let numeros =[10,20,30,40,50,60,70,80,90]
+    // normalmente se hace por un for Each pero tambien se puede hacer con un simple for
+    for(let i =0; i< numeros.length; i++){
+        console.log(numeros[i])
+    }
+    // for in es indicado para un objeto, para recorrer e iterar todas las propiedades de in objetos en un principio
+    const jon ={
+        nombre:"jon",
+        apellido: "MirCja",
+        edad: 35
+    }
+for (const propiedad in jon) {
+ console.log(`Key:${propiedad}, Value ${jon[propiedad]}`)
+}
+// El for of nos va a permitir recorrer todos eleentos de cualquier objeto que sea iterable por ejemplo un arreglos o cadentas de texto por ejemplo
+for (const elemento of numeros) {
+    console.log(elemento)
+}
+
+let cadena ="hola mundo"
+for (const caracter of cadena) {
+    console.log(caracter)
 }
 </script>
     
