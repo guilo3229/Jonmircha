@@ -11,50 +11,27 @@
 
 
     <script>
-    //     let contador = 0
-
-    // while(contador < 10){
-    //     console.log("while " +contador)
-    //     contador++
-    // }
-
-    // do{
-    //     console.log("do while " + contador)
-    //     contador++
-    // }while(contador<10)
-
-    // for (inizialiacacion de variable; condicion;decremento o incremento){
-    //     sentencias que ejecuta el for
-    //     sentencias que ejecuta el for
-    //     sentencias que ejecuta el for
-    // }
-
-    for (let i = 0; i < 10; i++) {
-        console.log("for" + i)
-        
-    }
-    let numeros =[10,20,30,40,50,60,70,80,90]
-    // normalmente se hace por un for Each pero tambien se puede hacer con un simple for
-    for(let i =0; i< numeros.length; i++){
-        console.log(numeros[i])
-    }
-    // for in es indicado para un objeto, para recorrer e iterar todas las propiedades de in objetos en un principio
-    const jon ={
-        nombre:"jon",
-        apellido: "MirCja",
-        edad: 35
-    }
-for (const propiedad in jon) {
- console.log(`Key:${propiedad}, Value ${jon[propiedad]}`)
-}
-// El for of nos va a permitir recorrer todos eleentos de cualquier objeto que sea iterable por ejemplo un arreglos o cadentas de texto por ejemplo
-for (const elemento of numeros) {
-    console.log(elemento)
+try {
+    console.log("en el try se agrega el codigo a evaluar")
+    noExite
+    console.log("Segundo mensaje en el try")
+} catch (error) {
+    console.log("Catch,captura cualquier error surgido o lanzado en el try")
+    console.log(error)
+}finally{
+    console.log("El bloque finally se ejecutará siempre al ginal de un bloque try-catch")
 }
 
-let cadena ="hola mundo"
-for (const caracter of cadena) {
-    console.log(caracter)
+
+try {
+    let numero = "dasdas"
+    // isNaN si es una funcion que tu le pasas un numero si no es un numero te va a regresar verdadero
+    if(isNaN(numero)){
+        throw new Error("El caractér introducido no es un Número")
+    }
+    console.log(numero*numero)
+} catch (error) {
+    console.log(`Se produjo el siguiente error: ${error}`)
 }
 </script>
     
