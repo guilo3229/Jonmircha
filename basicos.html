@@ -11,27 +11,25 @@
 
 
     <script>
-try {
-    console.log("en el try se agrega el codigo a evaluar")
-    noExite
-    console.log("Segundo mensaje en el try")
-} catch (error) {
-    console.log("Catch,captura cualquier error surgido o lanzado en el try")
-    console.log(error)
-}finally{
-    console.log("El bloque finally se ejecutará siempre al ginal de un bloque try-catch")
+const numeros = [1,2,3,4,5,6,7,8,9,0]
+// la palabra break y continues no sirven para forEach
+for(let i = 0;i< numeros.length; i++){
+    if(i === 5){
+        // break se sale de la estructura
+        break
+    }
+console.log(numeros[i])
+
 }
 
 
-try {
-    let numero = "dasdas"
-    // isNaN si es una funcion que tu le pasas un numero si no es un numero te va a regresar verdadero
-    if(isNaN(numero)){
-        throw new Error("El caractér introducido no es un Número")
+for(let i = 0;i< numeros.length; i++){
+    if(i === 5){
+        // El continue omite la iteracion en ese ciclo simplemente es decir cuando i sea igual a 5  el clicl siguiente y guarda el valor en este caso
+        continue
     }
-    console.log(numero*numero)
-} catch (error) {
-    console.log(`Se produjo el siguiente error: ${error}`)
+console.log(numeros[i])
+
 }
 </script>
     
