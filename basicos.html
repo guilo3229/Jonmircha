@@ -11,42 +11,32 @@
 
 
     <script>
-// esto es funcion expresada no ahce hooisting al igual que las funciones de flecha si es una sola linea puedes qutar las llaves
-// const saludar = () =>  console.log(`hola`), cuando una funcion flecha no tiene parametros hay que poner los parentesis entre el igual y la flechita si tiene parametros no hace falta poner los parentesis
+// Programacion orientada a objetos (POO)
+// hay 4 conceptos muy importantes a entender
+// 1-clases-> Modelo a seguir
+// 2-Objetos-> Es una instancia( es una copia del modelo a seguir) de una clase
+//         2.1 atributos-- es una caracteristica o propiedad del objeto(son variables dentro de un objeto)
+//         2.2Metodos-- son las acciones que un objeto puede realizar(no son mas que funciones dentro de un objeto)
 
-const saludar = (nombre) =>  console.log(`hola ${nombre}`)
-
-
-saludar("irma")
-const sumar = (a,b) => a+b
-    // tambien nos podemos ahorrar en este caso la funcion return, a+b
-
-console.log(sumar(8,9))
-// si la funcion tiene varias lineas hay que respetar las llaves
-const funcionDeVariasLineas=()=>{
-console.log("uno")
-console.log("Dos")
-console.log("tres")
-
-}
-funcionDeVariasLineas()
-const numeros = [1,2,3,4,5]
-
-numeros.forEach((el, index) => console.log(` ${el} esta en la posicion ${index}`)
-)
-// this es para el context, en las funciones de flecha no funcionen dentro de estas y te mandan al contexto window y no del objeto
-// function perro(){
-//     console.log(this)
-// }
-// perro()
-// Los metodos dentro de un objeto literal se deben crear con funciones normales y no de flechas por el contexto, puedes ahcerlo de forma simplificada o de forma : fuction etc o sin los dos puntos y sin el function pero no con flehca porque te manda a un contexto superior o al de windows
-const perro ={
-    nombre:"Kenai",
-    ladrar  ()  {
-    console.log(this)
+const animal ={
+    nombre: "Snoopy",
+    sonar(){
+        console.log("hago sonidos porque estoy vivo")
     }
 }
-perro.ladrar()
+
+const animal2 ={
+    nombre: "Lola boony",
+    sonar(){
+        console.log("hago sonidos porque estoy vivo")
+    }
+}
+
+console.log(animal)
+console.log(animal2)
+
+
+
 </script>
     
 
