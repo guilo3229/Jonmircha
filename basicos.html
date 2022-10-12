@@ -11,53 +11,50 @@
 
 
     <script>
+        // Las clases no tienen parametros para poder meter parametros necesitamos una funcion que se llama constructor
 
-function Animal(nombre,genero){
+
+class Animal{
+    constructor(nombre,genero){
     // Atributos:
     this.nombre = nombre
     this.genero = genero
-
 }
 
-Animal.prototype.sonar= function(){
+// Metodos, al hacerlo dentro de clases directamente te los mete en prototipos, es un engaño atraves de bambalinas ya que javascript trabaja con prototipos, te facilita las cosas
+sonar (){
     console.log("hago sonidos porque estoy vivo")
 }
-Animal.prototype.saludar= function(){
+saludar (){
     console.log(`Hola me llamo ${this.nombre}`)
 }
-// Herencia Prototípica
-function Perro(nombre,genero,tamanio){
-    this.super = Animal
-    this.super(nombre,genero)
-    this.tamanio = tamanio
-}
-// Perro esta herdando de animal
-Perro.prototype =new Animal()
-Perro.prototype.constructor = Perro
-
-// Vamos a sobreescribir  de metodos del prototipo padre en el hijo
-Perro.prototype.sonar = function(){
-    console.log("soy un perro y mi sonido es un ladrido")
 }
 
-Perro.prototype.ladrar= function(){
-    console.log("guaaauu guauuu!!!")
+class Perro extends Animal {
+    constructor(nombre,genero,tamanio){
+        // super manda llamar el constructor de la clase padre por lo tanto tengo que pasar a super el aprametro del nombre y del genero
+        super(nombre,genero)
+        this.tamanio =tamanio
+    }
+    sonar(){
+        console.log("Soy un perro y mi sonido es un ladrido")
+
+    }
+    ladrar(){
+        console.log("Guaaaau Guauuuu")
+
+    }
 }
 
-
-const snoopy = new Perro("snoopy", "Macho","Mediano")
-
-const lolaBunny = new Animal("Lola Bunny", "Hembra")
-
-console.log(snoopy)
-console.log(lolaBunny)
-
-snoopy.sonar()
-snoopy.saludar()
-snoopy.ladrar()
-lolaBunny.sonar()
-lolaBunny.saludar()
-
+const mimi = new Animal("Mimi","hembra")
+const scooby = new Perro("scooby", "macho","Gigante")
+console.log(mimi)
+mimi.saludar()
+mimi.sonar()
+console.log(scooby)
+scooby.saludar()
+scooby.sonar()
+scooby.ladrar()
 </script>
 
 
