@@ -35,6 +35,7 @@ class Perro extends Animal {
         // super manda llamar el constructor de la clase padre por lo tanto tengo que pasar a super el aprametro del nombre y del genero
         super(nombre,genero)
         this.tamanio =tamanio
+        this.raza = null
     }
     sonar(){
         console.log("Soy un perro y mi sonido es un ladrido")
@@ -44,8 +45,22 @@ class Perro extends Animal {
         console.log("Guaaaau Guauuuu")
 
     }
+    // Un metodo estatico se puede ejecutar sin necesidad de instanciar la clase, ademas esto hace que no aparezca dicho metodo dentro del objeto en la consola al ser estatico, supongo que esto sera instanciar algo.
+    static queEres(){
+        console.log("Los perros somos animales mamiferos que pertenecemos a la familia de los caninos.Somos considerados los mejores amigos del hombre")
+    }
+    // Los setters y getters son metodos especiales que nos permiten establecer y obtener lo valores de atributos de nuestra clase.
+    
+    get getRaza(){
+        // Esto es un metodo obtenedor por lo tanto le ponemos el get antes del nombramiento de este y ademas se lo ponemos al nombre para que sepamos lo que es cuando lo usamos
+        return this.raza
+    }
+    set setRaza(raza){
+        // De esta manera podemos modificar atributos aunque sean metodos
+        this.raza = raza
+    }
 }
-
+Perro.queEres()
 const mimi = new Animal("Mimi","hembra")
 const scooby = new Perro("scooby", "macho","Gigante")
 console.log(mimi)
@@ -55,6 +70,11 @@ console.log(scooby)
 scooby.saludar()
 scooby.sonar()
 scooby.ladrar()
+// get raza aunque es un metodo contenedor javascript lo trasforma en una propiedad o atributo no lleva parentesis
+console.log(scooby.getRaza)
+// en este caso no podemos hacerlo entre parentesis mandandole el dato como si fuese un metodo por lo tanto igualamos y le mandamos con el setter el nuevo valor a raza ya que se consideraria un tipo de propiedad o atributo
+scooby.setRaza = "Gran Danes"
+console.log(scooby.getRaza)
 </script>
 
 
