@@ -11,59 +11,41 @@
 
 
     <script>
-// Programacion orientada a objetos (POO)
-// hay 4 conceptos muy importantes a entender
-// 1-clases-> Modelo a seguir
-// 2-Objetos-> Es una instancia( es una copia del modelo a seguir) de una clase
-//         2.1 atributos-- es una caracteristica o propiedad del objeto(son variables dentro de un objeto)
-//         2.2Metodos-- son las acciones que un objeto puede realizar(no son mas que funciones dentro de un objeto)
 
-
-// Funcion constructura se construye una vez y a traves de ella se crean nuevos objetos a partir de ella, para las clases empezamos con el Upper CamelCase ene ste caso como si fuese una clase porque es una funcion constructura
-
-// function Animal(nombre,genero){
-//     // Atributos:
-//     this.nombre = nombre
-//     this.genero = genero
-//     // Cuando estemos trabajando con funciones contructoras tanto los atributos como metodos se usa el this, lo ideal de las funciones constructoras es tener los atributos y los metodos los saquemos de la funcion apra que no ser repitan y pegar los metodos en los protitypos dentro de los prototypos
-//     // Metodos:
-//     this.sonar= function(){
-//         console.log("hago sonidos porque estoy vivo")
-//     }
-//     this.saludar = function(){
-//         console.log(`Hola me llamo ${this.nombre}`)
-//     }
-// }
-
-// const snoopy = new Animal("snoopy", "Macho")
-
-// const lolaBunny = new Animal("Lola Bunny", "Hembra")
-// console.log(snoopy)
-// console.log(lolaBunny)
-
-// snoopy.sonar()
-// snoopy.saludar()
-
-// lolaBunny.sonar()
-// lolaBunny.saludar()
-
-
-// Funcion constructora donde aginamos los metodos al prototypo no a la funcion como tal
 function Animal(nombre,genero){
     // Atributos:
     this.nombre = nombre
     this.genero = genero
 
 }
-// Metodos agregados al prototypo de la funcion constructora asignando por fuera los metodos a la funcion pagados en el protoytypo mejorando el rendimiento y el espacio en memoria de nuestra applicacion
+
 Animal.prototype.sonar= function(){
     console.log("hago sonidos porque estoy vivo")
 }
 Animal.prototype.saludar= function(){
     console.log(`Hola me llamo ${this.nombre}`)
 }
+// Herencia Prototípica
+function Perro(nombre,genero,tamanio){
+    this.super = Animal
+    this.super(nombre,genero)
+    this.tamanio = tamanio
+}
+// Perro esta herdando de animal
+Perro.prototype =new Animal()
+Perro.prototype.constructor = Perro
 
-const snoopy = new Animal("snoopy", "Macho")
+// Vamos a sobreescribir  de metodos del prototipo padre en el hijo
+Perro.prototype.sonar = function(){
+    console.log("soy un perro y mi sonido es un ladrido")
+}
+
+Perro.prototype.ladrar= function(){
+    console.log("guaaauu guauuu!!!")
+}
+
+
+const snoopy = new Perro("snoopy", "Macho","Mediano")
 
 const lolaBunny = new Animal("Lola Bunny", "Hembra")
 
@@ -72,7 +54,7 @@ console.log(lolaBunny)
 
 snoopy.sonar()
 snoopy.saludar()
-
+snoopy.ladrar()
 lolaBunny.sonar()
 lolaBunny.saludar()
 
