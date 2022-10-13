@@ -11,49 +11,26 @@
 <h2>awdw</h2>
 
     <script>
- console.log(Date())
-
-let fecha = new Date()
-console.log(fecha)
-// Dia del mes
-console.log(fecha.getDate())
-// Dia de la semana: D->0 L->1 M->2 Mi->3 J->4 V-> 5 S->6
-console.log(fecha.getDay())
-// Enero -> 0 diciembre->11
-console.log(fecha.getMonth())
-// Este metodo no es muy util porque esta considerando el año a partir del año 1900
-console.log(fecha.getYear())
-// Mejor el metodo FullYear que te lo da completo y mejor
-console.log(fecha.getFullYear())
-// Las horas
-console.log(fecha.getHours())
-// los minutos
-console.log(fecha.getMinutes())
-// Los segundos
-console.log(fecha.getSeconds())
-// los milisegundos
-console.log(fecha.getMilliseconds())
-// para pasar a string
-console.log(fecha.toString())
-// delk stringo solo se puede la fheca directamente
-console.log(fecha.toDateString())
-// Con tolacateString sacamos la fecha de otra manera como cuando queremos que el reloj este segundo por segundo  en un banner
-console.log(fecha.toLocaleString())
-// Aqui solo la fecha y no la hora
-console.log(fecha.toLocaleDateString())
-// Aqui solo la hora no la fecha
-console.log(fecha.toLocaleTimeString())
-// los minutos que estan de la zona horarria 00:00 UTC
-console.log(fecha.getTimezoneOffset())
-// La fecha en la franja horaria UTC
-console.log(fecha.getUTCDate())
-// La hora en la franja horaria UTC nos da la hora del meridiano de grendwich
-console.log(fecha.getUTCHours())
-// Numero largo nos dice los segundos que han pasado desde el 1 de enero de 1970 la dichosa fecha time stamp, muy utilizado en registro de base de datos por ejemplo
-console.log(Date.now())
-let cumpleJon =new Date (1984,4,23)
-console.log(cumpleJon)
-
+console.log(Math)
+console.log(Math.PI)
+console.log(Math.abs(-7.8))
+// Ceil redonde al numero posterior inmediato aunque este mas cerca del inferior
+console.log(Math.ceil(7.2))
+// floor redondea al numero inferior siguiente aunque este mas cerca del superior
+console.log(Math.floor(7.8))
+// round hace el acercamiento mas cercano tanto arriba como abajo
+console.log(Math.round(7.49))
+// sqrt para raices pero solo da el positivo
+console.log(Math.sqrt(81))
+// pow es para elevar el primer numero a la potencia del segundo numero en este casos eria 2^5
+console.log(Math.pow(2,5))
+// sign nos dice si es positivo o negativo si es negativo nos da -1 si es 0 es 0 si es positivo nos da 1
+console.log(Math.sign(0))
+// random nos da un valor aleatorio entre 0-1 con 16decimales
+console.log(Math.random())
+// multiplciamos el random para hacerlo por una cantidad mayor la aletoriedad
+console.log(Math.random()*1000)
+console.log(Math.round(Math.random()*1000))
 </script>
 
 
