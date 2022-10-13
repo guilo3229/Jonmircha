@@ -11,87 +11,49 @@
 <h2>awdw</h2>
 
     <script>
+ console.log(Date())
 
+let fecha = new Date()
+console.log(fecha)
+// Dia del mes
+console.log(fecha.getDate())
+// Dia de la semana: D->0 L->1 M->2 Mi->3 J->4 V-> 5 S->6
+console.log(fecha.getDay())
+// Enero -> 0 diciembre->11
+console.log(fecha.getMonth())
+// Este metodo no es muy util porque esta considerando el año a partir del año 1900
+console.log(fecha.getYear())
+// Mejor el metodo FullYear que te lo da completo y mejor
+console.log(fecha.getFullYear())
+// Las horas
+console.log(fecha.getHours())
+// los minutos
+console.log(fecha.getMinutes())
+// Los segundos
+console.log(fecha.getSeconds())
+// los milisegundos
+console.log(fecha.getMilliseconds())
+// para pasar a string
+console.log(fecha.toString())
+// delk stringo solo se puede la fheca directamente
+console.log(fecha.toDateString())
+// Con tolacateString sacamos la fecha de otra manera como cuando queremos que el reloj este segundo por segundo  en un banner
+console.log(fecha.toLocaleString())
+// Aqui solo la fecha y no la hora
+console.log(fecha.toLocaleDateString())
+// Aqui solo la hora no la fecha
+console.log(fecha.toLocaleTimeString())
+// los minutos que estan de la zona horarria 00:00 UTC
+console.log(fecha.getTimezoneOffset())
+// La fecha en la franja horaria UTC
+console.log(fecha.getUTCDate())
+// La hora en la franja horaria UTC nos da la hora del meridiano de grendwich
+console.log(fecha.getUTCHours())
+// Numero largo nos dice los segundos que han pasado desde el 1 de enero de 1970 la dichosa fecha time stamp, muy utilizado en registro de base de datos por ejemplo
+console.log(Date.now())
+let cumpleJon =new Date (1984,4,23)
+console.log(cumpleJon)
 
-console.log(console)
-console.error("esto es un error")
-console.warn("esto es un aviso")
-console.info("Esto es un mensaje informativo")
-console.log("Un regsitro de lo que ha pasado en nuestra aplicacion")
-
-
-let nombre = "Jon",
-apellido = "Mircha",
-edad = 35
-
-
-console.log(nombre)
-console.log(apellido)
-console.log(edad)
-console.log(nombre,apellido,edad)
-console.log(`Hola mi nombre es ${nombre} ${apellido} y tengo ${edad} años`)
-
-console.log(`Hola mi nombre es %s %s y tengo %d años`, nombre,apellido,edad)
-console.clear()
-console.log(window)
-console.log(document)
-console.dir(window)
-console.dir(document)
-console.clear()
-
-console.group("Crusos de @Jonmircha en YouTube")
-console.log("Curso de javascript")
-console.log("Curso de NodeJs")
-console.log("Curso de PWAs")
-console.log("Curso de Flexbox")
-console.log("Curso de Diseño y ^Progrmacion Web")
-console.groupEnd()
-
-console.groupCollapsed("Crusos de @Jonmircha en YouTube")
-console.log("Curso de javascript")
-console.log("Curso de NodeJs")
-console.log("Curso de PWAs")
-console.log("Curso de Flexbox")
-console.log("Curso de Diseño y ^Progrmacion Web")
-console.groupEnd()
-
-console.clear()
-
-console.log(console)
-console.table(Object.entries(console).sort())
-
-
-const numeros = [1,2,3,4,5],
-vocales= ["a","e","i","o","u"]
-console.table(numeros)
-console.table(vocales)
-
-const perro ={
-    nombre: "Boni",
-    raza: "boxer",
-    color: "cafe"
-}
-console.table(perro)
-console.clear()
-// etiqueta tiene que ser  la misma en time y timeEnd para que funcione y te diga el tiempo
-console.time("cuanto tiempo tarda mi codigo")
-const arreglo = Array(1000000)
-for (let i =0;i< arreglo.length;i++){
-    arreglo[i] = i
-}
-console.timeEnd("cuanto tiempo tarda mi codigo")
-console.clear()
-
-for (let i =0;i<= 100;i++){
-    console.count("codigo for")
-    console.log(i)
-}
-console.clear()
-let x = 3,
-y = 2
-pruebaXY = "Se espera que X siempre sea menor que Y"
-
-console.assert(x<y,{x,y,pruebaXY})
 </script>
 
 
