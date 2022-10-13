@@ -8,73 +8,90 @@
 </head>
 <body>
     <h1>Fundamentos Javascript</h1>
-
+<h2>awdw</h2>
 
     <script>
-        // Las clases no tienen parametros para poder meter parametros necesitamos una funcion que se llama constructor
 
 
-class Animal{
-    constructor(nombre,genero){
-    // Atributos:
-    this.nombre = nombre
-    this.genero = genero
+console.log(console)
+console.error("esto es un error")
+console.warn("esto es un aviso")
+console.info("Esto es un mensaje informativo")
+console.log("Un regsitro de lo que ha pasado en nuestra aplicacion")
+
+
+let nombre = "Jon",
+apellido = "Mircha",
+edad = 35
+
+
+console.log(nombre)
+console.log(apellido)
+console.log(edad)
+console.log(nombre,apellido,edad)
+console.log(`Hola mi nombre es ${nombre} ${apellido} y tengo ${edad} años`)
+
+console.log(`Hola mi nombre es %s %s y tengo %d años`, nombre,apellido,edad)
+console.clear()
+console.log(window)
+console.log(document)
+console.dir(window)
+console.dir(document)
+console.clear()
+
+console.group("Crusos de @Jonmircha en YouTube")
+console.log("Curso de javascript")
+console.log("Curso de NodeJs")
+console.log("Curso de PWAs")
+console.log("Curso de Flexbox")
+console.log("Curso de Diseño y ^Progrmacion Web")
+console.groupEnd()
+
+console.groupCollapsed("Crusos de @Jonmircha en YouTube")
+console.log("Curso de javascript")
+console.log("Curso de NodeJs")
+console.log("Curso de PWAs")
+console.log("Curso de Flexbox")
+console.log("Curso de Diseño y ^Progrmacion Web")
+console.groupEnd()
+
+console.clear()
+
+console.log(console)
+console.table(Object.entries(console).sort())
+
+
+const numeros = [1,2,3,4,5],
+vocales= ["a","e","i","o","u"]
+console.table(numeros)
+console.table(vocales)
+
+const perro ={
+    nombre: "Boni",
+    raza: "boxer",
+    color: "cafe"
 }
-
-// Metodos, al hacerlo dentro de clases directamente te los mete en prototipos, es un engaño atraves de bambalinas ya que javascript trabaja con prototipos, te facilita las cosas
-sonar (){
-    console.log("hago sonidos porque estoy vivo")
+console.table(perro)
+console.clear()
+// etiqueta tiene que ser  la misma en time y timeEnd para que funcione y te diga el tiempo
+console.time("cuanto tiempo tarda mi codigo")
+const arreglo = Array(1000000)
+for (let i =0;i< arreglo.length;i++){
+    arreglo[i] = i
 }
-saludar (){
-    console.log(`Hola me llamo ${this.nombre}`)
-}
-}
+console.timeEnd("cuanto tiempo tarda mi codigo")
+console.clear()
 
-class Perro extends Animal {
-    constructor(nombre,genero,tamanio){
-        // super manda llamar el constructor de la clase padre por lo tanto tengo que pasar a super el aprametro del nombre y del genero
-        super(nombre,genero)
-        this.tamanio =tamanio
-        this.raza = null
-    }
-    sonar(){
-        console.log("Soy un perro y mi sonido es un ladrido")
-
-    }
-    ladrar(){
-        console.log("Guaaaau Guauuuu")
-
-    }
-    // Un metodo estatico se puede ejecutar sin necesidad de instanciar la clase, ademas esto hace que no aparezca dicho metodo dentro del objeto en la consola al ser estatico, supongo que esto sera instanciar algo.
-    static queEres(){
-        console.log("Los perros somos animales mamiferos que pertenecemos a la familia de los caninos.Somos considerados los mejores amigos del hombre")
-    }
-    // Los setters y getters son metodos especiales que nos permiten establecer y obtener lo valores de atributos de nuestra clase.
-    
-    get getRaza(){
-        // Esto es un metodo obtenedor por lo tanto le ponemos el get antes del nombramiento de este y ademas se lo ponemos al nombre para que sepamos lo que es cuando lo usamos
-        return this.raza
-    }
-    set setRaza(raza){
-        // De esta manera podemos modificar atributos aunque sean metodos
-        this.raza = raza
-    }
+for (let i =0;i<= 100;i++){
+    console.count("codigo for")
+    console.log(i)
 }
-Perro.queEres()
-const mimi = new Animal("Mimi","hembra")
-const scooby = new Perro("scooby", "macho","Gigante")
-console.log(mimi)
-mimi.saludar()
-mimi.sonar()
-console.log(scooby)
-scooby.saludar()
-scooby.sonar()
-scooby.ladrar()
-// get raza aunque es un metodo contenedor javascript lo trasforma en una propiedad o atributo no lleva parentesis
-console.log(scooby.getRaza)
-// en este caso no podemos hacerlo entre parentesis mandandole el dato como si fuese un metodo por lo tanto igualamos y le mandamos con el setter el nuevo valor a raza ya que se consideraria un tipo de propiedad o atributo
-scooby.setRaza = "Gran Danes"
-console.log(scooby.getRaza)
+console.clear()
+let x = 3,
+y = 2
+pruebaXY = "Se espera que X siempre sea menor que Y"
+
+console.assert(x<y,{x,y,pruebaXY})
 </script>
 
 
