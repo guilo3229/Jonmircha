@@ -11,22 +11,22 @@
 <h2>awdw</h2>
 
     <script>
-console.log(window)
-// alert("hola esto es una alerta")
-// confirm("hola esto es una alerta")
-// prompt("Hola esto es una alerta y le permite al usuario ingresar un valor")
-// alerta siempre va a dar un undefined
-let alerta = alert("hola esto es una alerta"),
-// puede ser true o false segun que cickes en principio
- confirmacion = confirm("hola esto es una alerta"),
-//  el aviso nos da una cadena vacia, si cancelamos nos da null
-aviso = prompt("Hola esto es una alerta y le permite al usuario ingresar un valor")
+// Expresiones Regulares:$Son una secuencia d caracteres que forma un patron de busqueda, principalmente utilizada para  la busqueda de patrones de cadenas de caracteres
 
-console.log(alerta)
+// https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular
+//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
+let cadena = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis itaque eaque alias asperiores nisi eveniet vitae, ullam, doloremque deleniti dolor iusto fu2git rerum sunt iste placeat quos odio,"
+// i bandera que ignora mayusculas y minusculas daria igual una u otra las detecta y g es global y se queda en la ultima coincidencia
+let expReg = new RegExp("lorem","ig")
+// metodo test boolean si o no
+console.log((expReg.test(cadena)))
+// nos evuelve mas propiedades
+console.log((expReg.exec(cadena)))
 
-console.log(confirmacion)
+let expReg2 = /lorem{1,}/ig
 
-console.log(aviso)
+console.log((expReg2.test(cadena)))
+console.log((expReg2.exec(cadena)))
 </script>
 
 
