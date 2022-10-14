@@ -11,22 +11,26 @@
 <h2>awdw</h2>
 
     <script>
-// Expresiones Regulares:$Son una secuencia d caracteres que forma un patron de busqueda, principalmente utilizada para  la busqueda de patrones de cadenas de caracteres
 
-// https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
-let cadena = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis itaque eaque alias asperiores nisi eveniet vitae, ullam, doloremque deleniti dolor iusto fu2git rerum sunt iste placeat quos odio,"
-// i bandera que ignora mayusculas y minusculas daria igual una u otra las detecta y g es global y se queda en la ultima coincidencia
-let expReg = new RegExp("lorem","ig")
-// metodo test boolean si o no
-console.log((expReg.test(cadena)))
-// nos evuelve mas propiedades
-console.log((expReg.exec(cadena)))
+// Función Anónima Autoejecutable
 
-let expReg2 = /lorem{1,}/ig
+(function(){
 
-console.log((expReg2.test(cadena)))
-console.log((expReg2.exec(cadena)))
+console.log("Mi primer IIFE")
+})();
+
+(function(d,w,c){
+
+    console.log("Mi segunda IIFE")
+    console.log(d)
+    console.log(w)
+    c.log("este es un console.log")
+
+})
+(document,window,console);
+
+
+
 </script>
 
 
