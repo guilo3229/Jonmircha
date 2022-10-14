@@ -11,44 +11,22 @@
 <h2>awdw</h2>
 
     <script>
-// Cortocircuito OR- cuando el valor de la izquierda en la expresion siempre pueda validar a true, es el valor que se cargara por defecto
+console.log(window)
+// alert("hola esto es una alerta")
+// confirm("hola esto es una alerta")
+// prompt("Hola esto es una alerta y le permite al usuario ingresar un valor")
+// alerta siempre va a dar un undefined
+let alerta = alert("hola esto es una alerta"),
+// puede ser true o false segun que cickes en principio
+ confirmacion = confirm("hola esto es una alerta"),
+//  el aviso nos da una cadena vacia, si cancelamos nos da null
+aviso = prompt("Hola esto es una alerta y le permite al usuario ingresar un valor")
 
-// Cortocircuito AND- cuando el valor de la izquieda en la expresion siempre pueda validar a false, es el valor que se cargara por defecto
+console.log(alerta)
 
-function saludar(nombre){
-    nombre = nombre|| "desconocido"
-    console.log(`Hola ${nombre}`)
-}
-saludar("Jon")
-saludar()
-// En estos casos son todos valores true por lo tanto valor de la izquierda
-console.log("cadena"||"valor de la derecha")
-console.log(19||"valor de la derecha")
-console.log(true||"valor de la derecha")
-console.log([]||"valor de la derecha")
-console.log({}||"valor de la derecha")
-console.log(-2||"valor de la derecha")
-// con valores false aplicaria el valor de la derecha
-console.log(false||"valor de la derecha")
-console.log(null||"valor de la derecha")
-console.log(undefined||"valor de la derecha")
-console.log(""||"valor de la derecha")
-console.log(0||"valor de la derecha")
+console.log(confirmacion)
 
-// los valores que tienden a verdadero nos da el valor de la derecha
-console.log("cadena"&&"valor de la derecha")
-console.log(19&&"valor de la derecha")
-console.log(true&&"valor de la derecha")
-console.log([]&&"valor de la derecha")
-console.log({}&&"valor de la derecha")
-console.log(-2&&"valor de la derecha")
-// como tienden a false nos dan el valor de la izquierda lo contrario que el or basicamente
-console.log(false&&"valor de la derecha")
-console.log(null&&"valor de la derecha")
-console.log(undefined&&"valor de la derecha")
-console.log(""&&"valor de la derecha")
-console.log(0&&"valor de la derecha")
-
+console.log(aviso)
 </script>
 
 
