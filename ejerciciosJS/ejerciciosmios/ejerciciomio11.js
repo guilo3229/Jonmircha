@@ -3,6 +3,7 @@
 const factorial = (numero = undefined)=>{
 if(numero===undefined )return console.warn("no has puesto ningun numero")
 if (typeof (numero) !== "number")return console.warn("El valor no es un numero");
+// Tambien se puede hacer con math.sign(numero) 
 if (numero<=0)return console.warn("has ingresado el numero 0 o un numero negativo")
     let i = 1
     let contador = 1
