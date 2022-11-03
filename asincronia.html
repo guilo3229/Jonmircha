@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asincronia en Javascript</title>
+</head>
+<body>
+    <h1>Asincronia en Javascropt</h1>
+</body>
+<script>
+    // El settime ut le das un tiempo y cuando el contador llegue a 0 osea pase ese tiempo se ejecutara la funcion que esta dentro del setTimeout, en principio se ejecutara una sola vez
+    // console.log("inicio")
+    // setTimeout(() => {
+    //     console.log("Ejecutando un setTimeOut,Esto se ejecuta una sola vez")
+    // }, 3000);
+    // // El setInterval se ejecuta indefinidamente cada cierto periodo de tiempo que hemos elegido
+    // setInterval(() => {
+    //     console.log("Ejecutando un setInterval,Esto se ejecuta indefinidamente,cada cierto intervao de tiempo")
+    // }, 1000);
+    // Para ejecutar un reloj cada segundo:
+    // setInterval(()=>{
+    //     console.log(new Date().toLocaleTimeString())
+    // },1000)
+    // el clearTimeout sirve para parar el setTimeout pero este tiene que estar dentro de una varibale
+    let temporizador1 = setTimeout(()=>{
+        console.log(new Date().toLocaleTimeString())
+    },1000)
+    clearTimeout(temporizador1)
+    console.log("despues del clear")
+
+    let temporizador2 = setInterval(()=>{
+        console.log(new Date().toLocaleTimeString())
+    },1000)
+
+    clearInterval(temporizador2)
+    console.log("despues del clear")
+</script>
+</html>
