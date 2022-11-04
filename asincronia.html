@@ -10,56 +10,40 @@
     <h1>Asincronia en Javascropt</h1> 
 </body>
 <script>
-//   Antes de explicar como funciona el modelo de JavaScript es importante etender algunos conceptos:
-// Procesamiento single thread y multi thread.$Procesamiento
-// Operaciones Concurrentes y Paralaleas.
-// Concurrencia significa es cuando  2 o mas tareas progresan simultaneamente, mientras que el paralelismo es cuando 2 tareas se ejecutan la mismo tiempo!!,podrian parecer lo mismo pero concurrencia  no necesariamente empezo al mismo tiempo pero las paralelas si
-// Operaciones Bloqueantes y No Bloqueantes.
-// una opracion bloquante no va a devolver la ejecucion al hilo principal hasta que hayan termiando sus tareas, los no bloqueantes una vez que acabe o noa cabe podra seguri el proceso quiza  pueda mandar una informacion de error
-// Operaciones Sincronas y Asincronas
-// una operacion sincrona espara al resultado en tiempo rpresente y asincrono  la repsuesta viene un futuro es decir que no va esperar el resultado es decir se suelta al hilo principal, asincrono suele ser con no bloqueante generalmente. 
+function cuadradoCallback(value,callback){
+    setTimeout(() => {
+        callback(value,value*value)
+    }, 0| Math.random()*1000);
+}
+// El callback es el primer mecanismo que tenemos para manejar la sincronia en orden
+cuadradoCallback(0,(value,result) =>{
+console.log("inicia callback") 
+console.log(`Callback:${value}, ${result} `)
+    cuadradoCallback(1,(value,result) =>{
+   
+    console.log(`Callback:${value}, ${result} `)
+    
+        cuadradoCallback(2,(value,result) =>{
+   
+        console.log(`Callback:${value}, ${result} `)
+       
+            cuadradoCallback(3,(value,result) =>{
+   
+            console.log(`Callback:${value}, ${result} `)
+            
+                cuadradoCallback(4,(value,result) =>{
+   
+                console.log(`Callback:${value}, ${result} `)
+                  
+                    cuadradoCallback(5,(value,result) =>{
+   
+                    console.log(`Callback:${value}, ${result} `)
+                     })  
+                })
+            })
+        })         
 
-
-// Javascript usa un modelo asincrono y nobloqueante, con un loop de eventos implementado en un solo hilo,(single thread) para operaciones de entrada y salida(input/output)
-
-
-//  2 tipos de codigos:
-// Codigo sincrono bloqueante
-// funcion anonima video 32
-// (()=>{
-//     console.log("Codigo sincrono")
-//     console.log("inicio")
-//     function dos(){
-//         console.log("dos")
-//     }
-//     function uno(){
-//         console.log("uno")
-//         dos()
-//         console.log("tres")
-//     }
-//     uno()
-//         console.log("Fin")
-// })();
-// Codigo Asincrono no bloqueante
-(()=>{
-    console.log("Codigo Asincrono")
-    console.log("Inicio")
-    function dos(){
-
-        setTimeout(function(){
-        console.log("Dos")
-        },1000)
-    }
-    function uno(){
-        // al poner 0 en setTimeOut se pasa a la pila de tareas es decir no va directamente por eso aparece antes el tres y fin que el uno ya que los console..lof tienen preferencia que los sit Timeout con 0, ya que los consol.log son bloqueantes y los setTimeout estan el la cola de callbacks
-        setTimeout(function()  {
-            console.log("Uno")
-        }, 0);
-        dos()
-        console.log("tres")
-    }
-    uno()
-    console.log("fin")
-})()
+    })
+})
 </script>
 </html>
