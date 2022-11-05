@@ -10,42 +10,52 @@
     <h1>Asincronia en Javascropt</h1> 
 </body>
 <script>
-// function cuadradoCallback(value,callback){
+
+
+
+// function cuadradoPromise(value){
+//     if(typeof value !== "number")
+//         return Promise.reject(`Error, el valor " ${value}" ingresado no es un número`);
+        
+//     return new Promise((resolve,reject)=> {
 //     setTimeout(() => {
-//         callback(value,value*value)
+//         // El resolve es el return positivo de la promesa es decir cuando se cumple
+//         resolve({
+//             value,
+//             result:value*value
+//         });
 //     }, 0| Math.random()*1000);
+//     });
 // }
-// // El callback es el primer mecanismo que tenemos para manejar la sincronia en orden
-// cuadradoCallback(0,(value,result) =>{
-// console.log("inicia callback") 
-// console.log(`Callback:${value}, ${result} `)
-//     cuadradoCallback(1,(value,result) =>{
-   
-//     console.log(`Callback:${value}, ${result} `)
-    
-//         cuadradoCallback(2,(value,result) =>{
-   
-//         console.log(`Callback:${value}, ${result} `)
-       
-//             cuadradoCallback(3,(value,result) =>{
-   
-//             console.log(`Callback:${value}, ${result} `)
-            
-//                 cuadradoCallback(4,(value,result) =>{
-   
-//                 console.log(`Callback:${value}, ${result} `)
-                  
-//                     cuadradoCallback(5,(value,result) =>{
-   
-//                     console.log(`Callback:${value}, ${result} `)
-//                      })  
-//                 })
-//             })
-//         })         
+// // El mtodo then se ejecutara desues de la funcion principal, podemos tener todos los metodos then que nosotros necesitemos y finalmente tendremos un metodo que seria el catch que cogeria el error
+// cuadradoPromise(0)
+//     .then(obj => {
+//         console.log("inicio Promise");
+//         console.log(`Promise:${obj.value},${obj.result} `)
+//         return cuadradoPromise(1)
+//      })
+//      .then(obj =>{
+//         console.log(`Promise:${obj.value},${obj.result} `)
+//         return cuadradoPromise(2)
+//      })
+//      .then(obj =>{
+//         console.log(`Promise:${obj.value},${obj.result} `)
+//         return cuadradoPromise("3")
+//      })
+//      .then(obj =>{
+//         console.log(`Promise:${obj.value},${obj.result} `)
+//         return cuadradoPromise(4)
+//      })
+//      .then(obj =>{
+//         console.log(`Promise:${obj.value},${obj.result} `)
+//         return cuadradoPromise(5)
 
-//     })
-// })
-
+//      })
+//      .then(obj =>{
+//         console.log(`Promise:${obj.value},${obj.result} `)
+//         console.log("Fin de la promesa")
+//      })
+//     .catch(err => console.error(err));
 
 function cuadradoPromise(value){
     if(typeof value !== "number")
@@ -61,36 +71,57 @@ function cuadradoPromise(value){
     }, 0| Math.random()*1000);
     });
 }
-// El mtodo then se ejecutara desues de la funcion principal, podemos tener todos los metodos then que nosotros necesitemos y finalmente tendremos un metodo que seria el catch que cogeria el error
-cuadradoPromise(0)
-    .then(obj => {
-        console.log("inicio Promise");
-        console.log(`Promise:${obj.value},${obj.result} `)
-        return cuadradoPromise(1)
-     })
-     .then(obj =>{
-        console.log(`Promise:${obj.value},${obj.result} `)
-        return cuadradoPromise(2)
-     })
-     .then(obj =>{
-        console.log(`Promise:${obj.value},${obj.result} `)
-        return cuadradoPromise("3")
-     })
-     .then(obj =>{
-        console.log(`Promise:${obj.value},${obj.result} `)
-        return cuadradoPromise(4)
-     })
-     .then(obj =>{
-        console.log(`Promise:${obj.value},${obj.result} `)
-        return cuadradoPromise(5)
+// La manera de decirle que una funcion es asincrona es escribiendo async antes de la function
+async function funcionAsincronaDeclarada(){
+// El try y catch y finally esta explicados en el capitulo 16
+    try{
+        console.log("inicio Async Fucntion")
+        // en las funciones asincornas (async) podemos usar await cuando queremos esperar a un resultado antes de seguir con el hilo principal
+        let obj = await cuadradoPromise(0)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(1)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(2)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise("3")
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(4)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(5)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        console.log("Fin Async Function declarada")
+    } catch(err){
+        console.error(err)
 
-     })
-     .then(obj =>{
-        console.log(`Promise:${obj.value},${obj.result} `)
-        console.log("Fin de la promesa")
-     })
-    .catch(err => console.error(err));
+    }
+
+}
+
+funcionAsincronaDeclarada()
+// Igual que antes de pero siendo funcion epresada, el async va desues del igual y antes de la flechita y el aprentesis
+const  funcionAsincronaExpresada = async()=> {
+    try{
+        console.log("inicio Async Fucntion")
+        // en las funciones asincornas (async) podemos usar await cuando queremos esperar a un resultado antes de seguir con el hilo principal
+        let obj = await cuadradoPromise(6)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(7)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(8)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise("9")
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        obj = await cuadradoPromise(10)
+        console.log(`Async Function: ${obj.value},${obj.result} `)
+        console.log("Fin Async Function expresada")
+    } catch(err){
+        console.error(err)
+
+    }
+}
+funcionAsincronaExpresada()
 
 
+// Await solo funciona si una funcion es asyncrona es decir que tenga el async sino j4pens
 </script>
 </html>
