@@ -9,48 +9,48 @@
 <h1>Nuevos Tipos De Datos en Javascript</h1>
 <body>
    <script>
-    // filtra los repetidos y los elimina
-    const set = new Set([1,2,3,3,4,5,true,false,false,{},{},"hola","HOLA"])
-    console.log(set.has("HOLA"))
-    console.log(set)
-    // envede usar length aqui suaremos size para los set
-    console.log(set.size)
-    // si funciona el new con set
-    const set2 = new Set()
-    set2.add(1)
-    set2.add(2)
-    set2.add(3)
-    set2.add(true)
-    set2.add(false)
-    set2.add(true)
-    set2.add({})
-// No se permite los repetidos los elimina!! aunque los añada
-    console.log(set2)
-    console.log(set2.size)
-    
-// con el for of podemoms imprimir los metodos  sin repetirse en forma de lista
- console.log("Recocrriendo set 1")
-    for(item of set){
-        console.log(item)
-    }
-    console.log(set.has("HOLA"))
-    // El forEach es lo mismo
-    console.log("Recocrriendo set 2")
-    set2.forEach(item => console.log(item))
-// Set parece un arreglo pero no es pero el forEach funciona porque sesta diseñado para los arreglos y los set
-    console.log(set[0])
-    // la manera de hacer referencia tenemos que convertir de set a arreglo para despues ver la referencia que queremos
-    // primeros creamos una variable para convertir nuestro set en una rreglo y luego lo buscamos directamente
-    let arr = Array.from(set)
-    console.log(arr)
-    // Los set tienen una funcion que se llama delete para borrar valores
-    set.delete("HOLA")
-    console.log(set)
-    // Tambien existe un emtodo que se llama has y nos dice si existe en nuestra coleccion de datos de nuestro set
-    console.log(set.has("HOLA"))
-// Para limpiar usamos el comando clear
-set2.clear()
-console.log(set2)
+    // es una coleccion de datos como metodo primitivo, ver el capitulo 25 ya que los maps son muy parecidos(getter y setters), mientras no queramos convertir a otro dato primitivo no hay problema por ejmplo a objeto o array entonces si usariamos let para definirlo
+const mapa = new Map()
+// con el comando set tenemos que poner el nombre de la propiedad y el valor de esta
+mapa.set("nombre", "Jon")
+mapa.set("apellido", "MirCha")
+mapa.set("edad", "35")
+// no es un objeto primitivo es como un objeto operador
+console.log(mapa)
+// Para ver los elementos tambien usaremos como en el set el metodo size o el size y supongo que el clear
+console.log(mapa.size)
+// Para saber si la propeidad existe o no usaremos has buscar
+console.log(mapa.has("nombre"))
+// Para sacar el valor de la propeidad usaremos el get
+console.log(mapa.get("nombre"))
+// para rescribir como si fuesemos a escribir una nueva propiedad- valor
+mapa.set("nombre", "cacas")
+console.log(mapa)
+// En los maps podemos hacer llaves que no sean cadenas de texto
+mapa.delete("apellido")
+mapa.set(19,"diecinueve");
+mapa.set(false,"falso")
+mapa.set({},{})
+console.log(mapa)
+// hacemos una destructuracion:
+for(let [key,value] of mapa){
+    console.log(`Llave: ${key} Valor: ${value} `)
+}
+
+const mapa2 = new Map([
+    ["nombre","Kenai"],
+    ["edad",7],
+    ["Animal","perro"],
+    [null,"nulo"]
+
+])
+console.log(mapa2)
+// podemos almacenar en una variable de manera de arreglo toda la lsita de llaves por una aprte y por otra los valores
+const llavesMapa2 =[...mapa2.keys()]
+const valoresMapa2 =[...mapa2.values()]
+
+console.log(llavesMapa2)
+console.log(valoresMapa2)
    </script> 
 </body>
 </html>
