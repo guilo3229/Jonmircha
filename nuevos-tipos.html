@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevos tipos de Datos en Javascript</title>
+</head>
+<h1>Nuevos Tipos De Datos en Javascript</h1>
+<body>
+   <script>
+// Lo que hacen los symbolos es crear un identificador o referencias unicas que cuando lo igualemos ns de diferente valorir el false, el nombre que ponemos al symbolo despues de los corchetes sitve para describirlo y aunque tuvieran la misma descripcion la igualdad validaria a falso mucho ojo!!
+    let id = Symbol("id")
+    let id2 = Symbol("id2")
+    console.log(id === id2)
+    console.log(id,id2)
+    // Los symbolos sond atos primitivos 
+    console.log( typeof id, typeof id2)
+    // La buena practica nos dice que no deberian cambiar, por so deberias crearlos con const, las constantes en principio se escriben enteramente en mayusculas, tampoco se puede usar el operador new para crear el symbolo
+
+    const NOMBRE = Symbol("Nombre")
+    const SALUDAR = Symbol("saludar")
+    const persona = {
+        [NOMBRE]: "Jon",
+        edad: 35
+    }
+
+    console.log(persona)
+
+    persona.NOMBRE = "Jonathan MirCha"
+
+    console.log(persona)
+    // Para llamar una propeidad normal como simpre el nombre del objeto. y la propieadad
+    console.log(persona.NOMBRE)
+    // Pero con los symbolos seria, nos daria el valor de ese , pero en ningun momento dentro del objeto nos sale que la propeidad se llame nombre de los symbol:
+    console.log(persona[NOMBRE])
+    // Tambiens e pueden crear symbolos directamente al objeto como se ahcen las propiedades normalmente pero de otra forma:
+    // 1- el symbolo tiene que existir es decir hacerlo con  su const y sus matusculas ya que segur nuestras reglas es un valor constante `constante`
+    // con corchetes , es que quiere crear una propiedad o metodo en este caso de symbol
+    persona[SALUDAR] = function () {
+        console.log ("Hola")
+    };
+    persona[SALUDAR]()
+
+    for(let propiedad in persona){
+        console.log(propiedad)
+        console.log(persona[propiedad])
+    }
+    // Como podemoslistar los symbolos?
+    // Object.getOwnPropertySymbols(persona); me da los symbolos en forma de arreglo, solo los symbolos
+    console.log(Object.getOwnPropertySymbols(persona))
+   </script> 
+</body>
+</html>
