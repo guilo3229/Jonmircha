@@ -9,48 +9,30 @@
 <h1>Nuevos Tipos De Datos en Javascript</h1>
 <body>
    <script>
-    // es una coleccion de datos como metodo primitivo, ver el capitulo 25 ya que los maps son muy parecidos(getter y setters), mientras no queramos convertir a otro dato primitivo no hay problema por ejmplo a objeto o array entonces si usariamos let para definirlo
-const mapa = new Map()
-// con el comando set tenemos que poner el nombre de la propiedad y el valor de esta
-mapa.set("nombre", "Jon")
-mapa.set("apellido", "MirCha")
-mapa.set("edad", "35")
-// no es un objeto primitivo es como un objeto operador
-console.log(mapa)
-// Para ver los elementos tambien usaremos como en el set el metodo size o el size y supongo que el clear
-console.log(mapa.size)
-// Para saber si la propeidad existe o no usaremos has buscar
-console.log(mapa.has("nombre"))
-// Para sacar el valor de la propeidad usaremos el get
-console.log(mapa.get("nombre"))
-// para rescribir como si fuesemos a escribir una nueva propiedad- valor
-mapa.set("nombre", "cacas")
-console.log(mapa)
-// En los maps podemos hacer llaves que no sean cadenas de texto
-mapa.delete("apellido")
-mapa.set(19,"diecinueve");
-mapa.set(false,"falso")
-mapa.set({},{})
-console.log(mapa)
-// hacemos una destructuracion:
-for(let [key,value] of mapa){
-    console.log(`Llave: ${key} Valor: ${value} `)
-}
+    // con el weak set tenemos que ir metiendo los valores 1 a 1 con el add sino no funciona
+    // const ws = new WeakSet([1,2,3,3,4,5,true,false,false,{},{},"hola","HOLA"])
+    const ws = new WeakSet()
+    // estos weak solo aceptan referencais debiles es decir objetos, por ello hay que definirlos antes normalmente
+    let valor1 = {"valor1":1}
+    let valor2 = {"valor2":2}
+    let valor3 = {"valor3":3}
 
-const mapa2 = new Map([
-    ["nombre","Kenai"],
-    ["edad",7],
-    ["Animal","perro"],
-    [null,"nulo"]
-
-])
-console.log(mapa2)
-// podemos almacenar en una variable de manera de arreglo toda la lsita de llaves por una aprte y por otra los valores
-const llavesMapa2 =[...mapa2.keys()]
-const valoresMapa2 =[...mapa2.values()]
-
-console.log(llavesMapa2)
-console.log(valoresMapa2)
+    ws.add(valor1)
+    ws.add(valor2)
+    ws.add(valor3)
+    console.log(ws)
+    console.log(ws.has(valor2))
+    ws.delete(valor2)
+    console.log(ws)
+    ws.add(valor2)
+    console.log(ws)
+    setInterval(() => console.log(ws), 1000);
+    // Si nulificamos los valores los borramos del weakset
+    setTimeout(() =>{
+    valor1 = null;
+    valor2 = null;
+    valor3 = null;
+}, 5000);
    </script> 
 </body>
 </html>
