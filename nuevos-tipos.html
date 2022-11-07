@@ -8,37 +8,32 @@
 </head>
 <h1>Nuevos Tipos De Datos en Javascript</h1>
 <body>
-   <script>
-// El weakmap es un map debil, recordemos que pueden coger cualquier tipo de datos no como solo una cadena de texto
-// solo permite variables de un objeto y definidas de una sola variable
-     const wm = new WeakMap()
-   let llave1 ={}
-   let llave2 ={}
-   let llave3 ={}
+    <p>lorem</p>
+    <p>lorem</p>
+    <p>lorem</p>
+   <script> 
+const iterable = [1,2,3,3,4,5]
+// const iterable = new Map([["nombre",1],["edad",5]])
+// const iterable = new Map([1,2,3,3,4,5])
+// const iterable= "hola mundo"
+// const iterable = new Map([["nombre",1],["edad",5]])
+// En esa linea accedemos al iterador del iterable
+const iterador = iterable[Symbol.iterator]()
+console.log(iterable)
+console.log(iterador)
+// console.log(iterador.next())
+// console.log(iterador.next())
+// console.log(iterador.next())
+// console.log(iterador.next())
+// console.log(iterador.next())
+// console.log(iterador.next())
+let next = iterador.next()
+// ponemos nect.done porque es un objeto y necesitamos sacar el valor de la propeidad done se ve en la consola
+while(!next.done){
+    console.log(next.value)
+    next = iterador.next();
+}
 
-   wm.set(llave1,1)
-   wm.set(llave2,2)
-console.log(wm)
-   console.log(wm.has(llave1))
-   console.log(wm.has(llave3))
-
-   console.log(wm.get(llave1))
-   console.log(wm.get(llave2))
-   console.log(wm.get(3))
-   wm.delete(llave2)
-   console.log(wm)
-   wm.set(llave2,2)
-   wm.set(llave3,3)
-   console.log(wm)
-
-
-   setInterval(() => console.log(wm), 1000);
-
-   setTimeout(() => {
-    llave1 = null;
-    llave2 = null ;
-    llave3 =null;
-   }, 5000);
    </script> 
 </body>
 </html>
