@@ -8,32 +8,55 @@
 </head>
 <h1>Nuevos Tipos De Datos en Javascript</h1>
 <body>
-    <p>lorem</p>
-    <p>lorem</p>
-    <p>lorem</p>
+
    <script> 
-const iterable = [1,2,3,3,4,5]
-// const iterable = new Map([["nombre",1],["edad",5]])
-// const iterable = new Map([1,2,3,3,4,5])
-// const iterable= "hola mundo"
-// const iterable = new Map([["nombre",1],["edad",5]])
-// En esa linea accedemos al iterador del iterable
-const iterador = iterable[Symbol.iterator]()
-console.log(iterable)
-console.log(iterador)
+ function*iterable(){
+// los yield son los return especiales de las funciones generadoras* como con las funciones asyncornas asyn y luego usabamos await , pues aqui lo haremos con yield,
+    yield "hola";
+    console.log("hola consola")
+    yield "hola2";
+    console.log("Seguimos con más intrucciones de nuestro código")
+    yield "hola3";
+    yield "hola4";
+    
+}
+let iterador = iterable()
 // console.log(iterador.next())
 // console.log(iterador.next())
 // console.log(iterador.next())
 // console.log(iterador.next())
 // console.log(iterador.next())
-// console.log(iterador.next())
-let next = iterador.next()
-// ponemos nect.done porque es un objeto y necesitamos sacar el valor de la propeidad done se ve en la consola
-while(!next.done){
-    console.log(next.value)
-    next = iterador.next();
+// un enerador es convertir el codigo de una funcion en un iterable
+for(let y of iterador){
+    console.log(y)
+    
+}
+// guardar en un arreglo los resultados de una funcion generadora usando el spread operator
+const arr = [...iterable()]
+console.log(arr)
+
+function cuadrado(valor){
+    setTimeout(() => {
+       return console.log({valor, resultado: valor*valor})
+    }, Math.random()*1000);
+
+
 }
 
+function*generador(){
+    console.log("Inicia Generator")
+    yield cuadrado(0);
+    yield cuadrado(1);
+    yield cuadrado(2);
+    yield cuadrado(3);
+    yield cuadrado(4);
+    yield cuadrado(5);
+    console.log("Termina Generator")
+}
+let gen = generador();
+for(let y of gen){
+    console.log(y)
+}
    </script> 
 </body>
 </html>
