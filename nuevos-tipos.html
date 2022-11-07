@@ -10,53 +10,38 @@
 <body>
 
    <script> 
- function*iterable(){
-// los yield son los return especiales de las funciones generadoras* como con las funciones asyncornas asyn y luego usabamos await , pues aqui lo haremos con yield,
-    yield "hola";
-    console.log("hola consola")
-    yield "hola2";
-    console.log("Seguimos con más intrucciones de nuestro código")
-    yield "hola3";
-    yield "hola4";
-    
-}
-let iterador = iterable()
-// console.log(iterador.next())
-// console.log(iterador.next())
-// console.log(iterador.next())
-// console.log(iterador.next())
-// console.log(iterador.next())
-// un enerador es convertir el codigo de una funcion en un iterable
-for(let y of iterador){
-    console.log(y)
-    
-}
-// guardar en un arreglo los resultados de una funcion generadora usando el spread operator
-const arr = [...iterable()]
-console.log(arr)
+    const persona = {
+        nombre: "",
+        apellido:"",
+        edad: 0
+    }
+    const manejador ={
+        // en este set podemos meter todas las validaciones que queramos, si no las cumple no se añadrian aunque  lo pongamos de forma normal
+        set(obj,prop,valor){
+            // object.keys me da la lista de las keys que tiene el objeto y el indexof nos va indicar si existe alugna ,devuelve un -1 cuandoe s falso lo que esta buscando en la lsita de keys  existe la prop que metemos es decir busca en la lsita keys el indexof
+            if(Object.keys(obj).indexOf(prop) === -1){
+                return console.error(`La propiedad "${prop}"  no existe en el objeto persona `)
+            }
 
-function cuadrado(valor){
-    setTimeout(() => {
-       return console.log({valor, resultado: valor*valor})
-    }, Math.random()*1000);
+            if(
+            (prop === "nombre" || prop === "apellido") && 
+            !(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/g.test(valor))
+            // si no cumple el valor del objeto quedara como antes o de serie
+            ){
+                return console.error(`La propiedad "${prop}" solo acepta letras y epsacios en blanco `)
+            }
+            obj[prop] = valor;
 
-
-}
-
-function*generador(){
-    console.log("Inicia Generator")
-    yield cuadrado(0);
-    yield cuadrado(1);
-    yield cuadrado(2);
-    yield cuadrado(3);
-    yield cuadrado(4);
-    yield cuadrado(5);
-    console.log("Termina Generator")
-}
-let gen = generador();
-for(let y of gen){
-    console.log(y)
-}
+        }
+    }
+// el proxy mantiene una vinculacion con el objeto original y el objeto copia mucho cuidado
+    const jon = new Proxy(persona, manejador)
+jon.nombre = "Jon19"
+jon.apellido = "Mircha"
+jon.edad =38
+jon.twitter = "@jonmircha"
+    console.log(jon)
+    console.log(persona)
    </script> 
 </body>
 </html>
