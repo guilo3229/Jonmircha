@@ -10,22 +10,68 @@
 <body>
 
    <script> 
-let aleatorio = Math.round(Math.random()*100 + 5)
+console.log(this)
+console.log(window)
+console.log(this === window)
 
-const objUsuarios = {
-propiedad: "valor",
-// Actualmente se pueden crear estas propiedades dinamicas,anteriormente solo se podia hacer de la forma de abajo con el for Each... lo que va a hacer que una propeidad sea dinamica sera la sintaxis de los corchetes
-// El +5 es para que no coincida con lo de abajo y marque un error,round es para que redonde(math random numero aleatorio entre 0 y 1 sin )
-[`id_${aleatorio} `]: "valor Aleatorio"
+this.nombre = "Contexto Global"
+console.log(this.nombre)
+function imprimir(){
+   console.log(this.nombre)
+}
+imprimir()
+{
 
-};
-console.log(objUsuarios)
-const usuarios =["Jon","Irma","Miguel","kala","Kenai"]
+   // Esto es un bloque
+}
+const obj = {
+   nombre: "contexto Objeto",
+   imprimir: function(){
+      console.log(this.nombre)
+   }
+}
 
-// con el foreach en este caso creo que con el for od tambiens e podria, lo que ahce es meter el arreglo y posteriormente el indice para poder crear una propiedad con una funcion de flecha apra ello escribimos el objeto vacio, luego entre corchetes el nombre de la propiedad, cerramos corchetes e igualamos al valor, de esta manera creamos una propiedad con combre id_ sumado a un numero dinamico igual al index
-usuarios.forEach((usuario,index) => objUsuarios[`id_${index}`] = usuario)
-console.log(objUsuarios)
+obj.imprimir()
+const obj2 = {
+   nombre: "Contexto Objeto 2",
+   imprimir
+}
+obj2.imprimir()
 
+const obj3 = {
+   nombre: "contexto Objeto3",
+   imprimir: ()=>{
+      // Las arrow function cogen la propiedad this del ambito global, es decir del objeto window si no esta, saldra undefined aunque este en las pro`piedades dentro del mismo objeto. como objeto 3 fue creado en el concepto global
+      console.log(this.nombre)
+   }
+}
+obj3.imprimir()
+// esto es una funcion constructora que crea su propio SCOPE
+function Persona(nombre){
+   this.nombre = nombre;
+   // return console.log(this.nombre)
+   // creamos una funcion anonima, en el return y le ponemos el console.log(this.nombre)
+   // return function (){
+   //    // como esta funcion anonima no tiene el contexto nombre regresa al scope global y no al scope de la funcion predecesora, para evitar eso usaremos una arrow function que esta si que coge el mas inmediato scope.
+
+   //    console.log(this.nombre, 22)
+   // }
+   return() => console.log(this.nombre)
+}
+let jon = new Persona("Jon")
+jon()
+
+function Persona2(nombre){
+   // that va a hacer referencia al this de la funcion constructora(esto antiguamente ya nos e usa)
+   const that = this;
+   // this.nombre = nombre;
+that.nombre = nombre
+   return function (){
+      console.log(that.nombre)
+   }
+}
+let federico = new Persona2("Federico")
+federico()
    </script> 
 </body>
 </html>
