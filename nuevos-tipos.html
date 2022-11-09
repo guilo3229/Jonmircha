@@ -4,74 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevos tipos de Datos en Javascript</title>
+    <title>This Javascript</title>
 </head>
-<h1>Nuevos Tipos De Datos en Javascript</h1>
+<h1>This en Javascript</h1>
 <body>
 
    <script> 
-console.log(this)
-console.log(window)
-console.log(this === window)
-
-this.nombre = "Contexto Global"
-console.log(this.nombre)
-function imprimir(){
-   console.log(this.nombre)
+   console.log(this)
+this.lugar = "Contexto Global"
+function saludar(saludo,aQuien){
+   console.log(`${saludo} ${aQuien} desde el ${this.lugar} `)
 }
-imprimir()
-{
+saludar("hola","kenai")
 
-   // Esto es un bloque
-}
 const obj = {
-   nombre: "contexto Objeto",
-   imprimir: function(){
-      console.log(this.nombre)
+   lugar: "Contexto Objeto"
+}
+// El call() sirve para indicar el contexto del objeto que queremos llamar, si el objeto es null es como si fueses al contexto global, si usamos el this seria el contexto siguiente mas fuerte en este caso el siguiente es el global pero si estuviesemos en un contexto de otra funcion seria la de esta ultima, para apply dpasa lo mismo en esto ultimo
+saludar.call(null, "Hola","Jon")
+// La diferencia entre call y apply es como recibe los parametros del contexto con el que quiero trabajar, el call es simplemente una cadena  coma y otra cadena y el apply es un array con los parametros separados segun los que haya por una coma y entre el objeto y los corchetes tambien una coma
+saludar.apply(obj,["Adios", "Mircha"])
+
+const persona = {
+   nombre:"jon",
+   saludar: function (){
+   console.log(`hola ${this.nombre} `)
    }
 }
+persona.saludar()
+const cacoso = {
+   nombre:"pepito",
 
-obj.imprimir()
-const obj2 = {
-   nombre: "Contexto Objeto 2",
-   imprimir
 }
-obj2.imprimir()
-
-const obj3 = {
-   nombre: "contexto Objeto3",
-   imprimir: ()=>{
-      // Las arrow function cogen la propiedad this del ambito global, es decir del objeto window si no esta, saldra undefined aunque este en las pro`piedades dentro del mismo objeto. como objeto 3 fue creado en el concepto global
-      console.log(this.nombre)
-   }
+this.nombre= "window"
+const otraPersona ={
+   // Con bind enlaza el context del objeto por ejemplo en este caso la propiedad saludar le damos la propiedad de persona saludar, pero esta tiene dentro this nombre en otraPersona no tenemos esta propiedad por lo tanto se iria al contexto global para enlazar el contexto nombre de ese objeto ene ste caso ponemos bind y luego persona o otro objeto con la propiedad que tenga saludar (que en este caso seria nombre), no se pasaria directamente al scope del window buscaria dentro de ese objeto ene ste caso.
+   saludar:persona.saludar.bind(window)
 }
-obj3.imprimir()
-// esto es una funcion constructora que crea su propio SCOPE
-function Persona(nombre){
-   this.nombre = nombre;
-   // return console.log(this.nombre)
-   // creamos una funcion anonima, en el return y le ponemos el console.log(this.nombre)
-   // return function (){
-   //    // como esta funcion anonima no tiene el contexto nombre regresa al scope global y no al scope de la funcion predecesora, para evitar eso usaremos una arrow function que esta si que coge el mas inmediato scope.
-
-   //    console.log(this.nombre, 22)
-   // }
-   return() => console.log(this.nombre)
-}
-let jon = new Persona("Jon")
-jon()
-
-function Persona2(nombre){
-   // that va a hacer referencia al this de la funcion constructora(esto antiguamente ya nos e usa)
-   const that = this;
-   // this.nombre = nombre;
-that.nombre = nombre
-   return function (){
-      console.log(that.nombre)
-   }
-}
-let federico = new Persona2("Federico")
-federico()
+otraPersona.saludar()
    </script> 
 </body>
 </html>
