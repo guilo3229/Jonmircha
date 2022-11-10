@@ -4,44 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This Javascript</title>
+    <title>JSON Javascript</title>
 </head>
-<h1>This en Javascript</h1>
+<h1>JSON en Javascript</h1>
 <body>
 
    <script> 
-   console.log(this)
-this.lugar = "Contexto Global"
-function saludar(saludo,aQuien){
-   console.log(`${saludo} ${aQuien} desde el ${this.lugar} `)
-}
-saludar("hola","kenai")
+// JSON es javascript objet notation, formato ligero de intercambio de datos es lo que es y es facil para nosotros y para las maquinas y es un estandar
 
-const obj = {
-   lugar: "Contexto Objeto"
+    // Para los JSON l las propeidades de los objetos que pasamos deben estar en dobles comillas "", tambien los numeros y los booleanos, pero no el null
+const json = {
+cadena: "Jon",
+numero: 35,
+booleano: true,
+arreglo:["correr","programar","cocinar"],
+objeto:{
+   twitter: "@jonmircha",
+   email: "jonmircha@gmail.com"
+   },
+nulo: null
 }
-// El call() sirve para indicar el contexto del objeto que queremos llamar, si el objeto es null es como si fueses al contexto global, si usamos el this seria el contexto siguiente mas fuerte en este caso el siguiente es el global pero si estuviesemos en un contexto de otra funcion seria la de esta ultima, para apply dpasa lo mismo en esto ultimo
-saludar.call(null, "Hola","Jon")
-// La diferencia entre call y apply es como recibe los parametros del contexto con el que quiero trabajar, el call es simplemente una cadena  coma y otra cadena y el apply es un array con los parametros separados segun los que haya por una coma y entre el objeto y los corchetes tambien una coma
-saludar.apply(obj,["Adios", "Mircha"])
-
-const persona = {
-   nombre:"jon",
-   saludar: function (){
-   console.log(`hola ${this.nombre} `)
-   }
-}
-persona.saludar()
-const cacoso = {
-   nombre:"pepito",
-
-}
-this.nombre= "window"
-const otraPersona ={
-   // Con bind enlaza el context del objeto por ejemplo en este caso la propiedad saludar le damos la propiedad de persona saludar, pero esta tiene dentro this nombre en otraPersona no tenemos esta propiedad por lo tanto se iria al contexto global para enlazar el contexto nombre de ese objeto ene ste caso ponemos bind y luego persona o otro objeto con la propiedad que tenga saludar (que en este caso seria nombre), no se pasaria directamente al scope del window buscaria dentro de ese objeto ene ste caso.
-   saludar:persona.saludar.bind(window)
-}
-otraPersona.saludar()
+console.log(json)
+console.log(JSON)
+console.log("{}")
+console.log(JSON.parse("{}"))
+// Como puedes ver si guarda la forma del valor cuando lo sacamos con JSON.parse sino lo convierte si es normal el console.log en string o cadena
+// JSON tiene 2 metodos Parse y stringify
+// parse lo que va a hacer es anañizar una anotacion JSON y la va a convertir a un tipo de dato que javascript valida string,boolean objeto,number etc, el undefined no lo tiene pero el null si.
+console.log(JSON.parse("null"))
+// El método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena de texto JSON, opcionalmente reemplaza valores si se indica una función de reemplazo, o si se especifican las propiedades mediante un array de reemplazo.
+// cambia los valores sea cual se aa cadena de texto(el stringfy)
+console.log(JSON.stringify({}))
+console.log(JSON.stringify(json))
+// Todo tiene que ir en una cadena y te lo convierte en obejto primitivo, ojo el entrecomillado con 1 comilla ya que en el JSON utiliza las dobles comillas nomralmente.
+console.log(JSON.parse('{"cadena": "Jon","numero": 35,"booleano": true,"arreglo":["correr","programar","cocinar"],"objeto":{"twitter": "@jonmircha","email": "jonmircha@gmail.com"},"nulo": null}'))
    </script> 
 </body>
 </html>
