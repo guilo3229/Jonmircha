@@ -1,27 +1,22 @@
+// No confundir una etiqueta HTML y un nodo
 
-console.log("******Elementos del Documento*****")
-console.log(window.document)
-console.log(document)
-console.log(document.body)
-console.log(document.documentElement)
-console.log(document.doctype)
-// Para acceder al juego de caracteres que tienen nuestro documento con charset que seria UTF-8
-console.log(document.characterSet)
-// Para acceder al titulo
-console.log(document.title)
-// para acceder a los links: todos estos nodos no son arreglos y por tal no comparten todos los metodos de los arreglos aunque aparezcan asi en la consola HTM colelection no es una array
-console.log(document.links)
-// para ver las imagenes que hay
-console.log(document.images)
-// para ver los formularios dde nuestro ejemplo
-console.log(document.forms)
-// nos dice los estilos que tiene la pagina
-console.log(document.styleSheets)
-// nos dice los scripts de programacion que tiene
-console.log(document.scripts)
-setTimeout(() => {
-    // esto nos da lo seleccionado con el raton en azul cuando dejas apretado el click izquierdo
-    console.log(document.getSelection().toString())
-}, 3000);
-// nosotros podemos interactuar pero lo pone en la parte script 
-    console.log(document.write("<h2>viendo</h2>"))
+
+// Metodos que ya no se suelen usar:
+console.log(document.getElementsByTagName("li"))
+console.log(document.getElementsByClassName("card"))
+console.log(document.getElementsByName("nombre"))
+// a partir de ahora usaremos:
+console.log(document.getElementById("menu"))
+console.log(document.getElementById("menu"))
+// han sido remplazados por queryselector "a veces" ya que get elmentByid es mas rapido que el querySelector ya que en este ultimo tiene que saber si es un id con # o . conc lase etc
+console.log(document.querySelector("#menu"))
+// Para buscar todos los enlaces que tenga mi pagina es con la letra , si no le dicesAll te va a traer el primer elemento si yo quisiera traerme todos usamos el All
+console.log(document.querySelectorAll("a"))
+// Nos devuelve Nodelist no Arreglos Ojo!! comparten metodos como length, el forEach tambien
+console.log(document.querySelectorAll("a").length)
+// document.querySelectorAll("a").forEach((el)=>console.log(el))3Para las clases sera necesario poner el puntito
+console.log(document.querySelectorAll(".card"))
+// si queremos entrar en uno en aprticular usariamos el corchete despues del parentesis como en los arreglo escribiendo el numero al cual queremos hacer referencia recordando que siempre empezamos en 0 par ael primer elmento
+console.log(document.querySelectorAll(".card")[2])
+// Tambien acepta selectores descendientes, es decir podemos decirle que nos imprima los li que estan dentro de li poniendo #menu que seria el id y luego espacio y el tipo de  que queremos
+console.log(document.querySelectorAll("#menu li"))
