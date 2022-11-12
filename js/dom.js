@@ -1,42 +1,44 @@
-// Tenemos 2 manera de modificar valores de nuestros atributos:
-//  una es la anotacion del punto
-console.log(document.documentElement.lang)
-console.log(document.documentElement.getAttribute("lang"))
-// nos trae el valor del link del servidor que asocia al href dentro dell .link-Dom no el valor escrito en este caso
-console.log(document.querySelector(".link-Dom").href)
-// con getatribute nos trae el valor que realmente esta escrito en el html
-console.log(document.querySelector(".link-Dom").getAttribute("href"))
 
-// Para establecer valores a los atributos en raw seria:
-document.documentElement.lang = "es"
-console.log(document.documentElement.lang)
-// otra manera seria: pones el atributo primero , luego coma y el nuevo valor
-document.documentElement.setAttribute("lang", "ES-Mx")
 
-// PAra guardar las variables para moficiarlas despues:
-// Se puede usar let y const pero rsulta mas familar con el const,ya que podemos modificarlo ya que su esencia de DOM no varia en si como con los valores del array o de los objetos aqui es iigual ya que vamos a una referencia de dicho valor,es decir es el mismo tipo de dato, pero tambien se puede hacer en let asi que no Drama LLAMA.
-// Para guardar un elemento del DOM le ponemos el simbolo del dolar para saber que variables son los de la logica y cuales son las variables del elementos del DOM $$
+
 const $linkDOM = document.querySelector(".link-Dom")
-$linkDOM.setAttribute("target", "_blank")
-$linkDOM.setAttribute("rel", "noopener")
-// Con el target _blank para evitar que sea insegura esa  y evaitar todo tipo de hackeo con el releaseEvents, noopener para que no haya una dependencia entre la pestaña qiue estamos abriendo y la pestaña de origen.
+// Es mejor usar la anotacion del punto y no del get atributte, ya que de esta manera no sale el objeto con todas los diferentes propiedades validas y las que estan npuestas tambien con su valor etc
+console.log($linkDOM.style)
+// con el getattribute te saca solo lo que esta escrito lo del punto te saca todo lo que este asociado como lo del link de la clase anterior
+console.log($linkDOM.getAttribute("style"))
 
-// Tambien podemos qutiar elementos con el remove o con el has podemos preguntarle si tiene dicho atributo por ejemplo
-console.log($linkDOM.hasAttribute("rel"))
-$linkDOM.removeAttribute("rel")
-console.log($linkDOM.hasAttribute("rel"))
+console.log($linkDOM.style.backgroundColor)
+console.log($linkDOM.style.color)
+// otra manera de acceder a ellas es mediante windows.getComputedtyle, podemos ver los valores predeterminado que le dan al css, si queremos acceder a la propiedad deberemos usar el .getPropertyValue() despues de usar el getComputedStyle
+console.log(window.getComputedStyle($linkDOM))
+console.log(window.getComputedStyle($linkDOM).getPropertyValue("color"))
 
-// si quiere4s trabajr con los DataTransfer-Atrributes:
-console.log($linkDOM.getAttribute("data-description"))
-// un map es muy similar a los objetos etc que puede poenr lo que se te salga 
-console.log($linkDOM.dataset)
-// como modificar elel data atribute:
-console.log($linkDOM.dataset.description)
-$linkDOM.setAttribute("data-description","Modelo de Objeto del documento")
-console.log($linkDOM.dataset.description)
-// con la anotacion del punto seria:
-$linkDOM.dataset.description = "Suscribete a mi canal y comparte"
-// tambien se puede preguntar si existe el data atributes y removerlos:
-console.log($linkDOM.hasAttribute("data-id"))
-$linkDOM.removeAttribute("data-id")
-console.log($linkDOM.hasAttribute("data-id"))
+$linkDOM.style.setProperty("text-decoration", "none")
+$linkDOM.style.setProperty("display","block")
+// tambien podemos acceder y modificar atraves de la forma del punto .
+$linkDOM.style.width = "50%"
+$linkDOM.style.textAlign = "venter"
+$linkDOM.style.marginLeft = "auto"
+$linkDOM.style.marginRight = "auto"
+$linkDOM.style.padding = "1rem"
+$linkDOM.style.borderRadius = ".5rem" 
+console.log($linkDOM.style)
+console.log($linkDOM.getAttribute("style"))
+console.log(getComputedStyle($linkDOM))
+
+// Variables en CSs- Custom Properties(apunta al root  al HTML(document.documentElement representa a todo el html) arriba en style)
+const $html = document.documentElement,
+    $body =document.body;
+// Estas variables no les ponemos el signo del dolar porque lo consideramosno del dom sino del css
+let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color"),
+    varyellowColor = getComputedStyle($html).getPropertyValue("--yellow-color")
+
+    console.log(varDarkColor,varyellowColor)
+
+    $body.style.backgroundColor = varDarkColor
+    $body.style.color = varyellowColor
+    // Lo escribe pero no se cambia, porque se lo aplicamos al HTML no al body, es decir que el global es rosa pero en el body mas especifico es pink,
+    // aqui lo que ahce es ponerle al HTML style... en el estilo dark-color  luego una coma y el color luego en la siguiente linea coge la variable varDarkcolor y le pone el valor que tenga el html en esa posicion osea le da su valor y por ultimo esta constante se la mete al body.style 
+    $html.style.setProperty("--dark-color","#222")
+    varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+    $body.style.setProperty("background-color", varDarkColor)
