@@ -1,32 +1,23 @@
 
+// Lo que vamos hacer primeramente es capturar la variable de un elemento del HTML
 
+const $whatIsDom = document.getElementById("que-es")
 
-const $card = document.querySelector(".card")
-console.log($card)
-// class list me devuelve un arreglo con la propiedad de ula clase que tiene y su valor
-console.log($card.classList)
-// A evaluar si un elemento particular en caso de tener o no esa clase:
-console.log($card.classList.contains("rotate-45"))
+let text = `<p>
+El Modelo de Objetos del Documento(<b><i>DOM - Document Object Model</i></b>) es un API para documentos HTML y XML
+</p>
+<p>
+Este proveé una representación estructural del documento, permitiendo modificar su contenido y presentacion visual mediante codigo JS.
+</p>
+<p>
+El DOM no es parte de la especificacion de javsScript, es una API para los navegadores
+</p>
+`;
+// iinet text no  identifica las etiquetas porque es antigua
+// $whatIsDom.innerText = text
+// text Content tampoco identifica las etiquetas
+$whatIsDom.textContent = text
+$whatIsDom.innerHTML = text
+// Lo que ahce outer HTML es remplazar el contenido del DOM con el parrafo que esta de manera independiente no lo mete en un parrafo y dentro los otros 3 parrafos
+$whatIsDom.outerHTML = text
 
-// como agregar las clases
-$card.classList.add("rotate-45")
-console.log($card.classList.contains("rotate-45"))
-console.log($card.className)
-console.log($card.classList)
-$card.classList.remove("rotate-45")
-console.log($card.classList.contains("rotate-45"))
-// metodo como interrupto osea que si no la tiene se la agrega y si la tiene se la quita tipo interrumpor
-$card.classList.toggle("rotate-45")
-console.log($card.classList.contains("rotate-45"))
-$card.classList.toggle("rotate-45")
-console.log($card.classList.contains("rotate-45"))
-// como lo tipico de Dark mode modo oscuro o modo normal el toggle podria usarse como interruptor
-
-// Que pasa sinosotros tuviesemos la necesidad no solo de quitar o poenr sino una clase en particular remplazar por otra:
-$card.classList.toggle("rotate-45")
-// usaremos replace , el priemr parametro es la clase a remplazar y el segundo parametro es la nueva clase por la que va a ser remplazada
-$card.classList.replace("rotate-45", "rotate-135")
-// Si tu tienes la necesedidad de remplazar,quitar varias clases al mismo tiempo lo puedes hacer, puedes agregar mas de una clase a la vez solo separando por una coma al igual que con remove:
-$card.classList.add("opacity-80","sepia")
-$card.classList.remove("opacity-80","sepia")
-$card.classList.toggle("opacity-80","sepia")
