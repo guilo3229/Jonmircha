@@ -1,37 +1,77 @@
-// Esta enfocado a los elementos, son nodos tipo elementos
+// createTextNode(crea un elemento nodo de texto)
+const $figure = document.createElement("figure"),
+$img= document.createElement("img"),
+$figcaption = document.createElement("figcaption"),
+$figcaptionText = document.createTextNode("Animals"),
+$cards = document.querySelector(".cards")
+// aqui ya dinamicamente estan creadas esas etiquetas pero no estan incorporadas en el arbol del DOM y hay que ir agregandolo
 
-const $cards = document.querySelector(".cards")
-console.log($cards)
-// Para ver sus hijos en la consola ponemos.children y nos devuelve un HTML
-console.log($cards.children)
-console.log($cards.children[2])
-// Childnodes hace referencia a los nodos hijos, podemos ver que en la lista de nodos un text entre cada figure.card nodo ya que esos text son los saltos de lineas espacios)
-console.log($cards.childNodes)
+// Antes de ejecutar el appendchild  al metodo cards tendria que configurar dichos elementos: a la figura agregar la imagen y la figcaption y a la ficaption el nodo texto:
 
-// con .parent te muestra el elemento siguiente padre y si le pones el .parentnode tambien es el body porque es el nodo padre
-console.log($cards.parentNode)
-console.log($cards.parentElement)
-// firtChild hace referencia al primer hijo nodo
-console.log($cards.firstChild)
-// para hace referencia al primer elemento hijo:
-console.log($cards.firstElementChild)
-// para detectar el ultimo nodo y detectar el ultimo elemento hijo:
-console.log($cards.lastChild)
-console.log($cards.lastElementChild)
-// Tambien podemos buscar el hermano que esta antes y el hermano que esta despues, su hermano anterior seria el enlace y su hermano posterior la seccion script.
-// lo mismo qcon nodo y elemento:
-console.log($cards.previousSibling)
-console.log($cards.previousElementSibling)
-// El siguiente hermano
-console.log($cards.nextSibling)
-console.log($cards.nextElementSibling)
+// Tambien en la etiqueta img vamos a necesitar emterle sus atributos(src...etc) para ello
+$img.setAttribute("src", "https://placeimg.com/200/200/animals")
+$img.setAttribute("alt", "Animals")
+$figcaption.appendChild($figcaptionText)
+$figure.appendChild($img)
+// al nodo figure necesitamos agregarle la clase card para que quede como card
+$figure.classList.add("card")
+$figure.appendChild($figcaption)
+$cards.appendChild($figure)
 
-console.log($cards.previousSibling)
-// Un nuevo metodo es el metodo closes, va a buscar el padre mas cercano del tipo de selector que nosotros le demos
-console.log($cards.closest("div"))
-console.log($cards.closest("body"))
-console.log($cards.children[3].closest("section"))
+// Otra forma de hacerlo:
+const $figure2 = document.createElement("figure")
+// usaremos la propieudad innerHTML para agregarle las cosas
+$figure2.innerHTML = `
+<img src="https://placeimg.com/200/200/people" alt = "People">
+<figcaption>People</figcaption>
+`;
+$figure2.classList.add("card")
+$cards.appendChild($figure2);
 
+// que pasa si tenemos varios elementos que queremos agregar:
+const estaciones = ["Primavera","Verano","Otoño","invierno"],
+$ul = document.createElement("ul")
 
+document.write("<h3>Estaciones del Año</h3>")
+document.body.appendChild($ul)
+// En esto va creando un li por cada recorrido que ahce el ForEach de nuestro array no los machaca uno encima del otro
+estaciones.forEach(el =>{
+    const $li = document.createElement("li")
+    $li.textContent = el
+    $ul.appendChild($li)
+})
+// ahora lo haremos con HTML
+const continentes = ["África","VerAmérica","Asia","Europa","Oceanía "],
+$ul2 = document.createElement("ul")
+document.body.appendChild($ul2);
 
+document.write("<h3>Continendel Mundo</h3>")
+document.body.appendChild($ul2)
+$ul2.innerHTML = ""
+// PAra que no lo machaque tenemos que hacerle el += por eso tenemos que hacerla vacia explicita, para que no de error aunque eso era entes
+continentes.forEach(el=>($ul2.innerHTML += `<li>${el}</li>`))
 
+const meses = [
+"Enero",
+"Febrero",
+"MArzo",
+"Abril",
+"Mayo",
+"Junio",
+"Julio",
+"Agosto",
+"Septiembre",
+"Octubre",
+"Noviembre",
+"Diciembre"
+],
+$ul3 = document.createElement("ul"),
+$fragment = document.createDocumentFragment()
+meses.forEach(el => {
+    const $li = document.createElement("li");
+    $li.textContent =el;
+    $fragment.appendChild($li)
+})
+document.write("<h3>Meses del Año</h3>")
+$ul3.appendChild($fragment)
+document.body.appendChild($ul3)
