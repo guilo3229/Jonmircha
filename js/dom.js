@@ -1,40 +1,19 @@
 
 
+const $cards = document.querySelector(".cards"),
+    $newCard = document.createElement("figure");
+    $cloneCards =$cards.cloneNode(true)
+$newCard.innerHTML = `
+<img src="https://placeimg.com/200/200/any" alt="Any">
+<figcaption>Any</figcaption>
+`
 
-const $cards = document.querySelector(".cards")
-const $template = document.getElementById("template-card").content
-const $fragment = document.createDocumentFragment(),
-cardContent =[
-    {
-        title:"Tecnologia",
-        img: "https://placeimg.com/200/200/tech"
-    },
-    {
-        title:"Animales",
-        img: "https://placeimg.com/200/200/animals"
-    },
-    {
-        title:"Arquitectura",
-        img: "https://placeimg.com/200/200/arh"
-    },
-    {
-        title:"Gente",
-        img: "https://placeimg.com/200/200/people"
-    },
-    {
-        title:"Naturaleza",
-        img: "https://placeimg.com/200/200/nature"
-    }
-];
-
-cardContent.forEach(el =>{
-    $template.querySelector("img").setAttribute("src",el.img)
-    
-    $template.querySelector("img").setAttribute("alt",el.title)
-    
-    $template.querySelector("figcaption").textContent = el.title;
-    // Ahora clonariamos dicha estructura para que no haya problemas, ya que ese template es unico digamos que si yo usaria ese template para la primera tarjeta no estaria dispobible para la 2 da 3cera EventCounts, lo que tenemos que hacer es clonarlo,el true dice que copie toda la estructura no solo la etiqueta de open y de cierre
-    let $clone = document.importNode($template,true)
-    $fragment.appendChild($clone)
-})
-$cards.appendChild($fragment)
+$newCard.classList.add("card")
+// replace child sirve para sustituir
+// $cards.replaceChild($newCard, $cards.children[2])
+// hay un metodo para insertar antes de un nodo, no susituye simplemente lo pone antes del nodo indicado, puedes ahcerlo con first elmentchild o poeer el [0] con cards.children tambien funcionarioa]
+// $cards.insertBefore($newCard,$cards.firstElementChild)
+// Tambien tenemos un emtodo para eliminar
+// $cards.removeChild($cards.lastElementChild)
+// El Dom tiene un metodo que nos permite clonar para estos elmentos serian cloneNode, es un poco diferente al importclone del HTML
+document.body.appendChild($cloneCards)
