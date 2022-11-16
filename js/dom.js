@@ -6,8 +6,13 @@ function holaMundo(){
     console.log(Event)
 }
 
+function saludar (nombre= "desconocido"){
+    alert(`Hola ${nombre} `)
+    console.log(`${Event}`)
+}
 const $eventoSemantico = document.getElementById("evento-semantico"),
-$eventoMultiple = document.getElementById("evento-multiple")
+$eventoMultiple = document.getElementById("evento-multiple"),
+$eventoRemover = document.getElementById("evento-remover")
 // Sin aprentesis porque tienes que clickar ya que sino se autoejecutaria, porque los parenteiss signigfica que en el momento que carge el navegador se va a iniciar,los manejadores en tipos semanticos ene ste caso estan limitados a 1 interaccion, por cada evento solo podemos ponerle 1 funcion
 $eventoSemantico.onclick = holaMundo;
 $eventoSemantico.onclick = function(e){
@@ -26,3 +31,18 @@ $eventoMultiple.addEventListener("click",(e)=>{
     console.log(e.type)
     console.log(e.target)
 })
+
+$eventoMultiple.addEventListener("click",()=> {
+
+    saludar()
+    saludar(`jon`)
+
+})
+// Es mejor hacerla declarada con una constante con arrow function y despues pasarla como valor a nuestro boton
+const removerDobleclick =(e) =>{
+    alert(`removiendo el evento de tipo ${e.type}`)
+    console.log(e)
+    $eventoRemover.removeEventListener("dblclick",removerDobleclick)
+    $eventoRemover.disabled = true;
+}
+$eventoRemover.addEventListener("dblclick",removerDobleclick)
