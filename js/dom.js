@@ -1,48 +1,23 @@
 
 
+const $divsEventos = document.querySelectorAll(".eventos-flujo div")
+console.log($divsEventos)
 
-function holaMundo(){
-    alert("Hola Mundo")
-    console.log(Event)
+// usaremos un forEach para darle un eventlisener a cada una da las cajitas,ahora son 3 pero imaginemonos que son 1000
+function flujoEventos(e){
+    // En este caso this esta dentro de la funcion for Each que esta recorriendo uno de los 3 divs en ese momento entonces ese this hara referencia a ese div que este recorriendo ene se momento
+    console.log(`Hola te saluda ${this.className},el click lo origino ${e.target.className}`)
 }
 
-function saludar (nombre= "desconocido"){
-    alert(`Hola ${nombre} `)
-    console.log(`${Event}`)
-}
-const $eventoSemantico = document.getElementById("evento-semantico"),
-$eventoMultiple = document.getElementById("evento-multiple"),
-$eventoRemover = document.getElementById("evento-remover")
-// Sin aprentesis porque tienes que clickar ya que sino se autoejecutaria, porque los parenteiss signigfica que en el momento que carge el navegador se va a iniciar,los manejadores en tipos semanticos ene ste caso estan limitados a 1 interaccion, por cada evento solo podemos ponerle 1 funcion
-$eventoSemantico.onclick = holaMundo;
-$eventoSemantico.onclick = function(e){
-
-    alert("Hola Mundo manejador de eventos semanticos")
-console.log(e)
-
-}
-// que pasa si tu tienes la neceseidad de dar varias funciones a un mismo elemento para ello usaremos el addEvent lisenner, en el manejador multiple desaparece el onclick y se queda solo en click, recordar solo ponemos la funcion sin los aprentesis ya que estos indican ejecucion inmediata
-$eventoMultiple.addEventListener("click",holaMundo)
-// Con funciion anonima en la parte del lisenner
-$eventoMultiple.addEventListener("click",(e)=>{
-    alert("Hola Mundo Manejador de eventos multiples")
-    console.log(e)
-    // e.type es el tipo  de evento y e.target el objeto que lo origina
-    console.log(e.type)
-    console.log(e.target)
+$divsEventos.forEach(div =>{
+    // addEventListener tiene 3 parametros el tipo de evento, la funcion o e parametro que esta afectado por dicho evento y el tercer parametro es la propagaciond e burbuja de normal esta en false significa que se propaga del mas interno al mas externo, pero si ponemos true es que ira del mas externo al mas interno eso seria con true:
+    // Fase de burbuja: Con false o sin 3 parametro del mas interno al externo
+    // div.addEventListener("click",flujoEventos,false)
+    // Fase de captura del mas exterior al mas interior(la fase de captura en teoria es mejor porque no consume tanta memoria, pero todo esto podemos mejorarlo aun mas si tu delegas los eventos a  elemento padre mas externo y esto tambien va  ayudar a mejorar el rendimiento y uso de memoria )
+    // div.addEventListener("click",flujoEventos,true)
+    div.addEventListener("click",flujoEventos,{
+        captura:false,
+        // Con once:true hace que solo puedas clickar  una vez al evento que solamente se va a ejectuar 1 sola vez
+        once:true
+    })
 })
-
-$eventoMultiple.addEventListener("click",()=> {
-
-    saludar()
-    saludar(`jon`)
-
-})
-// Es mejor hacerla declarada con una constante con arrow function y despues pasarla como valor a nuestro boton
-const removerDobleclick =(e) =>{
-    alert(`removiendo el evento de tipo ${e.type}`)
-    console.log(e)
-    $eventoRemover.removeEventListener("dblclick",removerDobleclick)
-    $eventoRemover.disabled = true;
-}
-$eventoRemover.addEventListener("dblclick",removerDobleclick)
