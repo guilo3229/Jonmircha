@@ -1,25 +1,44 @@
-
-
-// usaremos un forEach para darle un eventlisener a cada una da las cajitas,ahora son 3 pero imaginemonos que son 1000
-function flujoEventos(e){
-    // En este caso this esta dentro de la funcion for Each que esta recorriendo uno de los 3 divs en ese momento entonces ese this hara referencia a ese div que este recorriendo ene se momento
-    console.log(`Hola te saluda ${this},el click lo origino ${e.target.className}`)
-
-    // El stopPropagation() evita la propagacion
-  
-}
-document.addEventListener("click",(e)=>{
-    console.log("click en",e.target)
-    // usaremos los condicionales para decir que  tipo de interacion a que cosa le daremos
-    if(e.target.matches(".eventos-flujo div")){
-        flujoEventos(e)
-    }
-    if(e.target.matches(".eventos-flujo a")){
-    alert("hola soy tu amigo y docente digital... Jonathan Mircha cacas")
-    e.preventDefault()
-    }
+//  El innerwidth es la propiedad que ahce referencia al tamaño del ancho del vewport de neustra ventana y con height pero con altura el inner es lo que se ve en la ventana a mayaor ventana amyor inner el outer es la resolucion de la pantalla en si.
+window.addEventListener("resize", e =>{
+    console.clear()
+    console.log("****** Evento Resize ******")
+    console.log(window.innerWidth)
+    console.log(window.innerHeight)
+    console.log(window.outerWidth)
+    console.log(window.outerHeight)
+    console.log(window.scrollX)
+    console.log(window.scrollY)
+    console.log(e)
 })
 
-// De esta manera ahorramos de crear muchos addevenlisener y tambien hacer las constantes del queryselecto o del adevvent byid en las constantes.
+window.addEventListener("scroll",e=>{
+    console.clear()
+    console.log("****** Evento Scroll ******")
+    // el scroll tanto X como Y podemos ver que es el valor cuando mueves de arriba a la izquierda 
+    console.log(window.scrollX)
+    console.log(window.scrollY)
+    console.log(e)
+    
+})
 
-// Tu no peudes crear un lisenner de algo que todavia no esta en el DOM por eso esta tecnica de la delegacion de eventos a todo el document ayuda bastante
+window.addEventListener("load", e=>{
+   
+    console.log("****** Evento load ******")
+// Te dice la posicion de izquierda a derecha y de arriba abajo de la ventana en valor absoluto osea sumando o restando dependiendo la posicion respecto al punto mas alejado si es 1 pantalla sera igual que inener width y el inner height
+    console.log(window.screenX)
+    console.log(window.screenY)
+    console.log(e)
+
+})
+document.addEventListener("DOMContentLoaded", e =>{
+    // este es mucho mas rapido en ejecutar, esto en grandes medidas peude ayudar y optimizar las cosas y es una mejor practica, es mucha mas eficiente trabajar con el DOMContent Loeaded sobre todo en peticiones asincronas, no esprara a que carguen todas las cosas, el load si que espera mas a que cargue todo, apra iniciar cosas en la web es mucho mejor es DOMContentLoaded.
+    // Como las peticiones asincronas paran el DOM es mejor usar DOMContentLoeaded ya que hasta que no llegan a la respuesta a estas paran el proceso y seria compatible
+    
+    console.log("****** Evento DOMContentLoaded ******")
+
+    console.log(window.screenX)
+    console.log(window.screenY)
+    console.log(e)
+
+
+})
