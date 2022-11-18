@@ -1,44 +1,26 @@
-//  El innerwidth es la propiedad que ahce referencia al tamaño del ancho del vewport de neustra ventana y con height pero con altura el inner es lo que se ve en la ventana a mayaor ventana amyor inner el outer es la resolucion de la pantalla en si.
-window.addEventListener("resize", e =>{
-    console.clear()
-    console.log("****** Evento Resize ******")
-    console.log(window.innerWidth)
-    console.log(window.innerHeight)
-    console.log(window.outerWidth)
-    console.log(window.outerHeight)
-    console.log(window.scrollX)
-    console.log(window.scrollY)
-    console.log(e)
-})
-
-window.addEventListener("scroll",e=>{
-    console.clear()
-    console.log("****** Evento Scroll ******")
-    // el scroll tanto X como Y podemos ver que es el valor cuando mueves de arriba a la izquierda 
-    console.log(window.scrollX)
-    console.log(window.scrollY)
-    console.log(e)
-    
-})
-
-window.addEventListener("load", e=>{
-   
-    console.log("****** Evento load ******")
-// Te dice la posicion de izquierda a derecha y de arriba abajo de la ventana en valor absoluto osea sumando o restando dependiendo la posicion respecto al punto mas alejado si es 1 pantalla sera igual que inener width y el inner height
-    console.log(window.screenX)
-    console.log(window.screenY)
-    console.log(e)
-
-})
-document.addEventListener("DOMContentLoaded", e =>{
-    // este es mucho mas rapido en ejecutar, esto en grandes medidas peude ayudar y optimizar las cosas y es una mejor practica, es mucha mas eficiente trabajar con el DOMContent Loeaded sobre todo en peticiones asincronas, no esprara a que carguen todas las cosas, el load si que espera mas a que cargue todo, apra iniciar cosas en la web es mucho mejor es DOMContentLoaded.
-    // Como las peticiones asincronas paran el DOM es mejor usar DOMContentLoeaded ya que hasta que no llegan a la respuesta a estas paran el proceso y seria compatible
-    
-    console.log("****** Evento DOMContentLoaded ******")
-
-    console.log(window.screenX)
-    console.log(window.screenY)
-    console.log(e)
 
 
-})
+// window.alert("alerta")
+// podemos almacenar la confirmacion y cancelacion en una variable
+// window.confirm("confirmacion")
+// peudes guardar el prompt en una variable
+// window.prompt("aviso")
+// todo lo que cuelga de window se puede poner directamente sin poner el window
+
+
+const $btnAbrir = document.getElementById("abrir-ventana"),
+    $btnCerrar =document.getElementById("cerrar-ventana"),
+    $btnImprimir =document.getElementById("imprimir-ventana")
+
+    let ventana;
+    $btnAbrir.addEventListener("click",e=>{
+       ventana = window.open("https://jonmircha.com")
+    })
+    $btnCerrar.addEventListener("click",e=>{
+        // window.close()
+        ventana.close()
+    })
+    $btnImprimir.addEventListener("click",e=>{
+        // puedes crear una hoja de estilos para imprimir de mejor calidad cuandos e clicke a el boton a la vez tambien se podra gaurdar en pdf aparte de imprimir
+        window.print()
+    })
