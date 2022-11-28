@@ -83,15 +83,18 @@ traslate(0%,-100%)*/
 /* de esquina de abajo a la izqueirda al centro: traslate(-100%,+100%) */
 /* de esquina de arriba a la derecha al centro: traslate(+100%,-100%) */
 /* de esquina de abajo a la derecha al centro: traslate(+100%,+100%) */
-/* opacity podemos hacerlo trasparente  para opacity:0; */
+/* opacity podemos hacerlo trasparente  para opacity:0; pero aunque no se vea se podra clickar e intaractuar mucho cuidado es como que lo vuelves invisible no lo veulves antiaintargetable cudado!! para ello cuando esta panel normal le ponemos visibility hidden y luego coaundo panel tenga is-active le ponemos la visibility visible para que funcione bien */
 opacity:0;
-transition: transform .6s ease,opacity .6s ease;
 
-/* transform: translate(-100%,0%); */
+visibility: hidden;
+transition: transform .6s ease,opacity .6s ease;
+/* 
+transform: translate(-100%,0%); */
 }
 .panel.is-active{
     /* transform:translate(0,0); */
-    opacity:3;
+    opacity:1;
+    visibility: visible;
 }
 
 /* .panel-btn * */
