@@ -20,8 +20,28 @@ d.addEventListener("click",e=>{
 })
 }
 
-export function alarm(){
+export function alarm(sound,btnPlay,btnStop){
+let alarmTempo;
+// no se lo voy a asociar a ninguna nodo del HTML pero nos interesa crear un createEklement tipo audio para acceder ala API del navegador y asi poder reproducir dicho audio
+const $alarm= d.createElement("audio")
+$alarm.src = sound
+d.addEventListener("click",e=>{
+    console.log(alarmTempo)
+    if(e.target.matches(btnPlay)){
+        alarmTempo = setTimeout(() => {
+            $alarm.play()
+        }, 2000);
+        console.log(alarmTempo)
+e.target.disabled=true
+    }
+    if(e.target.matches(btnStop)){
+        clearTimeout(alarmTempo);
+        $alarm.pause();
+$alarm.currentTime =0;
+document.querySelector(btnPlay).disabled = false
+    }
 
+})
 
 }
 
