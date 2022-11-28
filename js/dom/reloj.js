@@ -10,13 +10,13 @@ d.addEventListener("click",e=>{
         }, 1000);
         e.target.disabled= true
     }
-    console.log(clockTempo)
+  
     if(e.target.matches(btnStop)){
-        clearInterval(clockTempo)
+        clearInterSval(clockTempo)
         d.querySelector(clock).innerHTML= null
         document.querySelector(btnPlay).disabled = false
     }
-    console.log(clockTempo)
+    
 })
 }
 
@@ -26,12 +26,12 @@ let alarmTempo;
 const $alarm= d.createElement("audio")
 $alarm.src = sound
 d.addEventListener("click",e=>{
-    console.log(alarmTempo)
+   
     if(e.target.matches(btnPlay)){
         alarmTempo = setTimeout(() => {
             $alarm.play()
         }, 2000);
-        console.log(alarmTempo)
+        
 e.target.disabled=true
     }
     if(e.target.matches(btnStop)){
