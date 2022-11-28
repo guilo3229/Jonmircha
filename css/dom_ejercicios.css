@@ -1,0 +1,134 @@
+/* *****     Reset CSS      ***** */
+
+:root{
+    --main-font:arial;
+    --font-seze:16px;
+    --main-color:#f7df1e;
+    --second-color:#222;
+    --main-modal-color:rgba(247,222,30,0.85);
+    --second-modal-color: rgba(34, 34, 34, 0.85);
+    --container-width:1200px;
+}
+
+html{
+    box-sizing:border-box;
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after{
+    box-sizing: inherit;
+}
+
+body{
+    margin:0;
+    overflow-x:hidden;
+
+}
+img{
+    max-width:100%;
+    height:auto;
+}
+
+
+/* Menu de hamburguesa estilos */
+
+.header{
+    position:sticky;
+    top:0;
+    padding:1rem;
+    background-color: var(--main-color);
+    color:var(--second-color);
+}
+.header h1{
+    margin:0 auto;
+    text-align:center;
+}
+.section{
+    padding: 2rem;
+    padding-top:4rem;
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    max-width: var(--container-width);
+    min-height: 100vh;
+    text-align:center;
+}
+.panel{
+position:fixed;
+/* El z index pone por encima al elemento que tenga mayor numero en este caso el boton simpre visible por ende este debera tener siempre el z-index mayor que los demas */
+z-index:998;
+/* Al poner top,bottom,left y right como 0 estienda dicha propiedad a toda la pantalla */
+top: 0;
+bottom: 0;
+left: 0;
+right:0;
+width: 100%;
+background-color: var(--second-modal-color);
+/* El transform: traslate es para decirle como queiro que se mueva respecto de X e Y */
+/* de arriba al centro: */
+/* traslate(X,Y) si Y es negativa lo posicionas por encima para que salga desde arriba tiene que estar encima: 
+traslate(0%,-100%)*/
+/* desde abajo al centro */
+/* traslate(X,Y) coloca al html por debajo para luego ponerlo en el 0,0 -> traslate(0%,100%) */
+/* desde izquierda al centro: */
+/* traslate(-100%,0) */
+/* desde derecha al centro:
+   traslate(100%,0)
+*/
+/* de esquina arriba a la izquierda al centro: traslate(-100%,-100%) */
+/* de esquina de abajo a la izqueirda al centro: traslate(-100%,+100%) */
+/* de esquina de arriba a la derecha al centro: traslate(+100%,-100%) */
+/* de esquina de abajo a la derecha al centro: traslate(+100%,+100%) */
+/* opacity podemos hacerlo trasparente  para opacity:0; */
+opacity:0;
+transition: transform .6s ease,opacity .6s ease;
+
+/* transform: translate(-100%,0%); */
+}
+.panel.is-active{
+    /* transform:translate(0,0); */
+    opacity:3;
+}
+
+/* .panel-btn * */
+
+.panel-btn{
+    position:fixed;
+    z-index:999;
+    bottom: 1vw;
+    right: 1vw;
+    width:4rem;
+    height: 4rem;
+    border-radius:50%;
+    padding:0;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color: var(--main-color);
+}
+.menu{
+    width:inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+.menu a{
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1,5rem;
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+.menu a:hover{
+    font-weight: bold;
+    color: var(--second-color);
+    background-color: var(--main-modal-color);
+}
