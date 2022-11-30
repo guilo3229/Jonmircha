@@ -188,3 +188,33 @@ color:var(--main-color)
 
 
 }
+/* boton dark mode */
+.darkMode-btn{
+    position: fixed;
+    z-index: 999;
+    bottom: 1vw;
+    /* Es estar a 1 viewport +4,25 rem es decir 4 rem es el menu de hamburguesa de al lado */
+    left:  1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    /* la opcion bold(negrita) para font-weright que como su nombre indica es peso de la fuente se refiere al relleno de la fuente */
+    font-weight: bold;
+    background-color: var(--main-color);
+    color:var(--second-color);
+    cursor:pointer;
+    outline: 0;
+    border: 0;
+    /* esto quiere decir que culaquier modificacion de los estilos desde esta base hacia afuera es de 0,3segundos */
+    transition: all 0.3s ease-out;
+    }
+
+.darkMode-btn:hover{
+    background-color: var(--second-color);
+    color:var(--main-color)
+    }
+.darkMode{
+    background-color: var(--second-color);
+    color: var(--main-color)
+    }

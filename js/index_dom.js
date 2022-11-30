@@ -4,6 +4,7 @@ import { digitalClock,alarm } from "./dom/reloj.js";
 import { moveBall,shortcuts} from "./dom/teclado.js";
 import CuentaRegresiva from "./dom/cuenta_regresiva.js";
 import scrollTopButton from "./dom/boton_scroll.js";
+import boton_darkmode from "./dom/boton_darkmode.js";
 const d = document;
 
 d.addEventListener("DOMContentLoaded",e=>{
@@ -16,11 +17,12 @@ d.addEventListener("DOMContentLoaded",e=>{
     
 
     CuentaRegresiva(
-        "panel-regresivo",
+        "temporizador",
         "nov 29, 2022 22:52:19",
         "Feliz cumpleaños amigo y docente digital🥩"
         )
     scrollTopButton(".scroll-top-btn")
+    boton_darkmode(".darkMode-btn","darkMode")
 })
 
 // Los 3 eventos que tiene el teclado son:
