@@ -3,7 +3,9 @@ import hamburguerMenu from "./dom/menu_hamburguesa.js";
 import { digitalClock,alarm } from "./dom/reloj.js";
 import { moveBall,shortcuts} from "./dom/teclado.js";
 import CuentaRegresiva from "./dom/cuenta_regresiva.js";
+import scrollTopButton from "./dom/boton_scroll.js";
 const d = document;
+
 d.addEventListener("DOMContentLoaded",e=>{
 
 
@@ -18,6 +20,7 @@ d.addEventListener("DOMContentLoaded",e=>{
         "nov 29, 2022 22:52:19",
         "Feliz cumpleaños amigo y docente digital🥩"
         )
+    scrollTopButton(".scroll-top-btn")
 })
 
 // Los 3 eventos que tiene el teclado son:
