@@ -10,19 +10,18 @@ const d = document;
 d.addEventListener("DOMContentLoaded",e=>{
 
 
-    hamburguerMenu(".panel-btn",".panel",".menu a")
     digitalClock("#reloj","#activar-reloj","#desactivar-reloj")
     alarm("assets/startwalking.mp3","#activar-alarma","#desactivar-alarma")
-   
     
-
+    
+    
     CuentaRegresiva(
         "temporizador",
         "nov 29, 2022 22:52:19",
         "Feliz cumpleaños amigo y docente digital🥩"
         )
-    scrollTopButton(".scroll-top-btn")
-    boton_darkmode(".darkMode-btn","darkMode")
+        scrollTopButton(".scroll-top-btn")
+        hamburguerMenu(".panel-btn",".panel",".menu a")
 })
 
 // Los 3 eventos que tiene el teclado son:
@@ -34,3 +33,4 @@ d.addEventListener("keydown", (e)=>{
     moveBall(e,".ball",".stage")
 })
 
+boton_darkmode(".darkMode-btn","darkMode")
