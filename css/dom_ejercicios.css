@@ -215,6 +215,7 @@ color:var(--main-color)
     color:var(--main-color)
     }
 .darkMode{
+    
     background-color: var(--second-color);
     color: var(--main-color)
     }

@@ -1,5 +1,5 @@
 const d = document;
-const ls = localStorage
+const ls = localStorage;
 export default function (btn,darkMode){
     const $themeBtn = d.querySelector(btn),
     // Cuando queramos seleccionar un atributo comillas y luego corchetes con dicho atributo usaremos el All si queremos seleccioanr todos y lo metemos en una variable que se llama $selectors en este caso
