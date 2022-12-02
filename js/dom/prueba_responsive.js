@@ -10,7 +10,8 @@ export default function responsiveTester(form){
             e.preventDefault()
             // alert("formulario enviado")
             // queremos que una vez se preocese el formualrio queremos abrir una ventana , dicha ventana lo guardaremos en una variable ,por jemplo ne nuestra variablee tester qur estaba inicialmente vacia:
-            tester =window.open($form.direccion.value,
+            tester =window.open(
+                $form.direccion.value,
                 "pancho",
                 `innerWidth =${$form.ancho.value}, innerHeight =${$form.alto.value}`)
         }
