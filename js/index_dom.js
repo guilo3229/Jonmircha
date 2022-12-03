@@ -9,6 +9,7 @@ import responsiveMedia from "./dom/objeto_responsive.js";
 import responsiveTester from "./dom/prueba_responsive.js";
 import userDeviceInfo from "./dom/deteccion_dispositivos.js";
 import webCam from "./dom/deteccion_webcam.js";
+import getGeolocation from "./dom/geolicalizacion.js";
 
 const d = document;
 
@@ -43,6 +44,7 @@ d.addEventListener("DOMContentLoaded",e=>{
     responsiveTester("responsive-tester")
     userDeviceInfo("user-device")
     webCam("webcam")
+    getGeolocation("geolocation")
 })
 
 // Los 3 eventos que tiene el teclado son:
