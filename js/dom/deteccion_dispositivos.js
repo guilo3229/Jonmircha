@@ -44,9 +44,7 @@ export default function userDeviceInfo(id){
 
     };
     
-    console.log(isMobile.any())
-    console.log(isDesktop.any())
-    console.log(isMobile.any())
+  
     $id.innerHTML =   `
     <ul>
     <li>User Agent<b>${ua} </b></li>
@@ -69,8 +67,8 @@ if(isBrowser.firefox()){
     <mark>Este contenido solo se ve en firefox</mark>
 </p>`;
 }
-if(isMobile.android())
-{
-    window.location.href="https://jonmircha.com"
-}
+// if(isMobile.android())
+// {
+//     window.location.href="https://jonmircha.com"
+// }
 }

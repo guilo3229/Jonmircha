@@ -8,6 +8,8 @@ import boton_darkmode from "./dom/boton_darkmode.js";
 import responsiveMedia from "./dom/objeto_responsive.js";
 import responsiveTester from "./dom/prueba_responsive.js";
 import userDeviceInfo from "./dom/deteccion_dispositivos.js";
+import webCam from "./dom/deteccion_webcam.js";
+
 const d = document;
 
 d.addEventListener("DOMContentLoaded",e=>{
@@ -40,6 +42,7 @@ d.addEventListener("DOMContentLoaded",e=>{
         )
     responsiveTester("responsive-tester")
     userDeviceInfo("user-device")
+    webCam("webcam")
 })
 
 // Los 3 eventos que tiene el teclado son:
@@ -52,3 +55,4 @@ d.addEventListener("keydown", (e)=>{
 })
 
 boton_darkmode(".darkMode-btn","darkMode")
+// KLa funcion deteccion de red no necesita cargarse cuando se carga el documento por lo tanto no hace falta que este dentro de una ddeventlisener con DOMcontent Loaded
