@@ -221,3 +221,38 @@ color:var(--main-color)
     color: var(--main-color)
     }
     /* Network Status */
+
+
+
+
+
+
+
+
+    /* SearchFilter */
+
+    .cards{
+        display:grid;
+        
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    }
+    .card{
+        background-color: var(--second-color);
+        color: var(--main-color);
+        transition: all 0.3s ease-out;
+    }
+    .card img {
+        width:100%;
+        height: auto;
+    }
+    .card figcaption{
+        padding:1rem;
+    }
+    .filter{
+        /* el display none no es animable  por eso podemos buscar alternativas mejores: */
+        /* display: none; */
+        visibility:hidden;
+        opacity:0;
+        /* pero el problema que las oculta y el espacio quedan en sus sitios y no se reorganizan,para solucionar esto cuando trabajamos con display grid podemos: usar la propiedad order,esto significa que todas las tarjetas que se oculten se van al final y las otras se reordenan, pero el tamaño de las tarjetas se ahcian mas grandes cuando quedaban solas con visibility ,opacity y order (en este caso) hace que el tamaño de dichas fotos no se modifiquen como cuando usamos solo dispaly:none; */
+        order:1;
+    }
