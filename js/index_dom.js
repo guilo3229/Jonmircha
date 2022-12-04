@@ -11,6 +11,7 @@ import userDeviceInfo from "./dom/deteccion_dispositivos.js";
 import webCam from "./dom/deteccion_webcam.js";
 import getGeolocation from "./dom/geolicalizacion.js";
 import searchFilters from "./dom/filtro_busquedas.js";
+import draw from "./dom/sorteo.js";
 
 
 const d = document;
@@ -48,6 +49,7 @@ d.addEventListener("DOMContentLoaded",e=>{
     webCam("webcam")
     getGeolocation("geolocation")
     searchFilters(".card-filter",".card")
+    draw("#winner-btn",".player")
 })
 
 // Los 3 eventos que tiene el teclado son:
