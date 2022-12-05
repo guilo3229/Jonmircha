@@ -38,6 +38,7 @@ img{
 
 .header{
     position:sticky;
+    z-index: 997;
     top:0;
     padding:1rem;
     background-color: var(--main-color);
@@ -256,3 +257,65 @@ color:var(--main-color)
         /* pero el problema que las oculta y el espacio quedan en sus sitios y no se reorganizan,para solucionar esto cuando trabajamos con display grid podemos: usar la propiedad order,esto significa que todas las tarjetas que se oculten se van al final y las otras se reordenan, pero el tamaño de las tarjetas se ahcian mas grandes cuando quedaban solas con visibility ,opacity y order (en este caso) hace que el tamaño de dichas fotos no se modifiquen como cuando usamos solo dispaly:none; */
         order:1;
     }
+
+    /* responsive slider */
+.slider{
+    position:relative;
+    border:thin solid black;
+    width:100%;
+    margin:1rem auto;
+    text-align: center;
+} 
+.slider-slides{
+position: relative;
+height: 400px;
+} 
+.slider-slide{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    opacity:0;
+    visibility: hidden;
+    transition:opacity 1s ease;
+} 
+.slider-slide img{
+    height: inherit;
+    width: inherit;
+    /* cuando ponemos cover se adapta al ancho del contenedor aunque no lo ocupe toda */
+    object-fit:cover;
+    /* con object position por defecto es 50 % 50% es por defecto el primero es X y el segundo es Y */
+    object-position: 50% 0%;
+}
+.slider-slide.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.slider-btns{
+    position:absolute;
+    width: 100%;
+    top:50%;
+    display:flex;
+    /* space-between -->el espacio sobrante lo reparta entre los elementos, hay que ponerle el width:100% para que ocupe todo */
+    justify-content: space-between;
+    /* font size tamaño de la letra o signos que ocupa */
+    font-size: 3rem;
+    /* bold es la negrita */
+    font-weight: bold;
+}
+.slider a{
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border:thin solid #000;
+    text-decoration:none;
+    background-color: #fff;
+    color:#000;
+    transition: all 0.3s ease;
+}
+.slider a:hover{
+    color:#4d4d4d;
+}

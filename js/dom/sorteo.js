@@ -34,7 +34,7 @@ export default function draw(btn,selector){
 
     };
 // aqui esta el de facebook
-    getWinnerComment(".x1n2onr6 span a span span")
+    // getWinnerComment(".x1n2onr6 span a span span")
 
 
 }
