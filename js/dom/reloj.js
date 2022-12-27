@@ -12,7 +12,7 @@ d.addEventListener("click",e=>{
     }
   
     if(e.target.matches(btnStop)){
-        clearInterSval(clockTempo)
+        clearInterval(clockTempo)
         d.querySelector(clock).innerHTML= null
         document.querySelector(btnPlay).disabled = false
     }
