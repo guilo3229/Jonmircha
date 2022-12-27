@@ -10,15 +10,16 @@ export default function smartVideo(){
         entries.forEach(entry =>{
             if(entry.isIntersecting){
             entry.target.play()
+            
             }else{
                 entry.target.pause()
             }
-            w.addEventListener("visibilitychange",(e)=>d.visibilityState === "visible"
+            w.addEventListener("visibilitychange",(e)=>(d.visibilityState === "visible" & entry.isIntersecting)
             ?entry.target.play()
             :entry.target.pause()
             )
         })
     }
-    const observer = new IntersectionObserver(cb,{treshold:[0.5,0.75]})
+    const observer = new IntersectionObserver(cb,{treshold:0.5})
     $videos.forEach(el =>observer.observe(el))
 }
