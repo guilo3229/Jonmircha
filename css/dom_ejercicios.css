@@ -1,466 +1,436 @@
 /* *****     Reset CSS      ***** */
 
-:root{
-    --main-font:arial;
-    --font-seze:16px;
-    --main-color:#f7df1e;
-    --second-color:#222;
-    --main-modal-color:rgba(247,222,30,0.85);
-    --second-modal-color: rgba(34, 34, 34, 0.85);
-    --container-width:1200px;
+:root {
+  --main-font: arial;
+  --font-seze: 16px;
+  --main-color: #f7df1e;
+  --second-color: #222;
+  --main-modal-color: rgba(247, 222, 30, 0.85);
+  --second-modal-color: rgba(34, 34, 34, 0.85);
+  --container-width: 1200px;
 }
 
-html{
-    box-sizing:border-box;
-    font-family: var(--main-font);
-    font-size: var(--font-size);
-    scroll-behavior: smooth;
+html {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
 }
 
 *,
 *:before,
-*:after{
-    box-sizing: inherit;
+*:after {
+  box-sizing: inherit;
 }
 
-body{
-    margin:0;
-    overflow-x:hidden;
-
+body {
+  margin: 0;
+  overflow-x: hidden;
 }
-img{
-    max-width:100%;
-    height:auto;
+img {
+  max-width: 100%;
+  height: auto;
 }
-
 
 /* Menu de hamburguesa estilos */
 
-.header{
-    position:sticky;
-    z-index: 997;
-    top:0;
-    padding:1rem;
-    background-color: var(--main-color);
-    color:var(--second-color);
+.header {
+  position: sticky;
+  z-index: 997;
+  top: 0;
+  padding: 1rem;
+  background-color: var(--main-color);
+  color: var(--second-color);
 }
-.header h1{
-    margin:0 auto;
-    text-align:center;
+.header h1 {
+  margin: 0 auto;
+  text-align: center;
 }
-.section{
-    padding: 2rem;
-    padding-top:4rem;
-    margin-left:auto;
-    margin-right:auto;
-    width:100%;
-    max-width: var(--container-width);
-    min-height: 100vh;
-    text-align:center;
+.section {
+  padding: 2rem;
+  padding-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: var(--container-width);
+  min-height: 100vh;
+  text-align: center;
 }
-.panel{
-position:fixed;
-/* El z index pone por encima al elemento que tenga mayor numero en este caso el boton simpre visible por ende este debera tener siempre el z-index mayor que los demas */
-z-index:998;
-/* Al poner top,bottom,left y right como 0 estienda dicha propiedad a toda la pantalla */
-top: 0;
-bottom: 0;
-left: 0;
-right:0;
-width: 100%;
-overflow-y: auto;
-background-color: var(--second-modal-color);
-/* El transform: traslate es para decirle como queiro que se mueva respecto de X e Y */
-/* de arriba al centro: */
-/* traslate(X,Y) si Y es negativa lo posicionas por encima para que salga desde arriba tiene que estar encima: 
+.panel {
+  position: fixed;
+  /* El z index pone por encima al elemento que tenga mayor numero en este caso el boton simpre visible por ende este debera tener siempre el z-index mayor que los demas */
+  z-index: 998;
+  /* Al poner top,bottom,left y right como 0 estienda dicha propiedad a toda la pantalla */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow-y: auto;
+  background-color: var(--second-modal-color);
+  /* El transform: traslate es para decirle como queiro que se mueva respecto de X e Y */
+  /* de arriba al centro: */
+  /* traslate(X,Y) si Y es negativa lo posicionas por encima para que salga desde arriba tiene que estar encima: 
 traslate(0%,-100%)*/
-/* desde abajo al centro */
-/* traslate(X,Y) coloca al html por debajo para luego ponerlo en el 0,0 -> traslate(0%,100%) */
-/* desde izquierda al centro: */
-/* traslate(-100%,0) */
-/* desde derecha al centro:
+  /* desde abajo al centro */
+  /* traslate(X,Y) coloca al html por debajo para luego ponerlo en el 0,0 -> traslate(0%,100%) */
+  /* desde izquierda al centro: */
+  /* traslate(-100%,0) */
+  /* desde derecha al centro:
    traslate(100%,0)
 */
-/* de esquina arriba a la izquierda al centro: traslate(-100%,-100%) */
-/* de esquina de abajo a la izqueirda al centro: traslate(-100%,+100%) */
-/* de esquina de arriba a la derecha al centro: traslate(+100%,-100%) */
-/* de esquina de abajo a la derecha al centro: traslate(+100%,+100%) */
-/* opacity podemos hacerlo trasparente  para opacity:0; pero aunque no se vea se podra clickar e intaractuar mucho cuidado es como que lo vuelves invisible no lo veulves antiaintargetable cudado!! para ello cuando esta panel normal le ponemos visibility hidden y luego coaundo panel tenga is-active le ponemos la visibility visible para que funcione bien */
-opacity:0;
+  /* de esquina arriba a la izquierda al centro: traslate(-100%,-100%) */
+  /* de esquina de abajo a la izqueirda al centro: traslate(-100%,+100%) */
+  /* de esquina de arriba a la derecha al centro: traslate(+100%,-100%) */
+  /* de esquina de abajo a la derecha al centro: traslate(+100%,+100%) */
+  /* opacity podemos hacerlo trasparente  para opacity:0; pero aunque no se vea se podra clickar e intaractuar mucho cuidado es como que lo vuelves invisible no lo veulves antiaintargetable cudado!! para ello cuando esta panel normal le ponemos visibility hidden y luego coaundo panel tenga is-active le ponemos la visibility visible para que funcione bien */
+  opacity: 0;
 
-visibility: hidden;
-transition: transform .6s ease,opacity .6s ease;
-/* 
+  visibility: hidden;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  /* 
 transform: translate(-100%,0%); */
 }
-.panel.is-active{
-    /* transform:translate(0,0); */
-    opacity:1;
-    visibility: visible;
+.panel.is-active {
+  /* transform:translate(0,0); */
+  opacity: 1;
+  visibility: visible;
 }
 
 /* .panel-btn * */
 
-.panel-btn{
-    position:fixed;
-    z-index:999;
-    bottom: 1vw;
-    right: 10px;
-    width:4rem;
-    height: 4rem;
-    border-radius:50%;
-    padding:0;
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    background-color: var(--main-color);
+.panel-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vw;
+  right: 10px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
 }
 
-
-
-.menu{
-    width:inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
+.menu {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
 }
-.menu a{
-    padding: 2rem;
-    width: inherit;
-    display: block;
-    font-size: 1,5rem;
-    text-decoration: none;
-    color: var(--main-color);
-    transition: all 0.3s ease;
+.menu a {
+  padding: 2rem;
+  width: inherit;
+  display: block;
+  font-size: 1, 5rem;
+  text-decoration: none;
+  color: var(--main-color);
+  transition: all 0.3s ease;
 }
-.menu a:hover{
-    font-weight: bold;
-    color: var(--second-color);
-    background-color: var(--main-modal-color);
+.menu a:hover {
+  font-weight: bold;
+  color: var(--second-color);
+  background-color: var(--main-modal-color);
 }
 /* Eventos del teclado */
-.stage{
-
-display:flex;
-min-height:50vh;
-background-color: var(--second-color);
-
+.stage {
+  display: flex;
+  min-height: 50vh;
+  background-color: var(--second-color);
 }
-.ball{
-margin:auto;
-width: 4rem;
-height: 4rem;
-border-radius:500%;
-background-color:var(--main-color);
+.ball {
+  margin: auto;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 500%;
+  background-color: var(--main-color);
 }
 
 /* Scroll top button */
-.scroll-top-btn{
-position: fixed;
-z-index: 999;
-bottom: 1vw;
-/* Es estar a 1 viewport +4,25 rem es decir 4 rem es el menu de hamburguesa de al lado */
-right: calc(4.25rem + 1vw);
-width: 4rem;
-height: 4rem;
-border-radius: 50%;
-font-size: 2rem;
-/* la opcion bold(negrita) para font-weright que como su nombre indica es peso de la fuente se refiere al relleno de la fuente */
-font-weight: bold;
-background-color: var(--main-color);
-color:var(--second-color);
-cursor:pointer;
-outline: 0;
-border: 0;
-/* esto quiere decir que culaquier modificacion de los estilos desde esta base hacia afuera es de 0,3segundos */
-transition: all 0.3s ease-out;
+.scroll-top-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vw;
+  /* Es estar a 1 viewport +4,25 rem es decir 4 rem es el menu de hamburguesa de al lado */
+  right: calc(4.25rem + 1vw);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  /* la opcion bold(negrita) para font-weright que como su nombre indica es peso de la fuente se refiere al relleno de la fuente */
+  font-weight: bold;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  /* esto quiere decir que culaquier modificacion de los estilos desde esta base hacia afuera es de 0,3segundos */
+  transition: all 0.3s ease-out;
 }
 /* estado hover significa cuando pasamos por encima el cursor */
-.scroll-top-btn:hover{
-background-color: var(--second-color);
-color:var(--main-color)
-
+.scroll-top-btn:hover {
+  background-color: var(--second-color);
+  color: var(--main-color);
 }
 
-.hidden{
-    visibility: hidden;
-    opacity:0;
-
-
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 /* boton dark mode */
-.darkMode-btn{
-    position: fixed;
-    z-index: 999;
-    bottom: 1vw;
-    /* Es estar a 1 viewport +4,25 rem es decir 4 rem es el menu de hamburguesa de al lado */
-    left:  1vw;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    font-size: 2rem;
-    /* la opcion bold(negrita) para font-weright que como su nombre indica es peso de la fuente se refiere al relleno de la fuente */
-    font-weight: bold;
-    background-color: var(--main-color);
-    color:var(--second-color);
-    cursor:pointer;
-    outline: 0;
-    border: 0;
-    /* esto quiere decir que culaquier modificacion de los estilos desde esta base hacia afuera es de 0,3segundos */
-    transition: all 0.3s ease-out;
-    }
-
-.darkMode-btn:hover{
-    background-color: var(--second-color);
-    color:var(--main-color)
-    }
-.darkMode{
-    
-    background-color: var(--second-color);
-    color: var(--main-color)
-    }
-    /* Network Status */
-
-
-
-
-
-
-
-
-    /* SearchFilter */
-
-    .cards{
-        display:grid;
-        
-        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    }
-    .card{
-        background-color: var(--second-color);
-        color: var(--main-color);
-        transition: all 0.3s ease-out;
-    }
-    .card img {
-        width:100%;
-        height: auto;
-    }
-    .card figcaption{
-        padding:1rem;
-    }
-    .filter{
-        /* el display none no es animable  por eso podemos buscar alternativas mejores: */
-        /* display: none; */
-        visibility:hidden;
-        opacity:0;
-        /* pero el problema que las oculta y el espacio quedan en sus sitios y no se reorganizan,para solucionar esto cuando trabajamos con display grid podemos: usar la propiedad order,esto significa que todas las tarjetas que se oculten se van al final y las otras se reordenan, pero el tamaño de las tarjetas se ahcian mas grandes cuando quedaban solas con visibility ,opacity y order (en este caso) hace que el tamaño de dichas fotos no se modifiquen como cuando usamos solo dispaly:none; */
-        order:1;
-    }
-
-    /* responsive slider */
-.slider{
-    position:relative;
-    border:thin solid black;
-    width:100%;
-    margin:1rem auto;
-    text-align: center;
-} 
-.slider-slides{
-position: relative;
-height: 400px;
-} 
-.slider-slide{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height: 100%;
-    opacity:0;
-    visibility: hidden;
-    transition:opacity 1s ease;
-} 
-.slider-slide img{
-    height: inherit;
-    width: inherit;
-    /* cuando ponemos cover se adapta al ancho del contenedor aunque no lo ocupe toda */
-    object-fit:cover;
-    /* con object position por defecto es 50 % 50% es por defecto el primero es X y el segundo es Y */
-    object-position: 50% 0%;
-}
-.slider-slide.active{
-    opacity:1;
-    visibility:visible;
+.darkMode-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vw;
+  /* Es estar a 1 viewport +4,25 rem es decir 4 rem es el menu de hamburguesa de al lado */
+  left: 1vw;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  /* la opcion bold(negrita) para font-weright que como su nombre indica es peso de la fuente se refiere al relleno de la fuente */
+  font-weight: bold;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  /* esto quiere decir que culaquier modificacion de los estilos desde esta base hacia afuera es de 0,3segundos */
+  transition: all 0.3s ease-out;
 }
 
-.slider-btns{
-    position:absolute;
-    width: 100%;
-    top:50%;
-    display:flex;
-    /* space-between -->el espacio sobrante lo reparta entre los elementos, hay que ponerle el width:100% para que ocupe todo */
-    justify-content: space-between;
-    /* font size tamaño de la letra o signos que ocupa */
-    font-size: 3rem;
-    /* bold es la negrita */
-    font-weight: bold;
+.darkMode-btn:hover {
+  background-color: var(--second-color);
+  color: var(--main-color);
 }
-.slider a{
-    display: block;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    border:thin solid #000;
-    text-decoration:none;
-    background-color: #fff;
-    color:#000;
-    transition: all 0.3s ease;
+.darkMode {
+  background-color: var(--second-color);
+  color: var(--main-color);
 }
-.slider a:hover{
-    color:#4d4d4d;
+/* Network Status */
+
+/* SearchFilter */
+
+.cards {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.card {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  transition: all 0.3s ease-out;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+.card figcaption {
+  padding: 1rem;
+}
+.filter {
+  /* el display none no es animable  por eso podemos buscar alternativas mejores: */
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  /* pero el problema que las oculta y el espacio quedan en sus sitios y no se reorganizan,para solucionar esto cuando trabajamos con display grid podemos: usar la propiedad order,esto significa que todas las tarjetas que se oculten se van al final y las otras se reordenan, pero el tamaño de las tarjetas se ahcian mas grandes cuando quedaban solas con visibility ,opacity y order (en este caso) hace que el tamaño de dichas fotos no se modifiquen como cuando usamos solo dispaly:none; */
+  order: 1;
 }
 
+/* responsive slider */
+.slider {
+  position: relative;
+  border: thin solid black;
+  width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+}
+.slider-slides {
+  position: relative;
+  height: 400px;
+}
+.slider-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+.slider-slide img {
+  height: inherit;
+  width: inherit;
+  /* cuando ponemos cover se adapta al ancho del contenedor aunque no lo ocupe toda */
+  object-fit: cover;
+  /* con object position por defecto es 50 % 50% es por defecto el primero es X y el segundo es Y */
+  object-position: 50% 0%;
+}
+.slider-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
 
+.slider-btns {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  /* space-between -->el espacio sobrante lo reparta entre los elementos, hay que ponerle el width:100% para que ocupe todo */
+  justify-content: space-between;
+  /* font size tamaño de la letra o signos que ocupa */
+  font-size: 3rem;
+  /* bold es la negrita */
+  font-weight: bold;
+}
+.slider a {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: thin solid #000;
+  text-decoration: none;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+}
+.slider a:hover {
+  color: #4d4d4d;
+}
 
 /* Scroll Spy */
 
-@media screen and (min-width: 1024px){
-    body {
-        
-        display:grid;
-        /* display: block; */
-        grid-template-columns: 80% 20%;
-        /* 4rem porque es el tamaño de mi cabecera */
-        grid-template-rows: 4rem auto;
-        grid-template-areas:
-        "header  header"
-        "main panel";
-        
-    }
+@media screen and (min-width: 1024px) {
+  body {
+    display: grid;
+    /* display: block; */
+    grid-template-columns: 80% 20%;
+    /* 4rem porque es el tamaño de mi cabecera */
+    grid-template-rows: 4rem auto;
+    grid-template-areas:
+      "header  header"
+      "main panel";
+  }
 
-    main{
-        
-        grid-area: main;
-   
-    }
-    .header{
-        grid-area:header;
-    }
-    .panel{
-        grid-area: panel;
-        /* para que se alinee siempre cuando bajas eso es con align self */
-        align-self: start;
-        position: sticky;
-        top:4rem;
-        justify-content: flex-start;
-        background-color: var(--second-color);
-        transform: translate(0,0);
-        opacity: 1;
-        visibility: visible;
-    }
-    .panel-btn{
-        display:none;
-    }
-    .menu{
-        justify-content: start;
-        text-align: right;
-    }
-    .menu a{
-        font-size: 1rem;
-        padding: .75rem;
-    }
-    .menu a:hover,
-    .menu a.active{
-        color:var(--second-color);
-        background-color: var(--main-color);
-    }
-    .scroll-top-btn{
-        right:initial;
-        left:calc(4.25rem + 1vw)
-    }
+  main {
+    grid-area: main;
+  }
+  .header {
+    grid-area: header;
+  }
+  .panel {
+    grid-area: panel;
+    /* para que se alinee siempre cuando bajas eso es con align self */
+    align-self: start;
+    position: sticky;
+    top: 4rem;
+    justify-content: flex-start;
+    background-color: var(--second-color);
+    transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .panel-btn {
+    display: none;
+  }
+  .menu {
+    justify-content: start;
+    text-align: right;
+  }
+  .menu a {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+  .menu a:hover,
+  .menu a.active {
+    color: var(--second-color);
+    background-color: var(--main-color);
+  }
+  .scroll-top-btn {
+    right: initial;
+    left: calc(4.25rem + 1vw);
+  }
 }
 
 /*  valdiacion de formulario 1 */
 
-
-.contact-form{
---form-ok-color:#4caf50;
---form-error-color:#f44336;
-margin-left: auto;
-margin-right: auto;
-width: 80%; 
-
+.contact-form {
+  --form-ok-color: #4caf50;
+  --form-error-color: #f44336;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
-.contact-form> *{
-    /* el menor que significa a los hijos y el asterisco significa a todoso */
-    padding: 0.5rem;
-    margin: 1rem auto;
-    display: block;
-    width: 100%;
+.contact-form > * {
+  /* el menor que significa a los hijos y el asterisco significa a todoso */
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 100%;
 }
 .contact-form textarea {
- resize:none;
- /* el resice:none del text area sirve apra que no se pueda modificar el recuadro del text area */
+  resize: none;
+  /* el resice:none del text area sirve apra que no se pueda modificar el recuadro del text area */
 }
 
 .contact-form legend,
-.contact-form-response{
-    font-size:1.5rem;
-    font-weight: bold;
-    text-align: center;
-
+.contact-form-response {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 }
 .contact-form input,
-.contact-form-textarea{
-    font-size: 1rem;
-    font-family:sans-serif;
-    
+.contact-form-textarea {
+  font-size: 1rem;
+  font-family: sans-serif;
 }
-.contact-form input[type="submit"]{
-    width: 50%;
-    font-weight:bold;
-    cursor:pointer;
-
+.contact-form input[type="submit"] {
+  width: 50%;
+  font-weight: bold;
+  cursor: pointer;
 }
-.contact-form *::placeholder{
-/* esto quiere decir que a todos los elementos que tengan el atributo place holder por lo del asterisco con dobles puntos dobles */
-    color:#000;
+.contact-form *::placeholder {
+  /* esto quiere decir que a todos los elementos que tengan el atributo place holder por lo del asterisco con dobles puntos dobles */
+  color: #000;
 }
 .contact-form [required]:valid {
-    /* Un espacio hace que funcione sin el espacioe ntre el valid y los corchetes no va */
-    /* esto quiere decir que en los hijos del contact form que tengan el atributo required y sea valido le pondra el border delc olor de abajo */
-    border: thin solid var(--form-ok-color)
+  /* Un espacio hace que funcione sin el espacioe ntre el valid y los corchetes no va */
+  /* esto quiere decir que en los hijos del contact form que tengan el atributo required y sea valido le pondra el border delc olor de abajo */
+  border: thin solid var(--form-ok-color);
 }
 .contact-form [required]:invalid {
-    border: thin solid var(--form-error-color) ;
+  border: thin solid var(--form-error-color);
 }
-.contact-form-error{
-    margin-top: -1rem;
-    font-size:80%;
-    background-color:var(--form-error-color);
-    color:#fff;
-    transition: all 800ms ease;
+.contact-form-error {
+  margin-top: -1rem;
+  font-size: 80%;
+  background-color: var(--form-error-color);
+  color: #fff;
+  transition: all 800ms ease;
+}
+.contact-form-error.is-active {
+  display: block;
+  /* crearemos la animacion show-message en javscript que va durar 1 segundo se ejecutara 1 vez de forma normzal que no va a tener retardo que su efecto de animacion va a ser ease-out y both significa que va a conservar los estilos con los que la animacion termine(se puede revisar la documentacion la propiedad animation o en el curso de animacion web en el capitulo 11) */
+  animation: show-message 1s 2 normal 0s ease-out both;
+}
+.none {
+  /* le asignamos a la clase none el display none  es decir antes solo estaba con el nombre */
+  display: none;
+}
+@keyframes show-message {
+  /* le esta diciendo que empiceen 0% y termine en 100% nuestra funcion */
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
 
-}
-.contact-form-error.is-active{
-    display:block;
-    /* crearemos la animacion show-message en javscript que va durar 1 segundo se ejecutara 1 vez de forma normzal que no va a tener retardo que su efecto de animacion va a ser ease-out y both significa que va a conservar los estilos con los que la animacion termine(se puede revisar la documentacion la propiedad animation o en el curso de animacion web en el capitulo 11) */
-    animation:show-message 1s 2 normal 0s ease-out both;
-}
-.none{
-    /* le asignamos a la clase none el display none  es decir antes solo estaba con el nombre */
-    display:none;
-}
-@keyframes show-message{
-    /* le esta diciendo que empiceen 0% y termine en 100% nuestra funcion */
-    0% {
-        visibility:hidden;
-        opacity:0;
-
-    }
-
-    100%{
-        visibility:visible;
-        opacity:1;
-    }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }
