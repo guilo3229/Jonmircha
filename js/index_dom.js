@@ -16,6 +16,7 @@ import slider from "./dom/carrusel.js";
 import scrollSpy from "./dom/scroll_espia.js";
 import smartVideo from "./dom/video_inteligente.js";
 import contactFormValidations from "./dom/validaciones_formulario.js";
+import speechReader from "./dom/narrador.js";
 
 
 const d = document;
@@ -70,4 +71,5 @@ d.addEventListener("keydown", (e)=>{
 })
 
 boton_darkmode(".darkMode-btn","darkMode")
+speechReader()
 // KLa funcion deteccion de red no necesita cargarse cuando se carga el documento por lo tanto no hace falta que este dentro de una ddeventlisener con DOMcontent Loaded

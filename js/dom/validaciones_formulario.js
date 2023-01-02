@@ -5,7 +5,7 @@ export default function contactFormValidations(){
     const $form = d.querySelector(".contact-form"),
 
     $inputs = d.querySelectorAll(".contact-form [required]")
-    console.log($inputs)
+    // console.log($inputs)
 
     $inputs.forEach(input =>{
         const $span = d.createElement("span")
@@ -26,7 +26,7 @@ export default function contactFormValidations(){
             // console.log($input, pattern)
             if(pattern && $input.value !==""){
                 // El && $input.value !=="" sirve para que hasta que no sea dierente a vacaio el texto no aparezca el aviso
-                console.log("El input tiene patrón")
+                
                 let regex = new RegExp(pattern)
                 return !regex.exec($input.value)
                 // Se podria hacer quitando y poniendo none a cada uno pero como en el css tenemos una animacion para la clase is-active para que quede chulo usaremos esta
