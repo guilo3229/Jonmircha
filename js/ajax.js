@@ -120,6 +120,7 @@ async function getData(){
 
 
     axios.get("https://jsonplaceholder.typicode.com/users")
+    // funciona tambien con archivos Json locales:    axios.get("assets/users.JSON")
     .then(res => {
        let json = res.data
         json.forEach(el =>{
@@ -128,18 +129,53 @@ async function getData(){
             $fragment.appendChild($li)
         })
         $axios.appendChild($fragment)
-        console.log(res)
+        // console.log(res)
     })
     .catch(err=>{
         // axios ya me crea una objeto personalizadon con el .response que te mete en su claae response y desde ahi es mas facil despues se simplifica un poco
-        console.log("Estamos en el Catch", err.response)
+        // console.log("Estamos en el Catch", err.response)
      
         let message = err.response.statusText || "Ocurrio un error";
         $axios.innerHTML = `Error ${err.response.status}: ${message} `
     })
     .finally(()=>{
-        console.log("Esto se ejecutara independientemente del resultado de Axios")
+        // console.log("Esto se ejecutara independientemente del resultado de Axios")
     });
+
+
+})();
+
+(()=>{
+    const $axiosAsync = document.getElementById("axios-async"),
+    $fragment = document.createDocumentFragment();
+
+
+    axios.get("https://jsonplaceholder.typicode.com/users");
+
+    async function getData(){
+        try{
+            let res = await axios.get("https://jsonplaceholder.typicode.com/users"),
+            // no ahce falta convertir la repsuesta a json o texto ya que vuelve en objeto con una  propiedad que es la data con el array de lo que queremos
+            json = await res.data
+          console.log(res,json)
+            json.forEach(el =>{
+                const $li =document.createElement("li")
+                $li.innerHTML =`${el.name} -- ${el.email} -- ${el.phone} `
+                $fragment.appendChild($li)
+            })
+            $axiosAsync.appendChild($fragment)
+            console.log(res,json)
+        }catch(err){
+            console.log(err.response)
+            let message = err.response.statusText || "Ocurrio un error";
+            $axiosAsync.innerHTML = `Error ${err.response.status}: ${message} `
+        }finally{
+            console.log("Esto se ejecutará independientemente del try... catch")
+        }
+
+    }
+    getData()
+
 
 
 })()
