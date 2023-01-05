@@ -86,9 +86,9 @@
 async function getData(){
     try{
         
-        let res = await fetch("https://jsonplaceholder.typicode.com/user"),
+        let res = await fetch("https://jsonplaceholder.typicode.com/users"),
         json = await res.json();
-        console.log(res, json);
+        // console.log(res, json);
         // el throw es un return que envia el flujo de la programacion al catch, el error no puede mandar objetos solo texto
         // if(!res.ok)throw new Error("Ocurrio un Error al solicitar los DAtos")
         // Por ello podemos hacer un objeto que marque los errores:
@@ -105,7 +105,7 @@ async function getData(){
         let message = err.statusText || "Ocurrio un error";
         $fetchAsync.innerHTML = `Error ${err.status}: ${message} `
     }finally{
-        console.log("esto se ejecutara independientemente del try-catch")
+        // console.log("esto se ejecutara independientemente del try-catch")
     }
     // fetch("https://jsonplaceholder.typicode.com/users")
     
@@ -113,3 +113,33 @@ async function getData(){
 }
     getData();
 })();
+
+(()=>{
+    const $axios = document.getElementById("axios"),
+    $fragment = document.createDocumentFragment();
+
+
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(res => {
+       let json = res.data
+        json.forEach(el =>{
+            const $li =document.createElement("li")
+            $li.innerHTML =`${el.name} -- ${el.email} -- ${el.phone} `
+            $fragment.appendChild($li)
+        })
+        $axios.appendChild($fragment)
+        console.log(res)
+    })
+    .catch(err=>{
+        // axios ya me crea una objeto personalizadon con el .response que te mete en su claae response y desde ahi es mas facil despues se simplifica un poco
+        console.log("Estamos en el Catch", err.response)
+     
+        let message = err.response.statusText || "Ocurrio un error";
+        $axios.innerHTML = `Error ${err.response.status}: ${message} `
+    })
+    .finally(()=>{
+        console.log("Esto se ejecutara independientemente del resultado de Axios")
+    });
+
+
+})()
