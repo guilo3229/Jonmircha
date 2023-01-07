@@ -3,27 +3,27 @@
     {
       "id": 1,
       "nombre": "Seiya",
-      "constelación": "Pegaso"
+      "constelacion": "Pegaso"
     },
     {
       "id": 2,
       "nombre": "Shiryu",
-      "constelación": "Dragón"
+      "constelacion": "Dragón"
     },
     {
       "id": 3,
       "nombre": "Hyoga",
-      "constelación": "Cisne"
+      "constelacion": "Cisne"
     },
     {
       "id": 4,
       "nombre": "Shun",
-      "constelación": "Andr´meda"
+      "constelacion": "Andr´meda"
     },
     {
       "id": 5,
       "nombre": "Ikki",
-      "constelación": "Fénix"
+      "constelacion": "Fénix"
     }
   ],
   "dioses": [

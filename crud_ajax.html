@@ -17,7 +17,7 @@
                 <input type="text" name="constelacion" placeholder="constelación" required>
                 <br>
                 <input type="submit" value="enviar">
-                <input type="hidden" name="action">
+                <input type="hidden" name="id">
             </form>
         </article>
         <article>
@@ -52,9 +52,72 @@
         $form = d.querySelector(".crud-form"),
         $title = d.querySelector(".crud-title"),
         // En un template lo que me interesa es su continido por eso lo de content
-        $template = d.querySelector(".crud-template").content,
+        $template = d.getElementById("crud-template").content,
         $fragment = d.createDocumentFragment()
+        // hay que validar que este options sea un objeto, ahora mismo no lo haremos pero deberiamos
+        const ajax = (options) =>{
 
+            // haremos una ddestructuracion
+            let{url,method,success,error,data}= options;
+            const xhr = new XMLHttpRequest()
+            
+            xhr.addEventListener("readystatechange", e =>{
+                if(xhr.readyState !== 4)return
+                
+                if(xhr.status>=200 && xhr.status<300){
+                    let json =JSON.parse(xhr.responseText);
+                    success(json)
+                }else{
+                    let message = xhr.statusText || "Ocurrio un error"
+                    error(`Error ${xhr.status}: ${message} `)
+                }
+
+          })
+            
+            
+            xhr.open(method || "GET",url)
+            // Para añadir cabeceras (programa insomnia etc), como esta esperando valore stipo JSON  y no le expecificamos el valor por defecto es texto plano y ahi tendriamos un error y hay que especificar el contenido que vmos a enviar ya que esto es el send, hay que poner al final el charset=utf-8, por ultimo ni nosotros quitamos esta cabecera el JSON server que esta esperando aplication JSON no va a funcionar
+            xhr.setRequestHeader("Content-type","application/json; charset=utf-8")
+            // finalmente vamos a ejeutar el metodo send la data que a a ser un codigo en formato JSON, vamos a necesitar pasarlo a cadena de texto cuando enviamos, ya que pasaremos un objeto de JV a un stringify
+            xhr.send(JSON.stringify(data))
+        }
+    //   Como queremos que cargue la lista al principio usaremos el DOMCONTENTload
+        // podemos usar una funcion expresada o delcarada pero preferibelmente expresada para tener mayor control sobre nuestro codigo y que no se vaya para arriba
+    const getAll = ()=>{
+        ajax({
+            // Al tener el cortocircuito en lo del metodo que si no hay nada es decir sea falso cogera el valor de GET porque esta representado asi en la funcion ajax que hemos creado mas arriba.
+            // method:"GET",
+            url: "http://localhost:5555/santos",
+            success:(res)=>{
+                console.log(res)
+                
+                res.forEach(el =>{
+
+                    $template.querySelector(".name").textContent = el.nombre
+                    $template.querySelector(".constellation").textContent = el.constelacion
+                    $template.querySelector(".edit").dataset.id = el.id
+                    $template.querySelector(".edit").dataset.name = el.nombre
+                    $template.querySelector(".edit").dataset.constellation = el.constelacion
+                    $template.querySelector(".delete").dataset.constellation = el.id
+                    let $clone = d.importNode($template,true)
+                    $fragment.appendChild($clone)
+
+                })
+                $table.querySelector("tbody").appendChild($fragment)
+
+                
+            },
+            error:(err)=>{
+                
+                console.warn(err)
+                $table.insertAdjacentHTML("afterend",`<p><b>${err}</p></b>`)
+            },
+            // Aqui en datapodemos poner null ya que el get va de serie en nuestra funcion ajax
+            // la data en el GET por defecto puede quitarse ya que en la funcion get  la data seria undefined asi que lo mismo te da que te da lo mismo
+            // data:null
+        })
+    }
+        d.addEventListener("DOMContentLoaded", getAll)
     </script>
 </body>
 </html>
