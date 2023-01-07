@@ -98,7 +98,8 @@
                     $template.querySelector(".edit").dataset.id = el.id
                     $template.querySelector(".edit").dataset.name = el.nombre
                     $template.querySelector(".edit").dataset.constellation = el.constelacion
-                    $template.querySelector(".delete").dataset.constellation = el.id
+                    
+                    $template.querySelector(".delete").dataset.id = el.id
                     let $clone = d.importNode($template,true)
                     $fragment.appendChild($clone)
 
@@ -118,6 +119,70 @@
         })
     }
         d.addEventListener("DOMContentLoaded", getAll)
+        d.addEventListener("submit",e=>{
+            if(e.target === $form){
+                // vamos a impedir el funcionamiento por defecto del formulario ya que loresolveremos por AJAX
+                e.preventDefault();
+                // Si existe dicho id actualizaremos sino crearemos post y put
+                if(!e.target.id.value){
+                    //Create POST
+                    ajax({
+                        url: "http://localhost:5555/santos",
+                        method:"POST",
+                        // Aqui tendremos que hacer una recarga de la pagina para que se actualice la informacion, tanto aqui como en el update del PUT
+                        success:(res)=> location.reload(),
+                        error:(err)=> $form.insertAdjacentHTML("afterend",`<p><b>${err}</p></b>`),
+                        data:{
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.constelacion.value
+                        // Json tiene una caracteristica que cuando inserto un nuevo elemento el automaticamente le otorga un id nuevo respecto al ultimo id que habia en orden numerico
+                        }
+
+                    })
+                }else{
+                    //Update PUT
+                    ajax({
+                        url: `http://localhost:5555/santos/${e.target.id.value}`,
+                        method:"PUT",
+            
+                        success:(res)=> location.reload(),
+                        error:(err)=> $form.insertAdjacentHTML("afterend",`<p><b>${err}</p></b>`),
+                        data:{
+                            nombre: e.target.nombre.value,
+                            constelacion: e.target.constelacion.value
+              
+                        }
+
+                    })
+                }
+            }
+        });
+        d.addEventListener("click",e=>{
+            if(e.target.matches(".edit")){
+                $title.textContent= "Editar Santo"
+                $form.nombre.value = e.target.dataset.name
+                $form.constelacion.value = e.target.dataset.constellation
+                $form.id.value = e.target.dataset.id;
+            }
+
+            if(e.target.matches(".delete")){
+              let isDelete =  confirm(`¿Estás seguro de eliminar el id ${e.target.dataset.id} ?`)
+                if(isDelete){
+                    //Delete-DELETE
+                    ajax({
+                        url: `http://localhost:5555/santos/${e.target.dataset.id}`,
+                        method:"DELETE",
+            
+                        success:(res)=> location.reload(),
+                        error:(err)=> alert(err),
+                        
+
+                    })
+                }
+                
+            }
+        })
+
     </script>
 </body>
 </html>
