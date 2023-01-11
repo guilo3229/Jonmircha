@@ -6,8 +6,8 @@
       "id": 1
     },
     {
-      "nombre": "Shiryu",
-      "constelacion": "Dragon",
+      "nombre": "Shiryus",
+      "constelacion": "Dragones",
       "id": 2
     },
     {
@@ -19,6 +19,11 @@
       "id": 4,
       "nombre": "Shun",
       "constelacion": "Andromeda"
+    },
+    {
+      "nombre": "hola1",
+      "constelacion": "hola123",
+      "id": 5
     }
   ],
   "dioses": [

@@ -54,7 +54,7 @@
                // La informacion viene en el body pero es una readableStream, esto hay que convertirlo con el metodo necesario en este caso es json(.json,.text y .block lo podemos verlo en mozilla developer network)
         // console.log(res)
        return res.ok
-    //    Aqui le hacemos un operador ternario, esto es porque la promsesa se summple es decir se envia y vuelve pero sin datos pero la accion la hace, ara que no vulva y salga reject hay que meterse en la propiedad de la promesa y aplicar su reject cuando una propiedad que vuelva no nos guste y vaya directamente al catch que seria el error, este no se ejecutara si vuelve la promesa y esta no sea satisfactoria
+    //    Aqui le hacemos un operador ternario, esto es porque la promsesa se cumple es decir se envia y vuelve pero sin datos pero la accion la hace, ara que no vulva y salga reject hay que meterse en la propiedad de la promesa y aplicar su reject cuando una propiedad que vuelva no nos guste y vaya directamente al catch que seria el error, este no se ejecutara si vuelve la promesa y esta no sea satisfactoria
        ? res.json()
        : Promise.reject(res);
     //    esto nos dice que manda el parametro despues del return al sigueinte mecanismo .then acunque ponga otro nombre es como que la asocia
@@ -92,7 +92,9 @@ async function getData(){
         // el throw es un return que envia el flujo de la programacion al catch, el error no puede mandar objetos solo texto
         // if(!res.ok)throw new Error("Ocurrio un Error al solicitar los DAtos")
         // Por ello podemos hacer un objeto que marque los errores:
-        if(!res.ok)throw{status:res.status,statusTExt: res.statusText}
+    console.log(res)
+   
+        if(!res.ok)throw{status:res.status,statusText: res.statusText}
         json.forEach(el =>{
             const $li =document.createElement("li")
             $li.innerHTML =`${el.name} -- ${el.email} -- ${el.phone} `
