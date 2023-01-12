@@ -89,52 +89,61 @@
         </p>
      </footer>
      <script>
-        const d = document,
-        $main = d.querySelector("main");
-        const getHTML = (options)=>{
-            let{url,success,error}= options;
-            const xhr = new XMLHttpRequest();
+      const  d = document,
+      $main = d.querySelector("main");
 
-            xhr.addEventListener("readystatechange",e=>{
-                if(xhr.readyState !==4)return;
+      const getHTML = async ()=>{
 
-                if(xhr.status>= 200 && xhr.status<300){
-                    // no parseamos a JSON porque  queremos que venga en texto que es como viene de serie
-                    console.log(xhr)
-                    let html =xhr.responseText;
-                    success(html)
-                }else{
-                    let message =xhr.statusText || "Ocurro un error"
-                    error(`Error ${xhr.status}: ${message} `)
+        try{
+
+            let res = await fetch("assets/home.html",{
+                method: "GET",
+                headers:{
+                    "content-type": "text/html ; charset = utf-8"
                 }
-            });
+            })
+            // Hay que crear una variable que esa respuesta en text/html la pase a texto de todas formas ya que esto te lo hacia  lo de xhr.statusTExt pero aqui no se puede , por ultimo necesitara el await si o si  antes de insertarlo en el DOM sino no funcionara
+         let html = await res.text();
+            $main.innerHTML = html
 
-            xhr.open("GET",url)
-            xhr.setRequestHeader("Content-type", "text/html; charset=utf-8")
-            xhr.send();
+            if(!res.ok) throw {status: res.status, statusText: res.statusText};
+
+        }catch(res){
+            $main.innerHTML =`<h1>${res.status}: ${res.statusText} </h1> `
+
         }
-        d.addEventListener("DOMContentLoaded", e =>{
-            getHTML({
-                url: "assets/home.html",
-                success:(html)=> $main.innerHTML =html,
-                error:(err)=>$main.innerHTML =`<h1>${err}</h1> `
 
+
+      }
+
+      d.addEventListener("DOMContentLoaded",getHTML)
+      d.addEventListener("click", async e =>{
+        if(e.target.matches(".menu a")){
+            e.preventDefault()
+             try{
+                // con el e.target.href te manda directamente la url con las comillas parece ser
+                
+            let res = await fetch(e.target.href,{
+                method: "GET",
+                headers:{
+                    "content-type": "text/html ; charset = utf-8"
+                }
             })
+            // Hay que crear una variable que esa respuesta en text/html la pase a texto de todas formas ya que esto te lo hacia  lo de xhr.statusTExt pero aqui no se puede , por ultimo necesitara el await si o si  antes de insertarlo en el DOM sino no funcionara
+         let html = await res.text();
+            $main.innerHTML = html
+            console.log(res)
+            if(!res.ok) throw {status: res.status, statusText: res.statusText};
 
-        })
+        }catch(res){
+            console.log(res)
+            let message = res.statusText|| "Ocurrió un error";
+            $main.innerHTML = (`<h1>Error ${res.status}: ${message} </h1>`)
 
-        d.addEventListener("click", e =>{
-            if(e.target.matches(".menu a")){
-                e.preventDefault();
-                getHTML({
-                url: e.target.href,
-                // ESto es como una callback ya que este dato te lo envia despues de procesar los anteriores dentro del a funcion HTML
-                success:(html)=> $main.innerHTML =html,
-                error:(err)=>$main.innerHTML =`<h1>${err}</h1> `
+        }
+        }
 
-            })
-            }
-        })
+      })
      </script>
 </body>
 </html>
