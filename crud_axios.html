@@ -94,7 +94,7 @@
                     try{
                         let options ={
                         method:"POST",
-                        headers:{
+                        headers:{ 
                             "Content-type":"application/json;charset=utf-8"
                         },
                         data:{
@@ -109,7 +109,7 @@
                         // json= await res.data
                   
                         // En el throw es como que te encapsula en otro res el propio res entonces si no lo desencapsulas de esta manera creando un objeto por ejemplo se crearia un res que engloba a este res y luego si que estarian las propeidades, par aevitar esto desencapsulamos y luego cuando queramos acceder solo ahbra la encapsulacion que realiza el throw ya que la que llevaba desde el error la desencapsulamos antes, sino desencapsulamos.
-                        location.reload();
+                        // location.reload();
                     }catch(err){
                       
                         let message = err.statusText|| "Ocurrió un error";
@@ -137,7 +137,7 @@
                         
                   
                       
-                        location.reload()
+                        // location.reload()
                     }catch(err){
                         let message = err.statusText|| "Ocurrió un error";
                          $form.insertAdjacentHTML("afterend",`<p><b>Error ${err.status}: ${message} </b></p>`)
@@ -175,7 +175,7 @@
                         
                      
                      console.log(res)
-                        location.reload()
+                        // location.reload()
                     }catch(err){
                         let message = err.statusText|| "Ocurrió un error";
                        alert(`Error ${err.status}: ${message}`)

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio AJAX por Axios</title>
+</head>
+<style>
+    html{
+        box-sizing:border-box;
+        font-family:sans-serif;
+        font-size: 16px;
+    }
+
+    *,
+    *:before,
+    *:after{
+        box-sizing: inherit ;
+    }
+
+    body{
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction:column;
+    }
+
+    img{
+        max-width: 100%;
+        height: auto;
+    
+    }
+    main{
+        flex-grow: 1;
+    }
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 992px;
+    }
+    .header{
+        padding: .5rem;
+        background-color: antiquewhite;
+    }
+    .header-content{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+    .logo img{
+        width: 3rem;
+        height: auto;
+    }
+    .menu{
+        display:flex;
+        justify-content: space-between;
+        font-size: 115%;
+    }
+    .menu a {
+        color: chocolate;
+        padding:0 1vw;
+        transition:all .3s ease-in-out; 
+    }
+    .menu a:hover{
+        opacity: .75;
+    }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <section class="header-content container">
+            
+            <article class="logo">
+                <img src="https://jonmircha.com/img/kEnAi.svg" alt="kEnAi">
+            </article>
+            <nav class ="menu">
+            <a href="assets/home.html">Home</a>
+            <a href="assets/acerca.html">Acerca</a>
+            <a href="assets/servicios.html">Servicios</a>
+            <a href="assets/contacto.html">Contacto</a>
+            </nav>
+        </section>
+    </header>
+    <!-- Asi como el h1 que solo debe haber 1 solo puede haber un main ya que representa el contenido principal por cada 1 documento HTML por eso no le ponemos class main porque no nos hace falta -->
+    <main class="container container"></main>
+    <footer class="footer container ">
+        <p>
+            <small>Sitio diseñado por kEnAi</small>
+        </p>
+     </footer>
+     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+     <script>
+        const d = document,
+        $main = d.querySelector("main")
+
+    const getHTML = async()=>{
+
+        try{
+            let headers = {"content-type": "text/html; charset = utf-8"}
+
+            let res = await axios.get("assets/home.html",{headers})
+            // Aqui no hace falta convertirlo a text lo convierte directamente
+            console.log(res)
+            let html = await res.data;
+            $main.innerHTML = html
+        }catch(res){
+            
+            $main.innerHTML =`<h1>${res.status}: ${res.statusText} </h1> `
+        }
+
+
+
+    }
+    d.addEventListener("DOMContentLoaded",getHTML)
+      d.addEventListener("click", async e =>{
+        if(e.target.matches(".menu a")){
+            e.preventDefault()
+             try{
+                // con el e.target.href te manda directamente la url con las comillas parece ser
+                let headers = {"content-type": "text/html; charset = utf-8"}
+            let res = await axios.get(e.target.href,{headers})
+            // Hay que crear una variable que esa respuesta en text/html la pase a texto de todas formas ya que esto te lo hacia  lo de xhr.statusTExt pero aqui no se puede , por ultimo necesitara el await si o si  antes de insertarlo en el DOM sino no funcionara
+    
+            $main.innerHTML = res.data
+         
+            
+
+        }catch(res){
+       
+            let message = res.statusText|| "Ocurrió un error";
+            $main.innerHTML = (`<h1>Error ${res.status}: ${message} </h1>`)
+
+        }
+        }
+
+      })
+     </script>
+</body>
+</html>
