@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded",()=> {
                     "content-type": "text/html ; charset = utf-8"
                 }
             })
-           console.log(res)
-       
+           
             el.outerHTML = await res.text()
-
+            
+            
             if(!res.ok) throw {status: res.status, statusText: res.statusText};
 
-        }catch(res){
-            let message = xhr.statusText || "Error al cargar el archivo, verifica que estes haciendo la ptición por http o https";
-            el.outerHTML =`<div><p>Error ${xhr.status}: ${message}</p></div>` 
+        }catch(err){
+            let message = err.statusText || "Error al cargar el archivo, verifica que estes haciendo la ptición por http o https";
+            el.outerHTML =`<div><p>Error ${err.status}: ${message}</p></div>` 
 
         }
     }
