@@ -24,11 +24,16 @@
         text-align: center;
         min-height: 100vh;
       }
+
+      progress{
+        margin-top: 1rem;
+      }
     </style>
   </head>
   <body>
     <main>
       <input type="file" id="files" name="files" multiple />
+      
     </main>
     <script>
       const d = document,
@@ -62,13 +67,52 @@
         xhr.send(formData);
       };
 
+
+        const progressUpload=(file)=>{
+            const $progress = d.createElement("progress"),
+            $span = d.createElement("span");
+
+            $progress.value = 0;
+            $progress.max =100;
+            $main.insertAdjacentElement("beforeend", $progress);
+            $main.insertAdjacentElement("beforeend", $span);
+            
+            // el fileReader nos va a permitir detectando los byte que van cargado y hacer el % de cada archivo
+            // filereader es como un API de los navegadores, nos permite estar detectando los bytes que van cargados
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file)
+
+            // No hacemos delegacion de eventos desde el document ya que estos eventos estan ligados directamente a este objeto fileReader
+            console.log(file)
+            fileReader.addEventListener("loadend",e=>{
+                uploader(file);
+                // despues de que haya terminadod e cargar y subir el archivo desde el servidor php le removemos ela barra y la span de progreso
+                console.log(e)
+                setTimeout(() => {
+                    $main.removeChild($progress)
+                    $main.removeChild($span)
+                    $files.value = "";
+                }, 3000);
+                
+            })
+            fileReader.addEventListener("progress",e=>{
+                // hacer una regla de 3 para saber como va el progreso si lo bytes totales representa el 100% multiplicar los bytes cargados x100 partido el bytes total
+                    console.log(e)
+                    let progress= parseInt((e.loaded*100)/e.total)
+                    $progress.value = progress;
+                    $span.innerHTML = `<b>${file.name} - ${progress}% </b>`
+            })
+        }
+
       d.addEventListener("change", (e) => {
         if (e.target === $files) {
           // console.log(e.target.files)
           const files = Array.from(e.target.files);
           // console.log(files)
           // Podriamos pensar en usar un forEach pero no va a funcionar en este objeto, porque el forEach es un metodo para metodos iterables ,domtoken list  etc, usaremos el metodo Arrayfrom a un objeto apra que puede usasr emtodos de los array como map,reduce, forEach etc
-          files.forEach((el) => uploader(el));
+
+        //   Aqui pasamos la ejecucion d ela funcion upload dentro de la funcion progressupload para que se ejecute una vez finalice esta ultima
+          files.forEach((el) => progressUpload(el));
         }
       });
     </script>
