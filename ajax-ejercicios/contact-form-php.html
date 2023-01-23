@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Envio de Formulario con Fetch y formSubmit</title>
+    <title>Envio de Formulario con Fetch y php</title>
     <style>
         :root {
   --main-font: sans-serif;
@@ -179,7 +179,7 @@ html {
         const $loader = d.querySelector(".contact-form-loader"),
         $response = d.querySelector(".contact-form-response")
         $loader.classList.remove("none")
-        fetch("https://formsubmit.co/ajax/juanpablotorresperezuni@gmail.com",{
+        fetch("assets/send_mail.php",{
           method:"POST",
           // e.target manda el formulario del html y estos elementos tienen que tener el atributo name si o tienen el name tienes que hacerle un append como en el ejercicio de uploader
           body: new FormData(e.target)
