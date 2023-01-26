@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byscador Shows de TV</title>
+    <style>
+        .grid-fluid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .loader{
+            display:block;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buscadot Shows de TV</h1>
+    <!-- el inouto de typo search tiene carcateristica sematicas que trae un tachecito par alimpiar por ejemplo una x par alimpiar -->
+    <input type="search" id="search" placeholder="Buscar shows de tv.." autocomplete="off">
+    <section id="show" class="grid-fluid"></section>
+    <!-- En esta cosasion usaremos la tecnica de los templates -->
+    <template id="show-template">
+        <article class="show">
+           <h3></h3>
+           <div></div>
+           <img>
+           <a></a>
+        </article>
+    </template>
+    <script>
+        const d= document,
+        $shows = d.getElementById("show"),
+        $template = d.getElementById("show-template").content,
+        $fragment = d.createDocumentFragment();
+        d.addEventListener("keypress", async e =>{
+            if(e.target.matches("#search")){
+                // la tecla enter es la numero 13 la progrmacion de este evento sera con la tecla enter , se puede ahcer con el e.key =enter o el e.keyCode =13
+                console.log(e.key, e.keyCode)
+                if(e.key === "Enter"){
+                    try{
+                        $shows.innerHTML = `<img class="loader" src="../assets/circles.svg" alt="Cargando...">`
+
+                        let query = e.target.value.toLowerCase(),
+                        api = `https://api.tvmaze.com/search/shows?q=${query}`,
+                        res= await fetch(api),
+                        json =await res.json()
+                        console.log(api,res,json);
+                        // La palabra throw manipula el flujo hacia el catch
+                        if(!res.ok) throw{status:res.status,statusText:res.statusText}
+
+                        // Como cuando  el arreglo que nos envia tiene una longitud de 0 elementos de length le pondremos un error personalizado de que ha sido incapaz de encontrar oincidencias a lo que estabamos buscando
+                        if(json.length=== 0){
+                            $shows.innerHTML =`<h2>No existen resultados de shows para el criterio de búsqueda:<mark>${query}</mark></h2> `
+                        }else{
+                            json.forEach(el => {
+                                $template.querySelector("h3").textContent =el.show.name;
+                                // como el summary viene en formato html envede ponerlo con la propiedad textContent hacerlo con la propiedad innerHTML, hay shows que no tienen sumamry por lo tanto haremos una validaciond e oparador ternario para validar si tiene o no
+                                $template.querySelector("div").innerHTML =el.show.summary?el.show.summary:"Sin descripcion";
+                                $template.querySelector("img").src =el.show.image?el.show.image.medium:"https://static.tvmaze.com/images/no-img/no-img-portrait-text.png";
+                                
+                                $template.querySelector("img").alt = el.show.name
+                                // este style que le pongo porJV no es la mejor practica pero bueno
+                                $template.querySelector("img").style.maxWidth ="100%";
+                                $template.querySelector("a").href = el.show.url?el.show.url:"#"
+                                $template.querySelector("a").target = el.show.url?"_blank":"_self"
+                                $template.querySelector("a").textContent = el.show.url?"ver mas...":""
+                                
+                                let $clone = d.importNode($template,true)
+                                $fragment.appendChild($clone)
+                            });
+                            // este show.innerhtml ="" sirvepara quitar el loader una vez cargado el fragment del forEach
+                            $shows.innerHTML = ""
+                            $shows.appendChild($fragment)
+                        }
+                    }catch(err){
+                        console.log(err);
+                        let message =err.statusText || "Ocurrió un error";
+                        $shows.innerHTML = `<p>Error ${err.status}: ${message} </p>`
+
+                    }
+
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
