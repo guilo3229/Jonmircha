@@ -68,7 +68,7 @@
                                 $template.querySelector("a").target = el.show.url?"_blank":"_self"
                                 $template.querySelector("a").textContent = el.show.url?"ver mas...":""
                                 
-                                let $clone = d.importNode($template,true)
+                                let $clone = Sd.importNode($template,true)
                                 $fragment.appendChild($clone)
                             });
                             // este show.innerhtml ="" sirvepara quitar el loader una vez cargado el fragment del forEach
