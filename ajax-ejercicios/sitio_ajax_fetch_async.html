@@ -106,7 +106,7 @@
             // Hay que crear una variable que esa respuesta en text/html la pase a texto de todas formas ya que esto te lo hacia  lo de xhr.statusTExt pero aqui no se puede , por ultimo necesitara el await si o si  antes de insertarlo en el DOM sino no funcionara
          let html = await res.text();
             $main.innerHTML = html
-
+            console.log(res)
             if(!res.ok) throw {status: res.status, statusText: res.statusText};
 
         }catch(res){

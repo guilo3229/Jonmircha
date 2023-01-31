@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selects anidados, tempaltes y por axios</title>
+</head>
+<body>
+    <h1>Selects anidados axios+template</h1>
+    <h2>Mexico</h2>
+    <label for="select-primary">Estados</label>
+    <select name="primary" id="select-primary">
+        <option value="Elige un Estado">Elige un Estado</option>
+    </select>
+    <p></p>
+    <label for="select-secondary">Municipios</label>
+    <select name="secondary" id="select-secondary">
+        <option value="">Elige un municipio</option>
+    </select>
+    <p></p>
+    <label for="select-terciary">Colonias</label>
+    <select name="terciary" id="select-terciary">
+        <option value="">Elige una colonia</option>
+    </select>
+  <template id="show-template">
+    <option value=""></option>
+  </template>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        const d = document
+        $selectPrimary = d.getElementById("select-primary"),
+        $selectSecondary = d.getElementById("select-secondary"),
+        $selectTerciary = d.getElementById("select-terciary"),
+        $template = d.getElementById("show-template").content,
+        $fragment = d.createDocumentFragment()
+        
+        async function loadStates(){
+            try{
+           let res = await axios.get("https://api.copomex.com/query/get_estados?token=pruebas")
+            console.log(res)
+            let estadosArray = await res.data.response.estado
+            console.log(estadosArray)
+                estadosArray.forEach(el =>{
+                    $template.querySelector("option").value = `${el}`
+                    $template.querySelector("option").textContent = `${el}`
+                    let $clone = d.importNode($template,true)
+                    $fragment.appendChild($clone)
+            
+                })
+                console.log($template)
+                console.log($fragment)
+                console.log($selectPrimary)
+                
+                $selectPrimary.appendChild($fragment)
+
+            }catch(err){
+                console.log(err)
+                
+            }
+        }
+        async function loadTowns(state){
+            if(state!== "Elige un Estado"){
+            try{
+                 let res = await axios.get(`https://api.copomex.com/query/get_municipio_por_estado/${state}?token=pruebas`)
+                console.log(res)
+                let estadosArray = await res.data.response.municipios
+                console.log(estadosArray)
+      
+                d.getElementById("select-secondary").innerHTML = `<option value="">Elige un municipio</option>`
+                console.log($fragment)
+                    estadosArray.forEach(el =>{
+
+                        $template.querySelector("option").value = `${el}`
+                        $template.querySelector("option").textContent = `${el}`
+                        let $clone = d.importNode($template,true)
+                        $fragment.appendChild($clone)
+                    })
+                    console.log($template)
+                    console.log($fragment)
+                    $selectSecondary.appendChild($fragment)
+                    console.log($selectSecondary)
+            }catch(err){
+                console.log(err)
+                let message = err.statusText || "Ocurrio un error"
+                $selectSecondary.nextElementSibling.innerHTML = `Error ${err.statusText}: ${message}`
+
+            }
+            }else{
+                $selectSecondary.innerHTML = `<option value="">Elige un municipio</option>`
+            }
+
+        };
+
+        async function loadColony(Colony){
+            if(Colony !== "Elige un municipio"){
+            try{
+                 let res = await axios.get(`https://api.copomex.com/query/get_colonia_por_municipio/${Colony}?token=pruebas`)
+                console.log(res)
+                let ColoniasArray = await res.data.response.colonia
+                console.log(ColoniasArray)
+      
+               $selectTerciary.innerHTML = `<option value="">Elige una Colonia</option>`
+                console.log($fragment)
+                    ColoniasArray.forEach(el =>{
+
+                        $template.querySelector("option").value = `${el}`
+                        $template.querySelector("option").textContent = `${el}`
+                        let $clone = d.importNode($template,true)
+                        $fragment.appendChild($clone)
+                    })
+                    console.log($template)
+                    console.log($fragment)
+                    $selectTerciary.appendChild($fragment)
+                    console.log($selectTerciary)
+            }catch(err){
+                console.log(err)
+                let message = err.statusText || "Ocurrio un error"
+                $selectTerciary.nextElementSibling.innerHTML = `Error ${err.statusText}: ${message}`
+
+            }
+            }else{
+                $selectTerciary.innerHTML = `<option value="">Elige una Colonia</option>`
+            }
+
+        }
+        d.addEventListener("DOMContentLoaded",loadStates())
+        $selectPrimary.addEventListener("change",e=>loadTowns(e.target.value))
+        $selectSecondary.addEventListener("change", e=>loadColony(e.target.value))
+        $selectPrimary.addEventListener("change",e=>{
+            if(e.target.value === "Elige un Estado"){
+                console.log($selectTerciary)
+                $selectTerciary.innerHTML=`<option value="">Elige una Colonia</option>`
+            
+            }
+                
+            })
+    </script>
+</body>
+</html>
