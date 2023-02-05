@@ -41,6 +41,30 @@ img{
     color: #fff;
     background-color: #dc3545;
 }
+
+.form-search{
+    margin:auto;
+    text-align: center;
+}
+.form-search input{
+    display: block;
+    margin:auto;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+.header{
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    text-align: center;
+    background-color: #fff;
+}
+/* como no hay mucho espaciado entre los hijos dentro del header selccionaremos estos y diremos que todos los hijos dentro del header tengan un margin de 1 rem en auto entre ellos el asterisco dice que da igual la etiqueta todas dentro de ese mismo nivel es lo que pasa */
+.header > *{
+    margin: 1rem auto;
+}
+
 .loader{
     margin: 1rem auto;
     display: block;
