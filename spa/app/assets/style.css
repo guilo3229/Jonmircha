@@ -61,6 +61,13 @@ img{
     background-color: #fff;
 }
 /* como no hay mucho espaciado entre los hijos dentro del header selccionaremos estos y diremos que todos los hijos dentro del header tengan un margin de 1 rem en auto entre ellos el asterisco dice que da igual la etiqueta todas dentro de ese mismo nivel es lo que pasa */
+
+.grid-fluid{
+    margin: 1rem auto;
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
 .header > *{
     margin: 1rem auto;
 }
@@ -70,4 +77,14 @@ img{
     display: block;
     width: 4rem;
     height: 4rem;
+}
+.post-card{
+    margin: 1rem auto;
+    padding: 1rem;
+    width:80%;
+    background-color: #eceff1;
+}
+.post-card p {
+    display: flex;
+    justify-content: space-between;
 }
