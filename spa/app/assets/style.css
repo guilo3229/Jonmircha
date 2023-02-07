@@ -88,3 +88,38 @@ img{
     display: flex;
     justify-content: space-between;
 }
+.post-page{
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 80%;
+    background-color: #eceff1;
+}
+.post-page > aside{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+.post-page>hr{
+    border: thin solid #cfd8dc;
+    margin: 2rem auto;
+    width: 80%;
+}
+.post-page  time{
+    margin: 1rem auto;
+    display: block;
+}
+.post-page> article{
+    padding: 0 2rem;
+}
+/* este ultimo es para que los elementos multiamedia sean centrados y bloaqueados */
+.post-page img,
+.post-page figure,
+.post-page audio,
+.post-page iframe,
+.post-page code,
+.post-page pre,
+.post-page video{
+    margin:auto;
+    padding: 1;
+    max-width: 100%;
+}

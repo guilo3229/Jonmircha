@@ -1,6 +1,7 @@
 
 import { ajax } from "../helpers/ajax.js"
 import api from "../helpers/wp_api.js"
+import { Post } from "./Post.js"
 import { PostCard } from "./PostCard.js"
 
 
@@ -31,6 +32,7 @@ export async function Router(){
              
          }
      })
+     console.log(api.POST)
      // En este caso de aqui abajo ponemos include porque despues del search vendra?= etc y la busqueda que nosotros hemos hecho en el hash por lo tanto con include le decimos que al menos tenga search para saber que estamos en search y madnarlo alli
      console.log(hash)
     }else if(hash.includes("#/Search")){
@@ -42,6 +44,17 @@ export async function Router(){
     // el else lo usamos para cuando sea cualquier otra cosa del hash esto es bueno porque cada posts que traemos tendra su propio hash y por lo tanto este else nos servira para englobarlos aunque sean dinamicos, se podria hacer co el switch con la propiedad exclude, en este caso por cada vista que nosotros necesitemos deberemos ir agregando un else if, esto tambien con el switch case, como las condiciones cambian se decidio usar emjor if anidados sie sto hubiesen sido valores mas estandarizados podriamos haber usado switch-cases
     }else{
     $main.innerHTML = "<h2>Aquí cargará el contenido del Post previamente seleccionado</h2>"
+        console.log(api.POST)
+     
+    await ajax({
+        url: `${api.POST}/${localStorage.getItem("wpPostid")}`,
+        cbSuccess:(post)=>{
+            console.log(post)
+         
+            $main.innerHTML = Post(post)
+            
+        }
+    })
     }
 
     d.querySelector(".loader").style.display = "none"
