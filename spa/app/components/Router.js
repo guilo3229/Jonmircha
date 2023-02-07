@@ -35,11 +35,24 @@ export async function Router(){
      console.log(api.POST)
      // En este caso de aqui abajo ponemos include porque despues del search vendra?= etc y la busqueda que nosotros hemos hecho en el hash por lo tanto con include le decimos que al menos tenga search para saber que estamos en search y madnarlo alli
      console.log(hash)
-    }else if(hash.includes("#/Search")){
-        $main.innerHTML = "<h2>Seccion del Buscador</h2>"
+    }else if(hash.includes(`search`)){
+        
+     let query = localStorage.getItem("wpSearch")
+     
+    if(!query) return false;
+        await ajax({
+            
+            url: `${api.SEARCH}${query}`,
+            cbSuccess:(search) =>{
+                console.log(search)
+            }
+        })
         
     }else if(hash === "#/Contacto"){
-    $main.innerHTML = "<h2>Seccion de Contacto</h2>"
+        
+        $main.innerHTML = "<h2>Seccion del contacto</h2>"
+
+    
     
     // el else lo usamos para cuando sea cualquier otra cosa del hash esto es bueno porque cada posts que traemos tendra su propio hash y por lo tanto este else nos servira para englobarlos aunque sean dinamicos, se podria hacer co el switch con la propiedad exclude, en este caso por cada vista que nosotros necesitemos deberemos ir agregando un else if, esto tambien con el switch case, como las condiciones cambian se decidio usar emjor if anidados sie sto hubiesen sido valores mas estandarizados podriamos haber usado switch-cases
     }else{

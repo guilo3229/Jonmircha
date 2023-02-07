@@ -4,7 +4,7 @@ export function Menu(){
     $menu.innerHTML =`
     <a href="#/">Home</a>
     <span>-</span>
-    <a href="#/Search">Busqueda</a>
+    <a href="#/search">Busqueda</a>
     <span>-</span>
     <a href="#/Contacto">Contacto</a>
     <span>-</span>

@@ -9,7 +9,7 @@ export function PostCard(props){
     
     // Como aun no se han creado los elementos y se iran renderizados no podemos ponerle el evento directamente a estos sino que deberemos hacerlo por delegacion de eventos desde el document para que estos eventos sean asociados a los elementos dinamicos
     document.addEventListener("click",e=>{
-        if(!e.target.matches(".post-card a"))return console.log("repeticion");
+        if(!e.target.matches(".post-card a"))return false;
         localStorage.setItem("wpPostid", e.target.dataset.id)
         
         
