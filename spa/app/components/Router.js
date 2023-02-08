@@ -3,6 +3,7 @@ import { ajax } from "../helpers/ajax.js"
 import api from "../helpers/wp_api.js"
 import { Post } from "./Post.js"
 import { PostCard } from "./PostCard.js"
+import { SearchCard } from "./SearchCard.js"
 
 
 
@@ -24,6 +25,7 @@ export async function Router(){
              console.log(posts)
              let html = ""
              posts.forEach(post =>{
+                
                  html += PostCard(post)
              })
              
@@ -39,12 +41,36 @@ export async function Router(){
         
      let query = localStorage.getItem("wpSearch")
      
-    if(!query) return false;
+     if(!query){
+        // Aqui hay que ocultar el loader porque como se sale antes de que toque el loader de abajo no se oculta entonces cuando no exista en el local storage wp search no exitira el query y retornara sin pasar por el display none de abajo por eso le ponemos un display none al loader aqui
+        d.querySelector(".loader").style.display = "none"
+         return false;
+        } 
+    
+        
         await ajax({
             
             url: `${api.SEARCH}${query}`,
             cbSuccess:(search) =>{
                 console.log(search)
+                let html = ""
+                $main.innerHTML = html
+                if(search.length === 0){
+                    html = `
+                    <p class="error">
+                    No existen resultados de búsqueda para el término
+                    <mark>${query}</mark>
+                    </p>
+                    
+                    `
+
+                }else{
+                    search.forEach(casa =>{
+                        console.log(casa)
+                        html += SearchCard(casa)                  
+                    })
+                }
+                $main.innerHTML =html
             }
         })
         
