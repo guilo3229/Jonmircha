@@ -1,6 +1,7 @@
 
 import { ajax } from "../helpers/ajax.js"
 import api from "../helpers/wp_api.js"
+import { ContactForm } from "./ContactForm.js"
 import { Post } from "./Post.js"
 import { PostCard } from "./PostCard.js"
 import { SearchCard } from "./SearchCard.js"
@@ -75,11 +76,11 @@ export async function Router(){
         })
         
     }else if(hash === "#/Contacto"){
+        // Hay que agregar el contact form al main pero envede agregarlo como HTML como hemos creado un nodo dentro de la funcion ContactForm habra que agregar el nodo por ello usaremos el appendchild
         
-        $main.innerHTML = "<h2>Seccion del contacto</h2>"
+        $main.appendChild(ContactForm())
 
-    
-    
+     
     // el else lo usamos para cuando sea cualquier otra cosa del hash esto es bueno porque cada posts que traemos tendra su propio hash y por lo tanto este else nos servira para englobarlos aunque sean dinamicos, se podria hacer co el switch con la propiedad exclude, en este caso por cada vista que nosotros necesitemos deberemos ir agregando un else if, esto tambien con el switch case, como las condiciones cambian se decidio usar emjor if anidados sie sto hubiesen sido valores mas estandarizados podriamos haber usado switch-cases
     }else{
     $main.innerHTML = "<h2>Aquí cargará el contenido del Post previamente seleccionado</h2>"
