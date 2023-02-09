@@ -4,6 +4,8 @@ import { Header } from "./components/Header.js"
 import { Main } from "./components/Main.js"
 
 import { Router } from "./components/router.js"
+
+
 export function App (){
    
     // creamos el nodo para meterle el elemnto que viene desde la aplicacion PostCArd
@@ -17,5 +19,6 @@ export function App (){
 // console.log("probando")
 
     Router()
+ 
 }
 

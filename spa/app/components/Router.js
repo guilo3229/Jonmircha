@@ -65,9 +65,9 @@ export async function Router(){
                     `
 
                 }else{
-                    search.forEach(casa =>{
-                        console.log(casa)
-                        html += SearchCard(casa)                  
+                    search.forEach(search =>{
+                       
+                        html += SearchCard(search)                  
                     })
                 }
                 $main.innerHTML =html
