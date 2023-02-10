@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz basada en el Estado</title>
+</head>
+<body>
+    <h1>Interfaz basada en el Estado</h1>
+    <form  id="todo-form">
+    <input type="text" id="todo-item" placeholder="Tarea por hacer">
+        <input type="submit" value="Agregar">
+    </form>
+    <h2>Lista de Tareas</h2>
+    <ul id="todo-list"></ul>
+</body>
+<script>
+    const d = document
+
+    // por cada atributo o propiedad de este objeto es cada estado que queremos controlar
+    // El State
+    const state ={
+        todoList:[]
+    }
+
+    //template UI
+    const template = ()=>{
+        if(state.todoList.length < 1){
+            return `<p><em>Lista sin tareas por hacer</p></em>`
+        }
+        // map lo que ahce es modifica los elementos y crea otro array respecto del primero que es el todoList
+        let todos = state.todoList.map(item =>`<li>${item}</li>`).join("");
+        return todos
+    }
+
+    //Render UI(tambien se puede poner en funciones normales pero la expresada no se puede usar hasta que este definida evitamos el hoisting)
+    const render = ()=>{
+        console.log(state)
+       const $list =d.getElementById("todo-list")
+       if(!$list)return;
+       $list.innerHTML = template()
+    }
+    d.addEventListener("DOMContentLoaded", render)
+    d.addEventListener("submit", e=>{
+        if(!e.target.matches("#todo-form"))return false
+        
+        e.preventDefault()
+       
+        $item = d.getElementById("todo-item")
+        if(!$item)return
+     
+        //Actualizar el State(estado y la UI)
+        state.todoList.push($item.value)
+        render()
+        //limpieza del input
+        $item.value =""
+        $item.focus()
+       
+    })
+    
+</script>
+</html>
