@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado Inmutable</title>
+</head>
+<body>
+    <h1>Estado Inmutable</h1>
+    <form  id="todo-form">
+    <input type="text" id="todo-item" placeholder="Tarea por hacer">
+        <input type="submit" value="Agregar">
+    </form>
+    <h2>Lista de Tareas</h2>
+    <ul id="todo-list"></ul>
+</body>
+<script>
+    const d = document
+
+    // por cada atributo o propiedad de este objeto es cada estado que queremos controlar
+    // El State
+    const state ={
+        todoList:[],
+        nombre:""
+    }
+
+    //template UI
+    const template = ()=>{
+        if(state.todoList.length < 1){
+            return `<p><em>Lista sin tareas por hacer</p></em>`
+        }
+        // map lo que ahce es modifica los elementos y crea otro array respecto del primero que es el todoList
+        let todos = state.todoList.map(item =>`<li>${item}</li>`).join("");
+        return todos
+    }
+
+    //Render UI(tambien se puede poner en funciones normales pero la expresada no se puede usar hasta que este definida evitamos el hoisting)
+    const render = ()=>{
+        console.log(state)
+       const $list =d.getElementById("todo-list")
+       if(!$list)return;
+       $list.innerHTML = template()
+    }
+    //Actualizar el State de forma reactiva
+    const setState = obj =>{
+
+        for(let key in obj){
+            if(state.hasOwnProperty(key)){
+                state[key] = obj[key]
+            }
+        }
+
+        render()
+    }
+
+    // Obtenemos una copia inmutable del State
+    const getState = () => JSON.parse(JSON.stringify(state))
+    d.addEventListener("DOMContentLoaded", render)
+
+    //estableciendo valores por fecto al State
+    setState ({
+        todoList:["Tarea 1","Tarea 2","Tarea 3"],
+        nombre:"Jon"
+    })
+    //Estado Mutable, porque permite modificar el estado directamente creando una copia del objeto y agregando otro elemento
+    const items = getState()
+    // items.push("Tarea 4")
+    items.todoList.push("Tarea 4")
+    console.log("estado inmutable",state)
+
+    d.addEventListener("submit", e=>{
+        if(!e.target.matches("#todo-form"))return false
+        
+        e.preventDefault()
+       
+        $item = d.getElementById("todo-item")
+        if(!$item)return
+     
+        //Actualizar el State de forma reactiva
+        const lastState = getState()
+        lastState.todoList.push($item.value)
+        setState({todoList:lastState.todoList})
+       
+        //limpieza del input
+        $item.value =""
+        $item.focus()
+       
+    })
+    
+</script>
+</html>
