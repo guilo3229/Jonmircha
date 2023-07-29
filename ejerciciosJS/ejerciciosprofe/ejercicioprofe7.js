@@ -2,21 +2,21 @@
 
 
 const Palindromo =(cadena = "") =>{
-    // (!cadena)
-    //     ?console.warn("No ingresaste una cadena")
+    (!cadena)
+        ?console.warn("No ingresaste una cadena")
 
-    //     :((cadena.split("").reverse().join())= cadena)
-    //         ?console.info("true")
-    //         :console.warn("false")
+        :((cadena.split("").reverse().join())= cadena)
+            ?console.info("true")
+            :console.warn("false")
 
-        if(!cadena)return console.warn("no ingresaste una cadena")
-        cadena = cadena.toLocaleLowerCase()  
-        let b = cadena.split("").reverse().join("")
+      //   if(!cadena)return console.warn("no ingresaste una cadena")
+      //   cadena = cadena.toLocaleLowerCase()  
+      //   let b = cadena.split("").reverse().join("")
        
-       return (b === cadena)
-       ?console.info("true")
-       :console.warn("false")
+      //  return (b === cadena)
+      //  ?console.info("true")
+      //  :console.warn("false")
         // return console.warn("false")
 }
-Palindromo("")
+Palindromo("oso")
         

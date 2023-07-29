@@ -5,7 +5,7 @@ const arrayMinMax =(arr = undefined) =>{
 
     for(let num of arr){
         if(typeof num !== "number")return console.error(`El valor "${num}" ingresado, No es un numero`)
-    }
+    } 
     // la funcion o el metodo math espera dentro de su parentesis que le pasemos el spread operator de lospuntitos...
     return console.info(`Arreglo original: ${arr}\nValor mayor:${Math.max(...arr)}\nValor menor:${Math.min(...arr)}`)
  }

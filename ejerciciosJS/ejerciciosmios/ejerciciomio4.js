@@ -4,17 +4,14 @@ const b = prompt()
 
 
 function repetir(a,b) {
-    
-    for (i=0;  i < b; i++) {
-    //  
-        // c = a
-       
-        c = a
-      d = a + " " + c
-      a = a + c
-        
+    let d = ""
+    for (i=0;  i <b; i++) {
+
+      c= a
+      d = d + a        
+      
+      console.log(d)
     }
-    console.log(d)
 }
 
 repetir(a,b)

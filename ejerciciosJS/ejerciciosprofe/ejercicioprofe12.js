@@ -19,7 +19,8 @@ let divisible = false
 
     return (divisible)
         ?console.warn(`el numero ${numero} no es primo`)
-        :console.info(`el numero ${numero} es primo `)
+        : console.info(`el numero ${numero} es primo `)
+  
 }
 
-numeroPrimo()
+numeroPrimo(27)
