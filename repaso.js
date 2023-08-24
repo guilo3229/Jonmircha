@@ -1098,28 +1098,256 @@
   
 // }
 // Funcion contructora donde asignamos los métodos al Prototipo, no a la funcion como tal
-function Animal(nombre, genero) {
-  // Atributos
-  this.nombre = nombre;
-  this.genero = genero;
+// function Animal(nombre, genero) {
+//   // Atributos
+//   this.nombre = nombre;
+//   this.genero = genero;
   
   
-}
-//Metodos(Como asignamos los prototipos)
-// Metodos agregados al prototipo de la funcion constructora
-Animal.prototype.sonar = function () {
-  console.log("Hago sonidos porque estoy vivo")
-}
-Animal.prototype.saludar = function () {
-  console.log(`Hola me llamo ${this.nombre}`)
-}
-const snoopy = new Animal("Snoopy", "Macho"),
-  lolaBunny = new Animal("Lola Bunny", "Hembra")
+// }
+// //Metodos(Como asignamos los prototipos)
+// // Metodos agregados al prototipo de la funcion constructora
+// Animal.prototype.sonar = function () {
+//   console.log("Hago sonidos porque estoy vivo")
+// }
+// Animal.prototype.saludar = function () {
+//   console.log(`Hola me llamo ${this.nombre}`)
+// }
+
+// // Herencia Prototípica
+// function Perro(nombre,genero,tamanio) {
+//   this.super = Animal;
+//   this.super(nombre, genero);
+//   this.tamanio = tamanio;
+// }
+// // Esta linea esta haciendo la herencia
+// // Perro esta heredando de Animal
+// Perro.prototype = new Animal()
+// Perro.prototype.constructor = Perro;
+
+// // Sobreescritura de moetods del prototipo padre en el hijo
+// Perro.prototype.sonar = function () {
+//   console.log("Soy un perro y mi sonido es un ladrido")
+// }
+
+// Perro.prototype.ladrar = function () {
+//   console.log("Guauuuu Guauuuu !!!!!")
+// }
+// const snoopy = new Perro("Snoopy", "Macho", "mediano"),
+//   lolaBunny = new Animal("Lola Bunny", "Hembra")
  
-  console.log(snoopy)
-console.log(lolaBunny)
+
+//   console.log(snoopy)
+// console.log(lolaBunny)
   
-snoopy.sonar()
-snoopy.saludar()
-lolaBunny.sonar()
-lolaBunny.saludar()
+// snoopy.sonar()
+// snoopy.saludar()
+// snoopy.ladrar()
+// lolaBunny.sonar()
+// lolaBunny.saludar()
+
+// Las clases no reciben parametros,para poder recibir parametros ,tienen un metodo especial que se llama constructor,el contructor de una clase(class) se ejecuta en el momento
+// class Animal {
+//   constructor(nombre, genero) {
+    
+//     this.nombre = nombre;
+//     this.genero = genero;
+
+//   }
+//   // Atributos
+// // metodos en este caso te mete los metodos directamente a prototipos sin hacer nada mas
+//   sonar (){
+//     console.log("Hago sonidos porque estoy vivo")
+//   }
+//  saludar() {
+//     console.log(`Hola me llamo ${this.nombre}`)
+//   }
+
+// }
+// class Perro extends Animal{
+//   constructor(nombre, genero, tamanio) {
+//     // Con el método super() se manda a llamar el contructor de la clase padre
+//     super(nombre, genero)
+//     this.tamanio = tamanio
+//     this.raza = null
+
+//   }
+//   sonar() {
+//     console.log("Soy un perro y mi sonido es un ladrido")
+//   }
+//   ladrar() {
+//     console.log("Guauuu Guauuu")
+//   }
+//   // Un método estático se puede ejecutar sin encesidad de instaciar la clase
+//   static queEres() {
+//     console.log("Los perros somos animales mamíferos que pertenecemos a la familia de los caninos.Somos considerados los mejores amigos del hombre")
+//   }
+//   // Los setters y getters son metodos especiales que nos permiten establecer y obtener los valores de atributos de nuestra clase
+//    get getraza() {
+//     return this.raza
+//   }
+//   set setRaza(raza) {
+//     this.raza = raza
+//   }
+// }
+// Perro.queEres()
+
+// const mimi = new Animal("Mimi", "Hembra"),
+//   scooby = new Perro("Scooby", "Macho","gigante")
+  
+// console.log(mimi)
+// mimi.saludar()
+// mimi.sonar()
+// console.log(scooby)
+// scooby.saludar()
+// scooby.sonar()
+// scooby.ladrar()
+// console.log(scooby.getraza)
+// scooby.setRaza = "Gran Dannes"
+// console.log(scooby.getraza)
+
+// class pelicula {
+//   constructor({id,titulo,director,estreno,pais,generos,calificacion}) {
+//     this.id = id;
+//     this.titulo = titulo;
+//     this.director = director;
+//     this.estreno = estreno;
+//     this.pais = pais;
+//     this.generos = generos;
+//     this.calificacion = calificacion;
+
+//     this.validarIMDB(id)
+//     this.validarTitulo(titulo)
+//     this.validarDirector(director)
+//     this.validarEstreno(estreno)
+//     this.validarPais(pais)
+//     this.validarGeneros(generos)
+//     this.validarCalificacion(calificacion)
+    
+//   }
+//   // Respecto al metodo estático podriamos crear una rreglo en uno de sus atributos y poner alli todos los generos permitidos pero solo funcionaria cuando hicisemos una instancia de la clase , sin embargo con eun metodo estatio getter podemos invocar a este sin necesidad de hace runa instancia total de la clase,recordemos que los metodos setter y getters javaScript los maneja como si fuesen unos atributos raros tanto en la invocacion de estos como en la visualizacion ojo con esto acuerdate !!
+//   // Esto seria mi atributo estatico
+//   static get listaGeneros() {
+//     return["Action","Adult","Adventure","Animation","Biography","Crime","Documentary","Drama","Family","Fantasy","Film Noir","Game-Show","History","Horror","Musical","Music","Mistery","News","Reality - TV","Romance","Sci-Fi","Short","Sport","Talk-Show","Thriller","War","Western","Comedy"]
+//   }
+// // Ademas ahora necesitaria mi metodo estatico 
+//   static generosAceptados() {
+//     return console.info(`Los generos aceptados son: ${pelicula.listaGeneros.join(", ")}`)
+//   }
+//   validarCadena(propiedad,valor) {
+//     if (valor === undefined) return console.warn(`En el valor ${propiedad} esta vacia o es undefined`)
+//     if (typeof valor !== "string") return console.error(`${propiedad} "${valor}" ingresado, No es una cadena de texto`)
+//     return true
+//   }
+//   validarLongitudCadena(propiedad, valor,longitud) {
+//     if (valor.length > longitud) return console.error(`${propiedad} "${valor} excede el numero de caracteres permitidos (${longitud})`)
+//     return  true
+//   }
+//   ValidarNumero(propiedad, valor) {
+//     if (valor === undefined) return console.warn(`En el valor ${propiedad} esta vacia o es undefined`)
+//     if (typeof valor !== "number") return console.error(`El ${propiedad} no es de caracter numerico sino: ${typeof(valor)} `)
+//     return true
+//   }
+//   ValidarArreglo(propiedad, valor) {
+//     if (valor === undefined) return console.warn(`En el valor ${propiedad} esta vacia o es undefined`)
+//     if (!(valor instanceof Array)) return console.error(`El valor de la propiedad: ${propiedad} introducido es de tipo: ${typeof (valor)} y deberia ser un Arreglo`)
+//     if (valor.length === 0) return console.error(`El array de la propiedad ${propiedad} esta vacio`)
+//     for (let [index,num] of valor.entries()) {
+//       if (typeof num !== "string")return console.error(`En el array de: ${propiedad} en la posicion ${index+1} el valor es de tipo ${typeof(num)} y debe ser de tipo string`)
+//     }
+//     return true
+//   }
+//   validarIMDB(id) {
+//     if (this.validarCadena("IMDB id", id)) 
+//       if (!(/^([a-z]){2}([0-9]{7})$/.test(id))) 
+//         return console.error(`IMDB id "${id}" no es válido, debe tener 9 caracteres, los 2 primeros letras minúsculas, los 7 restantes números`)
+//   }
+
+
+//   validarTitulo(titulo) {
+//     if (this.validarCadena("titulo",titulo)) 
+//        this.validarLongitudCadena("titulo",titulo,100)
+      
+    
+//   }
+//   validarDirector(director) {
+//     if (this.validarCadena("director", director))
+//       this.validarLongitudCadena("director", director, 50)
+
+
+//   }
+//   validarEstreno(estreno) {
+//     if (this.ValidarNumero("Año de estreno", estreno))
+//       if (!(/^([0-9]){4}$/.test(estreno)))
+//         return console.error(`Año estreno "${estreno}" no es válido, debe ser un número de 4 dígitos`)
+//   }
+//   validarPais(pais) {
+//     this.ValidarArreglo("Pais",pais)
+//   }
+//   validarGeneros(generos) {
+//     if (this.ValidarArreglo("Géneros", generos)) {
+//       for (let genero of generos) {
+      
+//         if (!pelicula.listaGeneros.includes(genero)) {
+//           console.error(`Genero(s) incorrectos " ${generos.join(", ")}"`)
+//           pelicula.generosAceptados()
+//         }
+//       }
+//     }
+//   }
+//   validarCalificacion(calificacion) {
+//     if (this.ValidarNumero("Calificacion", calificacion))
+//       return (calificacion < 0 || calificacion > 10)
+//         ? console.error(`La calificacion tiene que estar en un rango entre 0 y 10`)
+//         :this.calificacion = calificacion.toFixed(1)
+//   }
+//   fichaTecnica() {
+//     console.info(`Ficha Técnica:\nTitulo: "${this.titulo}"\nDirector: "${this.director}"\nAño: "${this.estreno}"\nPais:"${this.pais.join("-")}\nGéneros: ${this.generos.join(",")}\nCalificación: "${this.calificacion}"\nIMDB Id: "${this.id}"`)
+//   }
+// }
+// // pelicula.generosAceptados()
+
+// // const peli = new pelicula({
+// //   id: "ee1567562",
+// //   titulo: "Título de la Peli",
+// //   director: "Dicaprio",
+// //   estreno: 2323,
+// //   pais: ["cosa", "pepito"],
+// //   generos: ["Comedy", "Sport"],
+// //   calificacion: 7.123
+// // })
+// // peli.fichaTecnica()
+
+// const misPelis = [
+// {
+//   id: "ee1567562",
+//   titulo: "Into thw Wild",
+//   director: "Sean Penn",
+//   estreno: 2007,
+//   pais: ["USA"],
+//   generos: ["Adventure", "Biography","Drama"],
+//   calificacion: 8.1
+// },
+// {
+//   id: "ee1567562",
+//   titulo: "Into thw Wild",
+//   director: "Sean Penn",
+//   estreno: 2007,
+//   pais: ["USA"],
+//   generos: ["Adventure", "Biography", "Drama"],
+//   calificacion: 8.1
+// },
+// {
+//   id: "ee1567562",
+//   titulo: "Into thw Wild",
+//   director: "Sean Penn",
+//   estreno: 2007,
+//   pais: ["USA"],
+//   generos: ["Adventure", "Biography", "Drama"],
+//   calificacion: 8.1
+//   }
+// ]
+
+// misPelis.forEach(el => {
+//   new pelicula(el).fichaTecnica()
+// });
